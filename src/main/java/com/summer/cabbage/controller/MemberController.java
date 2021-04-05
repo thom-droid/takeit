@@ -167,25 +167,24 @@ public class MemberController {
 			produces = "application/json;charset=UTF-8")
 	@ResponseBody
 	private String uploadProfile(String type, 
-			MultipartFile profile, 
+			MultipartFile uploadImg, 
 			HttpServletRequest request) throws Exception {
 		// 서버
 		ServletContext application = request.getServletContext();
 		// 기본경로
 		String rootPath = application.getRealPath("/");
 		// 업로드 폴더 경로
-		String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator;
+		String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator + "profile" +File.separator;
 		// 파일의 실제 이름
-		String fileName = profile.getOriginalFilename();
+		String fileName = uploadImg.getOriginalFilename();
 		// 파일 객체 생성
 		File file = new File(uploadPath + fileName);
 		// 파일이름이 같다면 숫자가 붙음
 		file = FileRenameUtil.rename(file);
 		// 임시폴더에 우리 업로드폴더로 이동
-		profile.transferTo(file);
+		uploadImg.transferTo(file);
 		// 리사이즈가 필요한 경우 하면 됨
-		String resizePath = rootPath + "img" +
-		File.separator + "members" + File.separator;
+		String resizePath = rootPath + "img" + File.separator + "upload" + File.separator + "resized" + File.separator;
 		// 리사이즈
 		ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 200);
 		return "{\"profileName\":\""+file.getName()+"\"}";

@@ -12,7 +12,7 @@
 <body>
 <div id="wrap">
     <div id="contents">
-        <img class="logo" src="/img/로고.png" width="200px" height="50px" />
+        <img class="logo" src="/img/로고.png" width="200px" height="100px" />
         <h2>회원가입 유형을 선택하세요</h2>
         <div class="signupSelectBox">
             <input type="radio" id="taker" name="signupSelect" value="taker" checked/>
@@ -29,7 +29,7 @@
             <a href="/taker/signUp" class="btn">next ></a>
         </div>
         <div class="giverIntroduce">
-            <img src="img/giverIntroduce.JPG" width="1000px" height="650px" />
+            <img src="/img/resource/giverIntroduce.JPG" width="1000px" height="650px" />
             <a href="/giver/signUp/step1" class="btn">next ></a>
         </div>
     </div>
