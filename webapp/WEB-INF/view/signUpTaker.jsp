@@ -59,7 +59,8 @@
                 <div class="profile_img_input_title"><span>프로필</span></div>
                 <label class="profile_img_input" for="profileImgInput"><i class="far fa-plus-square"></i></label>
                 <!--input value를 기본프로필로 넘길 사진으로 해두면 된다.-->
-                <input id="profileImgInput" name="profileImg" type="file" accept="image/*" value="profile_img.gif"/>
+                <input id="profileImgInput" name="profileImg" type="file" accept="image/*" />
+                <input id="profileImgVal" type="hidden" name="profileImgVal"/>
             </div><!--//profileImg_input_box end-->
         </div><!--//sign_up_input_container end-->
         <button class="sign_up_btn" type="submit">회원가입 하기</button>
@@ -239,6 +240,7 @@ $nicknameInput.blur(function(){
 //프로필 이미지 처리
 const $profileImgInput = $("#profileImgInput");
 const $profileImg = $(".profile_img_input");
+const $profileImgVal = $("#profileImgVal");
 
 $profileImgInput.on("change", function(){
    		const file = this.files[0];
@@ -261,8 +263,9 @@ $profileImgInput.on("change", function(){
             alert("에러:" + code);
         },
         success:function(json) {
-            $profileImg.css("background-image","url(img/"+json.img+")");
-            $profileImgInput.val(json.img);
+            $profileImg.css("background-image","url(/img/upload/resized/"+json.profileName+")");
+            console.log(typeof json.profileName);
+            $profileImgVal.val(json.profileName);
         }
     });
     } else {
