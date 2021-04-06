@@ -222,14 +222,14 @@
     width: 1100px;
     height: 120px;
 }
-.profile_img_input_box>i{
+/* .profile_img_input_box>i{
     position: absolute;
     font-size: 20px;
     top: 3px;
     left: 600px;
     z-index: 1;
     cursor: pointer;
-}
+} */
 .profile_img_input_box>i:hover{
     color: #3C7166;
 }
@@ -246,20 +246,19 @@
     height: 100px;
     background-color: #EDEDED;
     border-radius: 5px;
-    /*background-image: url("../../img/5.jpg");*/
     background-size: cover;
     cursor: pointer;
 }
-.profile_img_input>i{
+.profile_img_input .far.fa-plus-square{
     position: absolute;
     font-size: 30px;
     top:50%;
     left: 50%;
     margin: -15px 0 0 -15px;
 }
-.profile_img_input:hover>i{
+/* .profile_img_input:hover>i{
     color: #f4fffd;
-}
+} */
 #profileImgInput{
     display: none;
     color: #3C7166;
@@ -270,6 +269,15 @@
     left: 620px;
     font-size: 13px;
 }
+
+.far.fa-times-circle{
+	position: absolute;
+	left: 610px;
+	display: none;
+	cursor: pointer;
+	font-size: 20px;
+}
+
 .sign_up_btn{
     display: block;
     width: 300px;
