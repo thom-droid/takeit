@@ -10,8 +10,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -188,6 +190,33 @@ public class MemberController {
 		// 리사이즈
 		ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 200);
 		return "{\"profileName\":\""+file.getName()+"\"}";
+	}
+	
+	// profile img delete
+	@RequestMapping(value="/ajax/profile/{profileImage}")
+	@ResponseBody
+	private String deleteProfile(@PathVariable String profileImage, HttpServletRequest request) {
+		System.out.println(profileImage);
+		
+		ServletContext application = request.getServletContext();
+		
+		String rootPath = application.getRealPath("/");
+		
+		String uploadedPath = rootPath + "img"  + File.separator + "upload" + File.separator + "profile" +File.separator;
+		
+		String resizedPath = rootPath + "img"  + File.separator + "upload" + File.separator + "resized" +File.separator;
+		//실제 경로에 있는 파일을 삭제
+		try {
+			File uploaded = new File(uploadedPath + profileImage);
+			File resized = new File(resizedPath + profileImage);
+			uploaded.delete();
+			resized.delete();
+		} catch(Exception e) {
+			System.out.println("error");
+		}
+		
+		String msg = "deleted";
+		return "{\"msg\":\""+msg+"\"}";
 	}
 	
 	//giver Insert

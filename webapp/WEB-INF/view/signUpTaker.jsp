@@ -56,8 +56,10 @@
                 <input id="genderFemaleBtn" name="gender" type="radio" value="F"/><label for="genderFemaleBtn">여</label>
             </div><!--//genderInputBox end-->
             <div class="profile_img_input_box"><!--profileImg_input_box start-->
+            	<i class="far fa-times-circle"></i>
                 <div class="profile_img_input_title"><span>프로필</span></div>
-                <label class="profile_img_input" for="profileImgInput"><i class="far fa-plus-square"></i></label>
+                <label class="profile_img_input" for="profileImgInput"><i class="far fa-plus-square"></i>
+                </label>
                 <!--input value를 기본프로필로 넘길 사진으로 해두면 된다.-->
                 <input id="profileImgInput" name="profileImg" type="file" accept="image/*" />
                 <input id="profileImgVal" type="hidden" name="profileImgVal"/>
@@ -241,6 +243,8 @@ $nicknameInput.blur(function(){
 const $profileImgInput = $("#profileImgInput");
 const $profileImg = $(".profile_img_input");
 const $profileImgVal = $("#profileImgVal");
+const $plusSquare = $(".far.fa-plus-square");
+const $profileDelBtn = $(".far.fa-times-circle");
 
 $profileImgInput.on("change", function(){
    		const file = this.files[0];
@@ -264,14 +268,41 @@ $profileImgInput.on("change", function(){
         },
         success:function(json) {
             $profileImg.css("background-image","url(/img/upload/resized/"+json.profileName+")");
-            console.log(typeof json.profileName);
             $profileImgVal.val(json.profileName);
+            $plusSquare.css("display", "none");
+            $profileDelBtn.css("display","block");
+            
         }
     });
     } else {
         alert("이미지를 선택해주세요!");
     }
 });
+
+
+$profileDelBtn.on("click", function(){
+	const profileImage = $profileImgVal.val(); 
+	console.log(profileImage);
+	
+	$.ajax({
+		url: "/ajax/profile/"+profileImage,
+		method: "DELETE",
+		dataType: "json",
+		error: function(){console.log("failed");},
+		success: function(json){
+			// 파일 이름을 넘겨서 처리
+			console.log(json.msg);
+			
+			// 값을 ""로 세팅하고 아이콘들도 원상복구
+			$profileImgVal.val("");
+			$plusSquare.css("display", "block");
+            $profileDelBtn.css("display","none");
+            $profileImg.css("background-image", "none");
+            
+		}
+	}); // ajax
+	
+}); // on click
 
 //2021/02/28 박형우 작성---------------------------------------------------------------
 
