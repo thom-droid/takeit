@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
+import com.summer.cabbage.vo.Taker;
 
 public interface MembersService {
 
@@ -18,6 +19,8 @@ public interface MembersService {
 	//닉네임체크
 	public boolean checkNickname(String nickname);
 	//03-04 이아림 추가 end
+	
+	public boolean signUpTaker(Member member, Taker taker);
 	
 	//03-04 송진현 추가
 	public Giver getGiverBusinessNum(Giver giver);

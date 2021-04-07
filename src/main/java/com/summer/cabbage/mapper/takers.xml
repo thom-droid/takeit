@@ -37,5 +37,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE nickname=#{nickname}
 	</select>
 	
+	
+	<insert id="insertMember" parameterType="Taker">
+		INSERT INTO takers (no, birth_date, gender, name, nickname)
+		VALUES (#{no}, #{birthDate}, #{gender}, #{name}, #{nickname})
+	
+	</insert>
+	
 </mapper>
 

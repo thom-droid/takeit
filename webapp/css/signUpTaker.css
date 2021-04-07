@@ -49,6 +49,15 @@
     top: 8px;
     left: 510px;
 }
+
+.id_notice{
+	position: absolute;
+    top: 48px;
+    left: 510px;
+    font-size: 13px;
+
+}
+
 .password_input_box{
     position: relative;
     width: 1100px;
@@ -146,6 +155,8 @@
     left: 380px;
 }
 .birth_year_input{
+    width: 80px;
+    height: 30px;
     position: absolute;
     top: 8px;
     left: 510px;
@@ -156,9 +167,11 @@
     left: 600px;
 }
 .birth_month_input{
+    width: 80px;
+    height: 30px;
     position: absolute;
     top: 8px;
-    left: 630px;
+    left: 600px;
 }
 .birth_month_title{
     position: absolute;
@@ -166,9 +179,11 @@
     left: 720px;
 }
 .birth_date_input{
+	width: 80px;
+    height: 30px;
     position: absolute;
     top: 8px;
-    left: 750px;
+    left: 690px;
 }
 .birth_date_title{
     position: absolute;

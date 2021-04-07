@@ -13,5 +13,8 @@ public interface TakersDAO {
 	public int selectCheckNickname(String nickname);
 	
 	public int updateNickname(Taker taker);
+
+	// insert member Taker
+	public int insertMember(Taker taker);
 	
 }
