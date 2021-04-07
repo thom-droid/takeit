@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>테이커 회원가입</title>
-    <link rel="stylesheet" href="/css/reset.css"/>
     <link rel="stylesheet" href="/css/signUpTaker.css"/>
-    <link rel="stylesheet" href="/css/all.min.css"/>
-    <link rel="stylesheet" href="/css/appleSDGothic.css"/>
+	<c:import url="/WEB-INF/view/template/link.jsp"/>
   
 </head>
 <body>
@@ -40,15 +39,18 @@
             </div><!--//nameInputBox end-->
             <div class="nickname_input_box"><!--nicknameInputBox start-->
                 <label class="nickname_input_title" for="nickname"><span>닉네임</span></label>
-                <input class="nickname_input" name="nickname" placeholder="한/영 10자까지 가능합니다."/>
+                <input class="nickname_input" name="nickname" placeholder="한/영 10자까지 가능합니다." maxlength=10/>
                 <div class="nickname_notice"><span>닉네임은 한/영 10자까지 가능합니다.</span></div>
                 <div class="nickname_notice"><span>중복되는 닉네임입니다.</span></div>
             </div><!--//nicknameInputBox end-->
             <div class="birthday_input_box"><!--birthdayInputBox start-->
                 <div class="birthday_input_title"><span>생년월일</span></div>
-                <input class="birth_year_input" name="birthYear" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><div class="birth_year_title"><p>년</p></div>
-                <input class="birth_month_input" name="birthMonth" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><div class="birth_month_title"><p>월</p></div>
-                <input class="birth_date_input" name="birthDate" maxlength="2" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" /><div class="birth_date_title"><p>일</p></div>
+                <select class="birth_year_input" name="birthYear">
+                </select>
+                <select class="birth_month_input" name="birthMonth">
+                </select>
+                <select class="birth_date_input" name="birthDay">
+                </select>
             </div><!--//birthdayInputBox end-->
             <div class="gender_input_box"><!--genderInputBox start-->
                 <div class="gender_input_title"><span>성별</span></div>
@@ -61,16 +63,76 @@
                 <label class="profile_img_input" for="profileImgInput"><i class="far fa-plus-square"></i>
                 </label>
                 <!--input value를 기본프로필로 넘길 사진으로 해두면 된다.-->
-                <input id="profileImgInput" name="profileImg" type="file" accept="image/*" />
-                <input id="profileImgVal" type="hidden" name="profileImgVal"/>
+                <input id="profileImgInput" type="file" accept="image/*" />
+                <input id="profileImgVal" type="hidden" name="profileImg"/>
             </div><!--//profileImg_input_box end-->
         </div><!--//sign_up_input_container end-->
         <button class="sign_up_btn" type="submit">회원가입 하기</button>
     </form><!--//form end-->
 </div><!---container end-->
-<script src="/js/jquery.js"></script>
 
 <script type="text/javascript">
+
+const $month = $(".birth_month_input");
+
+function yearSelect (){
+	let nowDate = new Date();
+	let nowYear = nowDate.getFullYear()
+	let yearText = "";
+	let i;
+	for(i = nowYear; i>1900;i--){
+		yearText += "<option value="+i+">"+i+"</option>";
+		
+	}
+	$(".birth_year_input").html(yearText);
+}
+
+yearSelect();
+
+function monthSelect(){
+	let monthText ="";
+	let i;
+	for(i = 1;i<13;i++){
+		monthText += "<option value="+i+">"+i+"</option>";
+	}
+	
+	$(".birth_month_input").html(monthText);
+}
+
+monthSelect();
+
+$month.on("change", function(){
+
+	let monthVal = $month.val();
+	
+	let dateText = "";
+	let i;
+	
+	if(monthVal === 2){
+		for(i=1;i<29;i++){
+			dateText += "<option value="+i+">"+i+"</option>";
+		}
+		
+	} 
+	
+	if(monthVal%2 ===0){
+		for(i=1;i<31;i++){
+			dateText += "<option value="+i+">"+i+"</option>";
+		}
+	} else {
+		for(i=1;i<32;i++){
+			dateText += "<option value="+i+">"+i+"</option>";
+		}
+		
+	}
+	
+	$(".birth_date_input").html(dateText);
+});// on change
+
+function dateSelect(){
+	
+	
+}
 
 /*======아이디========= */
 //id 입력필드
@@ -108,9 +170,11 @@ $id.on("keyup",function() {
 						
 						if(json.result) {
 							$idMsg.text("이미 사용중이거나 탈퇴한 아이디입니다.");
+							$idMsg.css("color", "red");
 							
 						}else {
-							$idMsg.text("아주 좋은 아이디네요!");
+							$idMsg.text("사용하실 수 있는 이메일입니다!");
+							$idMsg.css("color", "blue");
 							
 						}//if~else end
 						
@@ -120,6 +184,7 @@ $id.on("keyup",function() {
 			}else {
 				//틀렸을때
 				$idMsg.text("올바른 형식으로 입력해주세요.");
+				$idMsg.css("color", "red");
 				
 			}//if~else end
 	
@@ -151,7 +216,9 @@ function checkPassword(password){
         $passwordNotice.children("span").text("사용가능한 비밀번호입니다.");
     }
 }
+
 function checkPasswordConfirm(password, passwordConfirm){
+	
     if(!password){
         $passwordConfirmNotice.show();
         $passwordConfirmNotice.css("color", "crimson");

@@ -10,16 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.summer.cabbage.dao.CategoriesDAO;
 import com.summer.cabbage.dao.GiversDAO;
 import com.summer.cabbage.dao.MembersDAO;
 import com.summer.cabbage.dao.PaymentsDAO;
 import com.summer.cabbage.dao.ProductsDAO;
+import com.summer.cabbage.dao.TakersDAO;
 import com.summer.cabbage.util.SendEmailUtil;
 import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
 import com.summer.cabbage.vo.Product;
+import com.summer.cabbage.vo.Taker;
 
 @Service
 public class MembersServiceImpl implements MembersService {
@@ -37,6 +40,9 @@ public class MembersServiceImpl implements MembersService {
 	private PaymentsDAO paymentsDAO;
 	@Autowired
 	private ProductsDAO productDAO;
+	
+	@Autowired
+	private TakersDAO takersDAO;
 	
 	@Override
 	public Member login(Member member) {
@@ -72,6 +78,26 @@ public class MembersServiceImpl implements MembersService {
 		return 1==membersDAO.selectCheckId(id);
 	}
 	//03-04 이아림 추가 end 
+	
+	@Transactional
+	@Override
+	public boolean signUpTaker(Member member, Taker taker) {
+		
+		int result = membersDAO.insertMember(member);
+		
+		taker.setNo(member.getNo());
+		
+		int result2 = takersDAO.insertMember(taker);
+		
+		boolean result3 = false;
+		
+		if(result + result2 ==2) {
+			result3 = true;
+		}
+		
+		return result3;
+	}
+	
 	
 	//03-04 송진현 추가
 	@Override

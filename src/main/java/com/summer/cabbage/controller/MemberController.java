@@ -1,6 +1,7 @@
 package com.summer.cabbage.controller;
 
 import java.io.File;
+import java.sql.Date;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ import com.summer.cabbage.util.FileRenameUtil;
 import com.summer.cabbage.util.ResizeImageUtil;
 import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
+import com.summer.cabbage.vo.Taker;
 
 @Controller
 public class MemberController {
@@ -107,6 +109,34 @@ public class MemberController {
 	public String checkNickname(String nickname) {
 		return "{\"result\":"+service.checkNickname(nickname)+"}";
 	}//checkNickname() end
+	
+	
+	// signUp taker
+	
+	@RequestMapping(value="/taker/signUp", method=RequestMethod.POST)
+	public String takerSignUp(Member member, Taker taker, String birthYear, String birthMonth, String birthDay, HttpSession session) {
+		Date birthDateVal = Date.valueOf(birthYear+"-"+birthMonth+"-"+birthDay);
+		System.out.println(birthDateVal);
+		
+		taker.setBirthDate(birthDateVal);
+		
+		boolean signUp =  service.signUpTaker(member, taker);
+		System.out.println(signUp);
+		
+		if(signUp) {
+			session.setAttribute("loginMember",service.login(member));
+			
+			Member loginMember=(Member)session.getAttribute("loginMember");
+			
+		}
+		try {
+			
+		} catch (Exception e) {
+			System.out.println("error occured");
+		}
+		
+		return "redirect:/index";
+	}
 	
 	//03-04 이아림 추가 end
 	

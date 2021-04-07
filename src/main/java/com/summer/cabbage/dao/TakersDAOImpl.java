@@ -33,4 +33,13 @@ public class TakersDAOImpl implements TakersDAO {
 		return session.update("takers.updateNickname",taker);
 	}
 	// 03-04 정진하 end
+	
+	
+	@Override
+	public int insertMember(Taker taker) {
+		
+		
+		return session.insert("takers.insertMember", taker); 
+		
+	}
 }

@@ -49,6 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM members
 		WHERE id=#{id}
 	</select>
+	
 	<insert id="insertMember" parameterType="Member">
 		<selectKey keyProperty="no" order="BEFORE" resultType="int">
 			SELECT members_seq.nextval
