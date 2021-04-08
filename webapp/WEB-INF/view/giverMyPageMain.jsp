@@ -10,6 +10,8 @@
 <c:import url="/WEB-INF/view/template/link.jsp" />
 <link rel="stylesheet" href="/css/visualize/visualize.css" />
 <link rel="stylesheet" href="/css/visualize/visualize-light.css" />
+<link rel="stylesheet" href="/css/giver_mypage_tab.css" />
+<link rel="stylesheet" href="/css/giver_header.css" />
 <style>
 .visualize-key {
 	display: none;
@@ -30,6 +32,11 @@ table {
 </style>
 </head>
 <body>
+<c:import url="/WEB-INF/view/template/giver_header.jsp" />
+<div class="giver_mypage_container">
+<c:import url="/WEB-INF/view/template/giver_mypage_tab.jsp">
+	<c:param name="tabName" value="main" />
+</c:import>
 	<div id="giverMyPageMainContainer">
 		<!--giverMyPageMainContainer start-->
 		<div class="product_register_content">
@@ -175,7 +182,8 @@ table {
 		<!--sales_statistics_content end-->
 	</div>
 	<!--//giverMyPageMainContainer end-->
-	<script src="/js/jquery.js" />
+</div>
+	<script src="/js/jquery.js" ></script>
 	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 	<script src="/js/visualize/visualize.jQuery.js"></script>
 	<script src="/js/giverMyPageMain.js">

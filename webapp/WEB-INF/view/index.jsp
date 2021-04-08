@@ -14,6 +14,9 @@
 </head>
 <body>
 <c:import url="/WEB-INF/view/template/header.jsp"></c:import>
+<div class="welcome_msg">
+	<p>${msg }</p>
+</div>
 <div id="container">
     <div id="hero_img_content">
         <div class="hero_comment_wrap">
@@ -206,5 +209,9 @@
         }
     });
 
+    const $welcomeMsg = $(".welcome_msg");
+    
+    $welcomeMsg.fadeOut();
+    
 </script>
 </html>

@@ -23,7 +23,7 @@ public interface GiversDAO {
 	//03-04 송진현 추가
 	
 	//기버 사업자번호 받아오기-송진현
-	Giver selectbusinessNum(Giver giver);
+	Giver selectbusinessNum(String businessNum);
 	//기버  회원가입-송진현
 	public int insertGiver(Giver giver);
 	//기버 구독상품번호로 기버 정보받아오기-송진현

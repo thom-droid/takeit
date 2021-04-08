@@ -8,8 +8,9 @@ body, button, a, input, option {
 	position: relative;
 	width: 910px;
 	height: 1100px;
-	background-color: antiquewhite;
+	/* 	background-color: antiquewhite; */
 	padding-top: 30px;
+	margin-left: 190px;
 }
 
 /*title*/

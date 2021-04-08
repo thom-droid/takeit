@@ -184,11 +184,24 @@
         }
         
         .item_score{
-        	margin-left:150px;
+        	margin-left:120px;
         }
         
         /* end  판매자 정보 더보기 CSS      ///////////////////////////////////////////////////////////////////////////////////*/
+ 		.item_score .box 
+ 		{
+            background-image: url("/img/ico_newsview_200522.png");
+            height:16px;
+        }
+        .grade_star {
+            width:88px;
+            background-position: 0 -300px;
 
+        }
+        .inner_star {
+            width:0px;
+            background-position: 0 -320px;
+        }
 </style>
 </head>
 <body>
@@ -203,7 +216,7 @@
             <!--판매자 프로필 (사진, 평균평점, 정보들)-->
             <div class="profile box">
                 <div class="profile image_box">
-                    <img class="profile image" src="img/${giver.profileImg }" title="판매자 사진" width="150" height="150" >
+                    <img class="profile image" src="/img/${giver.profileImg }" title="판매자 사진" width="150" height="150" >
                 </div>
                 <div class="profile score">
                     <ul>
@@ -216,8 +229,6 @@
                     <dl class="profile inform list">
                         <dt>상호</dt>
                         <dd>${giver.company } </dd>
-                       <%--  <dt>사업장 소재지</dt>
-                        <dd>서울시 관악구 남부순환로</dd>--%>
                         <dt>연락처</dt>
                         <dd>${giver.phone } </dd>
                     </dl>
@@ -262,7 +273,11 @@
 	 <li><a href="">
          <div class="item_row"><img src="/img/<@=item.photo@>" width="200px" height="200px" title="상품사진"></div>
          <div class="item_row item_name"><@=item.name@></div>
-         <div class="item_row item_score"><@=item.star@></div>
+         <div class="item_row item_score">
+		 <div class="grade_star box">
+         <div class="inner_star box" style="width:<@=item.star*20@>%"></div>
+    	 </div> 
+		 </div>
          <div class="item_row item_price"><@=item.price@></div>
     </a></li>
 <@})@>

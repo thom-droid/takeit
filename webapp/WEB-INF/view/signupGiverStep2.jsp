@@ -16,8 +16,9 @@
     </div><!--//signUpTitleContent end-->
     <div id="singUpReadyContent"><!--singUpReadyContent start-->
         <div class="head_sentence"><span>사업자 등록번호를 입력하세요.</span><span>사업자 번호로 등록여부를 확인합니다.</span></div>
-        <form action="/giver/signUp/step3" method="GET">
+        <form action="/signUp" method="GET">
         	<input id="businessNumInput" name="businessNum" maxlength="10" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+        	<input type="hidden" name="type" value="G" />
        		<button class="nextBtn">다음</button>
         </form>
     </div><!--//singUpReadyContent end-->

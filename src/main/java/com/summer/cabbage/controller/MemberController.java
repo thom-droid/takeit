@@ -56,8 +56,7 @@ public class MemberController {
 			if(loginMember.getType().equals("G")) {
 				// 회원의 유형이 기버일 경우 
 				// 기버 마이페이지로 가자 
-				System.out.println("기버마이페이지 아직 페이지 없어서 잘되나 그냥 확인용");
-				return "redirect:/giver/"+loginMember.getNo()+"/products";
+				return "redirect:/giver/"+loginMember.getNo()+"/main";
 			}else{
 				// 회원의 유형이 테이커 일 경우 
 				return "redirect:/index";
@@ -87,13 +86,6 @@ public class MemberController {
 	}
 	// 03-03 강필규 추가 end
 	
-	//03-04 이아림 추가
-	//회원가입 유형 선택 후 테이커 회원가입 창 이동
-	@RequestMapping(value="/taker/signUp", method=RequestMethod.GET)
-	public String takerSignUp() {
-		return "signUpTaker";
-	}//takerSignUp() end
-	
 	//아이디 체크 메서드
 	@RequestMapping(value="/ajax/check/id", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
 	@ResponseBody
@@ -111,29 +103,48 @@ public class MemberController {
 	}//checkNickname() end
 	
 	
-	// signUp taker
-	
-	@RequestMapping(value="/taker/signUp", method=RequestMethod.POST)
-	public String takerSignUp(Member member, Taker taker, String birthYear, String birthMonth, String birthDay, HttpSession session) {
-		Date birthDateVal = Date.valueOf(birthYear+"-"+birthMonth+"-"+birthDay);
-		System.out.println(birthDateVal);
+	// signUp
+	@RequestMapping(value="/signUp", method=RequestMethod.POST)
+	public String takerSignUp(Member member, Taker taker, Giver giver, String type, String birthYear, String birthMonth, String birthDay, HttpSession session, RedirectAttributes ra) {
 		
-		taker.setBirthDate(birthDateVal);
-		
-		boolean signUp =  service.signUpTaker(member, taker);
-		System.out.println(signUp);
-		
-		if(signUp) {
-			session.setAttribute("loginMember",service.login(member));
+		if(type.equals("T")) {
+			try {
+				Date birthDateVal = Date.valueOf(birthYear+"-"+birthMonth+"-"+birthDay);
+				
+				taker.setBirthDate(birthDateVal);
+				
+				boolean signUp =  service.signUpTaker(member, taker);
+				
+				if(signUp) {
+					session.setAttribute("loginMember", service.login(member));
+					String success = "반갑습니다," + taker.getNickname() +" 님";
+					ra.addFlashAttribute("msg", success);
+				}
+			} catch (Exception e) {
+				String error = "에러가 발생했습니다.";
+				ra.addFlashAttribute("error", error);
+				
+			}
 			
-			Member loginMember=(Member)session.getAttribute("loginMember");
+		} else if(type.equals("G")){
+			try {
+				boolean signUp = service.signUpGiver(member, giver);
+				
+				if(signUp) {
+					
+					session.setAttribute("loginMember", service.login(member));
+					Member loginMember = (Member)session.getAttribute("loginMember");
+					
+					return "redirect:/giver/"+loginMember.getNo()+"/main";
+				}
+			} catch (Exception e) {
+				
+				String error = "에러가 발생했습니다.";
+				ra.addFlashAttribute("error", error);
+			}
 			
 		}
-		try {
-			
-		} catch (Exception e) {
-			System.out.println("error occured");
-		}
+		
 		
 		return "redirect:/index";
 	}
@@ -143,7 +154,7 @@ public class MemberController {
 	//-- 송진현 03-04 --//
 	
 	//회원가입 giver인지 taker인지 선택하는 jsp
-	@RequestMapping(value="/signUp", method=RequestMethod.GET)
+	@RequestMapping(value="/signUp/select", method=RequestMethod.GET)
 	public String sdfsf() {
 		return "signupSelect";
 	}
@@ -162,17 +173,32 @@ public class MemberController {
 	
 	//giver 사업자번호 등록여부 확인 후 
 	//등록 된 번호이면 리다이렉트, 등록되지 않은 번호이면 다음 JSP
-	@RequestMapping(value="/giver/signUp/step3", method=RequestMethod.GET)
-	public String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
-		
-		Giver giverBusinessNum = service.getGiverBusinessNum(giver);
-		if(giverBusinessNum!=null) {
-			ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
-			return "redirect:/signupGiverStep2";
-		}else {
-			model.addAttribute("giver", giver);
-			return "signupGiverStep3";
+	/*
+	 * @RequestMapping(value="/giver/signUp/step3", method=RequestMethod.GET) public
+	 * String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
+	 * 
+	 * Giver giverBusinessNum = service.getGiverBusinessNum(giver);
+	 * if(giverBusinessNum!=null) { ra.addFlashAttribute("msg",
+	 * "이미 등록된 사업자 번호입니다."); return "redirect:/signupGiverStep2"; }else {
+	 * model.addAttribute("giver", giver); return "signupGiverStep3"; } }
+	 */
+	@RequestMapping(value="/signUp", method=RequestMethod.GET)
+	public String signUp(Model model, @RequestParam(required=false) String type, Giver giver, RedirectAttributes ra) {
+		if(type!=null) {
+			Giver giverBusinessNum = service.getGiverBusinessNum(giver.getBusinessNum());
+			if(giverBusinessNum!=null) {
+				ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
+				return "redirect:/signupGiverStep2";
+			}else {
+				model.addAttribute("type", "G");
+				model.addAttribute("giver", giver);
+				return "signUp";
+			}
+		} else {
+			System.out.println("a");
+			return "signUp";
 		}
+		
 	}
 	
 	//giver 회원가입 중 상호명 중복확인
@@ -249,12 +275,6 @@ public class MemberController {
 		return "{\"msg\":\""+msg+"\"}";
 	}
 	
-	//giver Insert
-	@RequestMapping(value="/giver/signUp/step3", method=RequestMethod.POST)
-	public String sdfwewesf(Member member, Giver giver) {
-		service.singUpGiver(member,giver);
-		return "redirect:/index";
-	}
 	//-- 03-04 송진현 --//
 	
 		

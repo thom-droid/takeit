@@ -34,6 +34,64 @@
     width: 1100px;
     font-size: 18px;
 }
+.business_name_input_box{
+     position: relative;
+     width: 1100px;
+     height: 60px;
+}
+.business_name_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.business_name_input{
+    position: absolute;
+    top: 8px;
+    left: 510px;
+}
+.business_number_input_box{
+    position: relative;
+    width: 1100px;
+    height: 60px;
+}
+.business_number_input_title{
+    position: absolute;
+    top: 16px;
+    left: 380px;
+}
+.business_number{
+    position: absolute;
+    top: 16px;
+    left: 510px;
+}
+
+.phone_input_box{
+        position: relative;
+        width: 1100px;
+        height: 60px;
+}
+
+.phone_input_title {
+	position: absolute;
+	top: 16px;
+	left: 380px;
+}
+
+.phone_input {
+	position: absolute;
+	top: 8px;
+	left: 510px;
+}
+
+.phone_notice {
+	position: absolute;
+	top: 48px;
+	left: 510px;
+	font-size: 13px;
+	color: crimson;
+	display: none;
+}
+
 .id_input_box{
     position: relative;
     width: 1100px;

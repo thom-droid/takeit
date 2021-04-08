@@ -72,9 +72,9 @@ public class GiversDAOImpl implements GiversDAO {
 	//03-04 송진현 추가
 	//기버 사업자번호 받아오기-송진현
 		@Override
-		public Giver selectbusinessNum(Giver giver) {
+		public Giver selectbusinessNum(String businessNum) {
 			// TODO Auto-generated method stub
-			return session.selectOne("givers.selectbusinessNum",giver);
+			return session.selectOne("givers.selectbusinessNum",businessNum);
 		}
 		//기버  회원가입-송진현
 		@Override

@@ -23,10 +23,10 @@ public interface MembersService {
 	public boolean signUpTaker(Member member, Taker taker);
 	
 	//03-04 송진현 추가
-	public Giver getGiverBusinessNum(Giver giver);
+	public Giver getGiverBusinessNum(String businessNum);
 	public boolean checkBusinessName(String businessName);
 	public boolean checkGiverId(String id);
-	public void singUpGiver(Member member, Giver giver);
+	public boolean signUpGiver(Member member, Giver giver);
 	//03-04 송진현 추가 end
 	
 	//메인 폼 서비스

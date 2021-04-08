@@ -6,13 +6,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/all.min.css">
-    <link rel="stylesheet" href="/css/appleSDGothic.css">
+    <c:import url="/WEB-INF/view/template/link.jsp" />
     <link rel="stylesheet" href="/css/orderCheck.css">
+    <link rel="stylesheet" href="/css/giver_mypage_tab.css" />
+	<link rel="stylesheet" href="/css/giver_header.css" />
 
 </head>
 <body>
+<c:import url="/WEB-INF/view/template/giver_header.jsp" />
+<div class="giver_mypage_container">
+<c:import url="/WEB-INF/view/template/giver_mypage_tab.jsp">
+	<c:param name="tabName" value="orderCheck" />
+</c:import>
     <div id="container">
         <!-- Order inquiry == oi으로 줄임 -->
         <h1 class="oi_title">주문 조회</h1>
@@ -116,10 +121,11 @@
         <div><i class="fas fa-times"></i></div>
         <p></p>
     </div>
-<form id="deleteSub" method="post">
-	<input type="hidden" name="_method" value="delete">
-</form>
-
+    
+	<form id="deleteSub" method="post">
+		<input type="hidden" name="_method" value="delete">
+	</form>
+</div>
     <script src="/js/jquery.js"></script>
     <script>
         //모두 체크하기 checkbox

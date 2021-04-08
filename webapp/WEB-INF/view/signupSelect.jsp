@@ -26,7 +26,7 @@
                 내 동네 구독 서비스를 한 눈에 볼 수 있고</br>
                 편리하게 관리할 수 있습니다.
             </span>
-            <a href="/taker/signUp" class="btn">next ></a>
+            <a href="/signUp" class="btn">next ></a>
         </div>
         <div class="giverIntroduce">
             <img src="/img/resource/giverIntroduce.JPG" width="1000px" height="650px" />
