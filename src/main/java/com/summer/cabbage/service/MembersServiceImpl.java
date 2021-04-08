@@ -101,8 +101,8 @@ public class MembersServiceImpl implements MembersService {
 	
 	//03-04 송진현 추가
 	@Override
-	public Giver getGiverBusinessNum(Giver giver) {
-		return giversDAO.selectbusinessNum(giver);
+	public Giver getGiverBusinessNum(String businessNum) {
+		return giversDAO.selectbusinessNum(businessNum);
 	}
 	
 	@Override
@@ -114,13 +114,19 @@ public class MembersServiceImpl implements MembersService {
 		return 1==membersDAO.selectId(id);
 	}
 	
+	@Transactional
 	@Override
-	public void singUpGiver(Member member, Giver giver) {
-		 membersDAO.insertMember(member);
+	public boolean signUpGiver(Member member, Giver giver) {
+		 int result = membersDAO.insertMember(member);
 		 	
 		 giver.setNo(member.getNo());
 		
-		 giversDAO.insertGiver(giver);
+		 int result2 = giversDAO.insertGiver(giver);
+		 boolean result3 = false;
+		 if (result + result2 ==2) {
+			 result3 = true;
+		 }
+		 return result3;
 	}
 	//03-04 송진현 추가 end
 	

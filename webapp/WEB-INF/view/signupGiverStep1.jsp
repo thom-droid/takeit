@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<c:import url="/WEB-INF/view/template/link.jsp"></c:import>
+<c:import url="/WEB-INF/view/template/link.jsp" />
 <link rel="stylesheet" href="/css/signupGiverStep1.css"/>
 </head>
 <body>

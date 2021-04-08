@@ -54,7 +54,7 @@ TEST
        </div>    
         <div class="login_footer">
             <div class="join_box">
-                <button><a href="/signUp">회원가입</a> </button>
+                <button><a href="/signUp/select">회원가입</a> </button>
             </div>
             <div class="find_password">
                 <button><a href="/find/password">비밀번호찾기</a></button>

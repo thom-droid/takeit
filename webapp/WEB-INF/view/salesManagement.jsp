@@ -8,9 +8,16 @@
 <title>매출관리페이지</title>
 <c:import url="/WEB-INF/view/template/link.jsp" />
 <link rel="stylesheet" href="/css/salesManagement.css" />
+<link rel="stylesheet" href="/css/giver_mypage_tab.css" />
+<link rel="stylesheet" href="/css/giver_header.css" />
 
 </head>
 <body>
+<c:import url="/WEB-INF/view/template/giver_header.jsp" />
+<div class="giver_mypage_container">
+<c:import url="/WEB-INF/view/template/giver_mypage_tab.jsp">
+	<c:param name="tabName" value="sales" />
+</c:import>
 	<!--매출 관리 탭-->
 	<div class="sales_content" id="salesTab">
 		<div class="sales_wrap bar row">매출관리</div>
@@ -168,6 +175,7 @@
 
 	</div>
 	<!--end 매출 관리 탭-->
+</div>
 
 	<script src="/js/jquery.js"></script>
 	<script

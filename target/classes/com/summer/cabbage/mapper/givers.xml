@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE no = #{no}
 	</update>
 	<!-- 03-04 송진현 추가  -->
-	<select id="selectbusinessNum" parameterType="Giver" resultType="Giver">
+	<select id="selectbusinessNum" parameterType="String" resultType="Giver">
 		select business_num businessNum
 		from givers
 		where business_num = #{businessNum}

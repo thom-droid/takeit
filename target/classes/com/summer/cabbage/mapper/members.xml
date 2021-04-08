@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM dual
 		</selectKey>
 		INSERT INTO members(no,id,password,type,profile_img,regdate)
-		VALUES(#{no},#{id},#{password},'G',#{profileImg},systimestamp)
+		VALUES(#{no},#{id},#{password},#{type},#{profileImg},systimestamp)
 	</insert>
 	<!-- // 03-04 송진현 추가 -->
 </mapper>

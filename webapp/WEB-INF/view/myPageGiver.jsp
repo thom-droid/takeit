@@ -6,9 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>giver의 마이페이지</title>
-    <link rel="stylesheet" href="/css/reset.css"/>
-    <link rel="stylesheet" href="/css/all.min.css"/>
-    <link rel="stylesheet" href="/css/appleSDGothic.css"/>
+    <c:import url="/WEB-INF/view/template/link.jsp" />
     <link rel="stylesheet" href="/css/myPageGiver.css"/>
 </head>
 <body>
@@ -17,17 +15,15 @@
         <div class="list_content">
             <div class="list_content_giver_wrap">
                 <div class="list_content_giver_box">
-                	<a href="">
                     <img id="giverProfileImg" alt="profile" src="/img/walle.png"/>
                     <div id="giverCompany">${giver.company }</div>
-                    </a>
                 </div><!-- .list_content_giver_box end-->
             </div><!-- .list_content end-->
             <ul class="management_list_wrap">
-                <li class="management_list" data-tab="tab1"><a href="">상품 관리</a><p class="fas fa-chevron-right"></p></li>
-                <li class="management_list " data-tab="tab2">판매 관리<span class="fas fa-chevron-right"></span></li>
-                <li class="management_list " data-tab="tab3">매출 관리<span class="fas fa-chevron-right"></span></li>
-                <li class="management_list " data-tab="tab4">판매자 정보<span class="fas fa-chevron-right"></span></li>
+                <a href=""><li class="management_list" data-tab="tab1">상품 관리<p class="fas fa-chevron-right"></p></li></a>
+                <a href=""><li class="management_list " data-tab="tab2">판매 관리<span class="fas fa-chevron-right"></span></li></a>
+                <a href=""><li class="management_list " data-tab="tab3">매출 관리<span class="fas fa-chevron-right"></span></li></a>
+                <a href="/giver/${giver.no}/personalInfo"><li class="management_list " data-tab="tab4">판매자 정보<span class="fas fa-chevron-right"></span></li></a>
                 <p class="qna">문의하기</p>
             </ul><!-- .management_list_wrap end-->
 
@@ -63,10 +59,10 @@
                             <dl>
                                 <dt>연락처</dt>
                                 <dd><span class="giver_phone_num">${giver.phone }</span>
-                                    <div class="giver_information_change_phone_num"><input class="change_phone_num_input hidden" placeholder="000-0000-0000 형태로 작성해주세요."/></div>
+                                    <div class="giver_information_change_phone_num">
+                                    <input class="change_phone_num_input hidden" placeholder="-없이 입력해주세요." name="phone" value="${giver.phone }"/></div>
                                     <button class="giver_information btn change_phone_num" >수정</button>
                                 	<div class="phone_num_notice"></div> 
-                                	 <div id="phoneRequiredSpace"></div>
                                 </dd>
                             </dl>
                             <dl>
@@ -155,24 +151,66 @@ const $changePhoneNumBtn  = $(".change_phone_num");
 const $giverPhoneNum = $(".giver_phone_num");
 /* 전화번호 변경을 위한 input */
 const $changePhoneNumInput = $(".change_phone_num_input");
-
-/* 전화번호 정규표현식*/
-const phoneNumRegExp = /^01(?:0|1|[6-9])\d{3,4}\d{4}$/;
+/* 전화번호 유효성 체크 메세지*/
+const $phoneNumNotice = $(".phone_num_notice");
 
 // (전화번호) 수정 버튼 누르면,
 $changePhoneNumBtn.on("click", function () {
 
     $changePhoneNumInput.toggleClass("hidden");
     $giverPhoneNum.toggleClass("hidden");
-    
-    $changePhoneNumInput.on("keyup",function() {
-		const phoneNum = $changePhoneNumInput.val();
-    	
-	});//ajax end
-    
+    $changePhoneNumBtn.attr('disabled', "disabled");
 });// $changePhoneNumBtn click() end
 
-//전화번호 유효성검사 시작
+
+	//전화번호 유효성검사 시작
+	function checkPhoneNumber(str) {
+       //2021 02 03 정진하 유효성 검사 수정함!!
+        var reg_phoneNum = /^01(?:0|1|[6-9])\d{3,4}\d{4}$/;
+           // /^[A-Za-z0-9]{6,12}$/;//숫자와 문자 포함 형태의 6~12자리 이내의 암호 정규식
+        if(!reg_phoneNum.test(str)){
+            return false;
+        }else {
+            return true;
+        }//if~else end
+    }//checkPhoneNumber(str) end
+    
+    $changePhoneNumInput.keyup(function () {
+        var str = $changePhoneNumInput.val();
+        
+        if (!checkPhoneNumber(str)) {
+            $phoneNumNotice.text("핸드폰 번호를 적어주세요.");
+        }else{
+        	$phoneNumNotice.text("좋은 핸드폰 번호입니다.");
+        	$changePhoneNumBtn.removeAttr("disabled","disabled");
+        	
+        }//if~else end
+    });//폰번호 유효성 검사   
+    
+  //유효성 검사 통과해야 수정버튼 활성화돼서 누를 수 있음 anyway
+    $changePhoneNumBtn.click(function () {
+       
+       let phone = $changePhoneNumInput.val();
+       console.log(phone);
+       $.ajax({
+            url:"/ajax/giver/${giver.no}/phone",//주소
+            type:"POST",//방식
+            data:{"phone":phone},//파라미터
+            dataType:"json",//응답의 자료형
+            error:function(xhr,error){
+                alert("서버 점검 중!");
+                console.log(error);
+            },
+            success:function(json){
+            	
+               $giverPhoneNum.html(json.phone);
+               $phoneNumNotice.text("");
+              
+            }//success end 
+        });//ajax end
+
+    });//click() end
+    
 
 
 /* =========================프로필 이미지 변경==================================*/
@@ -234,7 +272,7 @@ $profileInput.on("change",function () {
         type:"POST",
         processData:false,
         contentType:false,
-        data:formData
+        data:formData,
         dataType:"json",
         error:function(){
             alert("서버 점검중!")
