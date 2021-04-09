@@ -15,7 +15,7 @@
         <!-- 로고 -->
         <div class="hcb_logo">
             <a href="/">
-                <img src="img/로고.png" class="header_logo_img">
+                <img src="/img/resource/logo.png" class="header_logo_img">
                 <span class="header_logo_font">TAKE IT</span>
             </a>
         </div>
@@ -52,20 +52,22 @@
             </div>
          	</c:when>
          	<c:otherwise>
-            <div class="hcb_profile">
-               <p>
-                  <i class="fas fa-bars"></i> <i class="far fa-user-circle"></i>
-               </p>
-            </div>
-            <div class="hcb_mypage_and_logout">
-               <ul>
-                  <li><a href="">마이페이지</a></li>
-                  <form id="logOutForm" action="/log" method="post">
-                  <input type="hidden" name="_method" value="delete"/>
-                  </form>
-                  <li><button form="logOutForm" class="logout btn">로그아웃</button></li>
-               </ul>
-            </div>
+	            <div class="hcb_profile">
+	               <p>
+	                  <i class="fas fa-bars"></i> <i class="far fa-user-circle"></i>
+	               </p>
+	            </div>
+	            <div class="hcb_mypage_and_logout">
+	               <ul>
+	                  <li><a href="/taker/${loginMember['taker'].no}">마이페이지</a></li>
+	                  <li>
+		                  <form id="logOutForm" action="/log" method="post">
+		                  <input type="hidden" name="_method" value="delete"/>
+		                  <button form="logOutForm" class="logout btn">로그아웃</button>
+	                  </form>
+	                  </li>
+	               </ul>
+	            </div>
          	</c:otherwise>
      	</c:choose>
      	</div>

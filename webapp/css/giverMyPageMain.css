@@ -1,3 +1,20 @@
+.visualize-key {
+	display: none;
+}
+
+.visualize {
+	margin: 32px 0;
+	padding: 0 39px;
+}
+
+.visualize-labels-x, .visualize-labels-y {
+	top: 0;
+}
+
+table {
+	display: none;
+}
+
 #giverMyPageMainContainer{
     width: 910px;
     height: auto;

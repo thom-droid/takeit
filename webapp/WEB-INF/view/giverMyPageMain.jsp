@@ -12,24 +12,6 @@
 <link rel="stylesheet" href="/css/visualize/visualize-light.css" />
 <link rel="stylesheet" href="/css/giver_mypage_tab.css" />
 <link rel="stylesheet" href="/css/giver_header.css" />
-<style>
-.visualize-key {
-	display: none;
-}
-
-.visualize {
-	margin: 32px 0;
-	padding: 0 39px;
-}
-
-.visualize-labels-x, .visualize-labels-y {
-	top: 0;
-}
-
-table {
-	display: none;
-}
-</style>
 </head>
 <body>
 <c:import url="/WEB-INF/view/template/giver_header.jsp" />
@@ -183,11 +165,9 @@ table {
 	</div>
 	<!--//giverMyPageMainContainer end-->
 </div>
-	<script src="/js/jquery.js" ></script>
+	<script src="/js/jquery.js"></script>
 	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 	<script src="/js/visualize/visualize.jQuery.js"></script>
-	<script src="/js/giverMyPageMain.js">
-		
-	</script>
+	<script src="/js/giverMyPageMain.js"></script>
 </body>
 </html>
