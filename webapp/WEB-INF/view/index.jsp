@@ -8,15 +8,10 @@
     <title>Take It</title>
     <c:import url="/WEB-INF/view/template/link.jsp" />
     <link rel="stylesheet" href="/css/searchResult.css">
-    <link rel="stylesheet" href="/css/header.css"/>
-	<link rel="stylesheet" href="/css/footer.css"/>
 	<link rel="stylesheet" href="/css/index.css"/>
 </head>
 <body>
-<c:import url="/WEB-INF/view/template/header.jsp"></c:import>
-<div class="welcome_msg">
-	<p>${msg }</p>
-</div>
+<c:import url="/WEB-INF/view/template/header.jsp" />
 <div id="container">
     <div id="hero_img_content">
         <div class="hero_comment_wrap">
@@ -167,51 +162,9 @@
 </div>
 </div> <!-- container -->
 
-<c:import url="/WEB-INF/view/template/footer.jsp"></c:import>
-
+<c:import url="/WEB-INF/view/template/footer.jsp"/>
+<c:import url="/WEB-INF/view/template/js-import.jsp" />
+<script src="/js/index.js"></script>
+<script src="/js/header.js"></script>
 </body>
-<script>
-
-    let left=0;
-    let kategorieLeft = 0;
-    const $kategorieList =  $(".kategorie_list");
-    const $next = $(".next");
-    const $prev = $(".prev");
-    const $slide_list = $(".slide_list");
-
-    //다음버튼눌렀을때
-    $next.on("click",function () {
-        $prev.css("visibility","visible");
-        left -= 990;
-        kategorieLeft -=1100;
-        $kategorieList.css("left",kategorieLeft);
-        console.log(left);
-
-
-        $slide_list.css("left",left);
-        if(left == -2970){
-            $next.css("visibility","hidden");
-            console.log(left);
-        }
-    });
-
-    //이전버튼눌렀을때
-    $prev.on("click",function () {
-        $next.css("visibility","visible");
-        left +=990;
-        kategorieLeft +=1100;
-        $kategorieList.css("left",kategorieLeft);
-        console.log(left);
-
-        $slide_list.css("left",left);
-        if(left==0){
-            $prev.css("visibility","hidden");
-        }
-    });
-
-    const $welcomeMsg = $(".welcome_msg");
-    
-    $welcomeMsg.fadeOut();
-    
-</script>
 </html>

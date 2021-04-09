@@ -16,5 +16,8 @@ public interface TakersDAO {
 
 	// insert member Taker
 	public int insertMember(Taker taker);
+
+	public Taker selectNo(int no);
+
 	
 }

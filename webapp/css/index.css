@@ -8,14 +8,6 @@ body{
 	margin: auto;
 }
 
-.welcome_msg{
-    margin-top: 100px;
-    text-align: center;
-    height: 50px;
-    background-color: rgba(60,113, 102, .8);
-    line-height: 50px;
-    color: white;
-}
 
 #hero_img_content {
 	height: 500px;

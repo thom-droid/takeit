@@ -10,7 +10,7 @@ import com.summer.cabbage.vo.Taker;
 
 public interface MembersService {
 
-	Member login(Member member);
+	public Map<String, Object> login(Member member);
 	public void findPw(Member member);
 	
 	//03-04 이아림 추가

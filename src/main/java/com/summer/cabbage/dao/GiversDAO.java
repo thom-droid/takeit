@@ -29,6 +29,8 @@ public interface GiversDAO {
 	//기버 구독상품번호로 기버 정보받아오기-송진현
 	public Giver selectDetailOne(int productNo);
 	
+	public Giver selectNo(int no);
+	
 	//03-04 송진현 추가 end
 
 }

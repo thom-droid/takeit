@@ -17,6 +17,11 @@ public class TakersDAOImpl implements TakersDAO {
 	public Taker selectOneByNo(int no) {
 		return session.selectOne("takers.selectOneByNo", no);
 	}
+	
+	@Override
+	public Taker selectNo(int no) {
+		return session.selectOne("takers.selectNo", no);
+	}
 
 	@Override
 	public int updateProfile(Member member) {

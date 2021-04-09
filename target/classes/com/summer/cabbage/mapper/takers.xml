@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="takers">
 	<select id="selectNo" parameterType="int" resultType="Taker">
-		SELECT NO,BIRTH_DATE birthDate,GENDER,NAME	
+		SELECT NO,BIRTH_DATE birthDate,GENDER,NAME, NICKNAME	
 		FROM takers
 		WHERE no=#{no}
 	</select>

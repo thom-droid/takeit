@@ -45,9 +45,22 @@ public class MembersServiceImpl implements MembersService {
 	private TakersDAO takersDAO;
 	
 	@Override
-	public Member login(Member member) {
-		// TODO Auto-generated method stub
-		return membersDAO.selectLogin(member);
+	public Map<String, Object> login(Member member) {
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		Member m = membersDAO.selectLogin(member);
+		
+		if(m.getType().equals("T")) {
+			map.put("taker", takersDAO.selectNo(m.getNo()));
+		}
+		
+		if(m.getType().equals("G")) {
+			map.put("giver", giversDAO.selectNo(m.getNo()));
+		}
+		
+		map.put("member", m);
+		
+		return map;
 	}
 	@Override
 	public void findPw(Member member) {
