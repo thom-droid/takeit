@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 //탭버튼, 구독 리스트 상수 선언
 const $mySubscribeList = $(".my_subscribe_list");
 const $mySubscribeListText = $(".my_subscribe_list>a")
@@ -11,23 +7,25 @@ const $currentSubscribes = $(".current_subscribes");
 const $subscribesHistory = $(".subscribes_history");
 
 //탭 버튼 누르면 해당 목록 나오게하기
-//  $mySubscribeList.click(function (e) {
-//    e.preventDefault();
-//  $currentSubscribes.show();
-// $subscribesHistory.hide();
-// $mySubscribeHistoryText.removeClass("deco");
-// $mySubscribeListText.removeClass("nodeco");
+$mySubscribeList.click(function(e) {
+	
+	e.preventDefault();
+	$currentSubscribes.show();
+	$subscribesHistory.hide();
+	$mySubscribeHistoryText.removeClass("deco");
+	$mySubscribeListText.removeClass("nodeco");
 
-//});
+});
 
-// $mySubscribeHistory.click(function (e) {
-//   e.preventDefault();
-// $currentSubscribes.hide();
-// $subscribesHistory.show();
-//  $mySubscribeHistoryText.addClass("deco");
-//  $mySubscribeListText.addClass("nodeco");
+$mySubscribeHistory.click(function(e) {
+	
+	e.preventDefault();
+	$currentSubscribes.hide();
+	$subscribesHistory.show();
+	$mySubscribeHistoryText.addClass("deco");
+	$mySubscribeListText.addClass("nodeco");
 
-// });
+});
 
 const today = new Date();
 
@@ -50,6 +48,7 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
 	businessHours: true, // display business hours
 	editable: true,
 	selectable: true,
+
 	locale: "ko",
 	//select: triggered when a date/time selection is made.
 	dateClick: function(info) {
@@ -86,6 +85,7 @@ $gradingByStar.click(function() {
 
 });
 
+const takerNo = $("#takerNo").val();
 
 
 //프로필 사진 인풋요소 상수선언
@@ -130,7 +130,7 @@ $profileInput.on("change", function() {
 	formData.append("type", "P");
 
 	//파일을 append
-	formData.append("profile", file, file.name);
+	formData.append("uploadImg", file, file.name);
 
 	//$.ajax의 enctype의 기본값은
 	//application/x-www-form-urlencoded
@@ -140,8 +140,8 @@ $profileInput.on("change", function() {
 	//2) processData : false
 	//3) contentType : false
 	$.ajax({
-		url: "/ajax/profile",
-		type: "post",
+		url: "/ajax/taker/"+takerNo+"/profile",
+		type: "POST",
 		processData: false,
 		contentType: false,
 		data: formData,
@@ -152,17 +152,10 @@ $profileInput.on("change", function() {
 		success: function(json) {
 
 			//img요소의 src속성을 넘어온 이미지로 변경
-			$takerProfileImage.attr("src", "/img/members/" + json.profileName);
+			$takerProfileImage.attr("src", "/img/upload/profile/" + json.profileName);
 
 			//메세지 제거
-			$profileMsg.text("");
-
-			//input hidden에 이름을 value로
-
-			//$profileName.val(json.profileName);
-
-			//서버단에서 vo에 설정된 프로필사진 멤버필드 명과 다른 이름으로
-			//인풋타입 히든으로 name 넘겨야 함.
+			$profileMsg.text("수정되었습니다");
 
 
 		}
@@ -206,7 +199,7 @@ $nickname.on("keyup", function() {
 	//우선 검사중으로
 	$nicknameMsg.text("검사중...");
 
-	//유저가 입력한 id값을 얻어옴
+	//유저가 입력한 닉네임값을 얻어옴
 	const nickname = $nickname.val();
 
 	//우선 정규표현식으로 test
@@ -239,7 +232,7 @@ $nickname.on("keyup", function() {
 
 				}//if~else end
 
-			}
+			}//success end 
 		});//ajax end
 
 	} else {
@@ -251,72 +244,78 @@ $nickname.on("keyup", function() {
 
 });//keyup() end
 
+
+//유효성 검사 통과해야 수정버튼 활성화돼서 누를 수 있음 anyway
 $appliedNicknameBtn.click(function() {
 
-	$nicknameEditPopUp.removeClass("edit");
 	const nickname = $nickname.val();
-	$takerNicknameDd.text(nickname);
-
-});
-
-//캘린더에 구독 정보 넣어 놓기
-function getMonthlySubscriptions(info) {
 	$.ajax({
-		url: "ajax/monthlySubscriptions.json",
-		data: {
-			date: info
+		url: "/ajax/taker/"+takerNo+"/nickname",//주소
+		type: "post",//방식
+		data: { "nickname": nickname, "no": takerNo},//파라미터
+		dataType: "json",//응답의 자료
+		error: function(xhr, error) {
+			alert("서버 점검 중!");
+			console.log(error);
 		},
+		success: function(json) {
+
+			$nicknameEditPopUp.removeClass("edit");//팝업창 사라지게
+			$nickname.val("");
+			$nicknameMsg.text("");
+			$takerNicknameDd.text(json.nickname);//프론트 엔드상에 닉네임 바꿔주기
+
+		}//success end 
+    });//ajax end     
+});
+let deliveryDays = null;
+
+function getMonthlySubscriptions() {
+	$.ajax({
+		url: "/ajax/taker/"+takerNo+"/subscriptions",
+		type: "get",//방식
+
 		error: function() {
 			alert("에러!");
 		},
 		success: function(json) {
-			console.log(json);
-			calendar.addEventSource(json);
+			deliveryDays = json;
+			createDeliveryDays("2021-3-5");
 		}
 	});
 }
+
 getMonthlySubscriptions();
 
+function createDeliveryDays(thatDay) {
 
-// 현재 구독 중인지 히스토리인지 //////////////////////////////////////////////////////////
+	const events = [];
 
+	$.each(deliveryDays, function(idx, deliveryDay) {
 
-_.templateSettings = { interpolate: /\<\@\=(.+?)\@\>/gim, evaluate: /\<\@([\s\S]+?)\@\>/gim, escape: /\<\@\-(.+?)\@\>/gim };
-let page = 1;
-const itemTmpl = _.template($("#itemTmpl").html());
-const $itemListBox = $("#subItemList");
+		const nowDate = moment(thatDay).date();
 
-// 상품 목록 가져오는 함수 정의 
-function getSubList() {
-	let status = $("input:radio[name='status']:checked").val();
-	$.ajax({
-		//url:"/taker/"+${taker.no}+"/items",
-		url: "/taker/" + 500 + "/items",
-		type: "get",
-		data: { status: status, page: page },
-		error: function() {
-			alert("해당 서비스 점검중 입니다. 나중에 다시 시도해주세요");
-		},
-		success: function(json) {
-			console.log(json);
-			$itemListBox.html(itemTmpl(json));
-		}
+		const endDate = moment(thatDay).endOf('month').date();
+
+		for (let i = 1; i < endDate - nowDate + 1; i++) {
+
+			const date = moment(thatDay).add(i, "days");
+
+			for (let j = 0; j < deliveryDay.deliveryDays.length; j++) {
+
+				if (deliveryDay.deliveryDays[j] == date.day()) {
+					events.push({ start: date.format("YYYY-MM-DD"), title: deliveryDay.title });
+				}//if end
+
+			}//for end
+
+		}//for end
+
 	});
+
+	console.log(events);
+
+	calendar.addEventSource(events);
+	calendar.render();
+
 }
-
-
-
-getSubList();
-
-
-
-
-// 라디오 누를 때
-$("input[type=radio]").on("change", function() {
-
-	getSubList();
-});
-
-    //////////////////////////////////////////////////////////////////////////////////////////
-
-

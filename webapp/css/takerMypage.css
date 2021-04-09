@@ -1,14 +1,10 @@
 @charset "UTF-8";
 
-#container {
-	height: 1400px;
-	padding-top: 80px;
-}
-
 #content {
+	
 	width: 1100px;
 	position: relative;
-	margin: 0 auto;
+	margin: 100px auto;
 	font-family: AppleSDGothic, sans-serif;
 	color: #424242;
 	/*background-color: #425F9C;*/
@@ -139,13 +135,14 @@
 
 /*taker 기본 정보 관련 css */
 .taker_basic_info {
+	position: relative;
 	width: 998px;
 	height: 218px;
 	border: 1px solid #eee;
 	border-radius: 4px;
-	margin: auto;
-	margin-top: -250px;
+	left: 50px;
 	background-color: #f6f6f6;
+	top: -280px;
 }
 
 .taker_basic_info_header {
@@ -207,88 +204,81 @@
 }
 /* 구독 리스트 css */
 .subscribes {
-	/*position: relative;*/
+	position: relative;
 	width: 1000px;
-	/*left: 50px;
-            top: -250px;*/
-	margin: auto;
-	margin-top: 50px;
+	/* background-color: #adadad;*/
+	left: 50px;
+	top: -250px;
 }
 /* 내 구독리스트, 구독 히스토리 탭 */
 .subscribes_tab {
-	/*  position: relative;*/
+	position: relative;
 	width: 1000px;
 	height: 71px;
 	/*background-color: #c75550;*/
-	/*top: 0;
-            left: 0;*/
+	top: 0;
+	left: 0;
 	border-top: 2px solid #757575;
 	border-bottom: 2px solid #757575;
 	font-weight: 800;
 }
 
-/*/////////////////////////////////////////////*/
-.my_subscribe_list, .my_subscribe_history { /* position:absolute;*/
-	display:inline-block;
+.my_subscribe_list, .my_subscribe_history {
+	position: absolute;
 	width: 498px;
 	height: 75px;
 	line-height: 75px;
 	text-align: center;
 	font-size: 32px;
-	float: left;
+	top: 0;
 }
 
-input[type=radio]+label:hover {
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
-		rgba(0, 0, 0, 0.19);
+.my_subscribe_list {
+	border-right: 1px solid #757575;
 }
 
-input[type=radio]:checked+label {
+.my_subscribe_list>a {
+	text-decoration: underline;
 	color: #3C7166;
-	border-color: #3C7166;
+	text-decoration-color: #3C7166;
 }
-/*  .my_subscribe_list{
-            border-right: 1px solid #757575;
-        }
-        .my_subscribe_list>a{
-            text-decoration: underline;
-            color: #3C7166;
-            text-decoration-color: #3C7166;
-        }
-        .my_subscribe_list>a.nodeco{
-            text-decoration: none;
-            color: #424242;
-        }
 
-        .my_subscribe_history{
-            left: 500px;
-            border-left: 1px solid #757575;
-        }*/
-/*
-        .my_subscribe_history>a{
-            text-decoration: none;
-            color: #424242;
-        }
+.my_subscribe_list>a.nodeco {
+	text-decoration: none;
+	color: #424242;
+}
 
-        .my_subscribe_history>a.deco{
-            text-decoration: underline;
-            color: #3C7166;
-            text-decoration-color: #3C7166;
-        }
-        .current_subscribes, .subscribes_history{
-            position:relative;
-            width: 1000px;
-            top: 20px;
-        }
-        .current_subscribes{
-            display: block; */
-/*background-color: darkgoldenrod;
-        }*/
+.my_subscribe_history {
+	left: 500px;
+	border-left: 1px solid #757575;
+}
+
+.my_subscribe_history>a {
+	text-decoration: none;
+	color: #424242;
+}
+
+.my_subscribe_history>a.deco {
+	text-decoration: underline;
+	color: #3C7166;
+	text-decoration-color: #3C7166;
+}
+
+.current_subscribes, .subscribes_history {
+	position: relative;
+	width: 1000px;
+	top: 20px;
+}
+
+.current_subscribes {
+	display: block;
+	/*background-color: darkgoldenrod;*/
+}
 /* 구독 히스토리 감춰놓기 */
-/* .subscribes_history{
-            display: none;
-            background-color: #438676;
-        }*/
+.subscribes_history {
+	display: none;
+	/*background-color: #438676;*/
+}
 
 /* 구독 item 관련 css */
 .one_subscribe {
@@ -298,38 +288,34 @@ input[type=radio]:checked+label {
 	left: 25px;
 	border: 2px solid #BDBDBD;
 	border-radius: 2px;
-	margin-top: 20px;
 	/*background-color: #ffeb3b;*/
 }
 
 .my_subscribe_essentials {
 	position: relative;
 	height: 200px;
-	width: 120px;
+	width: 100px;
 	/*background-color: #c75550;*/
 }
 
 .representative_image {
-	width: 120px;
-	height: 196px;
 	position: relative;
-	background: yellow;
-}
-
-.representative_image img {
-	margin: 20px 10px;
+	margin-top: 20px;
+	margin-left: 10px;
 }
 
 .subscription_title {
 	position: relative;
 	text-align: center;
+	margin-top: 10px;
+	margin-left: 12px;
 }
 
 .my_subscribe_specifics {
 	position: relative;
 	font-size: 18px;
 	height: 160px;
-	width: 830px;
+	width: 850px;
 	left: 100px;
 	top: -200px;
 	/*background-color: yellowgreen;*/
@@ -489,9 +475,3 @@ input[type=radio]:checked+label {
 	position: relative;
 	left: -48px;
 }
-
-/*라디오인풋 비활성화 */
-input[type=radio], input[type=checkbox] {
-	display: none;
-}
-/*라디오인풋+라벨 CSS */
