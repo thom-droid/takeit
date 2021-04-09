@@ -2,6 +2,9 @@ package com.summer.cabbage.controller;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentNavigableMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -47,25 +50,38 @@ public class MemberController {
 	@RequestMapping(value="/log",method=RequestMethod.POST)
 	public String login(Member member, HttpSession session, RedirectAttributes ra) {
 		// 서비스 메서드 이용해서 로그인 처리 해주기 
-	
-		session.setAttribute("loginMember",service.login(member));
-	
-		Member loginMember=(Member)session.getAttribute("loginMember");
 		
-		if(loginMember!=null) {
-			if(loginMember.getType().equals("G")) {
+		
+		Map<String, Object> loginInfo = service.login(member); 
+		Member m = (Member) loginInfo.get("member");
+		
+		if(loginInfo!=null) {
+			
+			session.setAttribute("loginMember", loginInfo);
+			
+			if(m.getType().equals("G")) {
 				// 회원의 유형이 기버일 경우 
 				// 기버 마이페이지로 가자 
-				return "redirect:/giver/"+loginMember.getNo()+"/main";
-			}else{
+				return "redirect:/giver/"+m.getNo()+"/main";
+			}else if(m.getType().equals("T")){
+				Taker t = (Taker) loginInfo.get("taker");
+				System.out.println(t.toString());
+				System.out.println(t.getNo());
+				System.out.println("회워번호"+m.getNo());
+				System.out.println("회원유형"+m.getType());
+				System.out.println("회원이름"+t.getName());
+				System.out.println("회원닉네임"+t.getNickname());
+				String success = "반갑습니다,"+  t.getNickname()+" 님";
+				ra.addFlashAttribute("msg", success);
 				// 회원의 유형이 테이커 일 경우 
 				return "redirect:/index";
 			}
+			
 		}
-		else {
-			ra.addFlashAttribute("msg", "아이디 혹은 비밀번호 혹은 회원 유형선택이 틀렸습니다.");
-			return "redirect:/log";
-		}
+		
+		ra.addFlashAttribute("msg", "아이디 혹은 비밀번호 혹은 회원 유형선택이 틀렸습니다.");
+		
+		return "redirect:/log";
 	}
 	
 	// 03-03 강필규 추가
@@ -122,7 +138,7 @@ public class MemberController {
 				}
 			} catch (Exception e) {
 				String error = "에러가 발생했습니다.";
-				ra.addFlashAttribute("error", error);
+				ra.addFlashAttribute("msg", error);
 				
 			}
 			
@@ -140,7 +156,7 @@ public class MemberController {
 			} catch (Exception e) {
 				
 				String error = "에러가 발생했습니다.";
-				ra.addFlashAttribute("error", error);
+				ra.addFlashAttribute("msg", error);
 			}
 			
 		}
@@ -171,17 +187,6 @@ public class MemberController {
 		return "signupGiverStep2";
 	}
 	
-	//giver 사업자번호 등록여부 확인 후 
-	//등록 된 번호이면 리다이렉트, 등록되지 않은 번호이면 다음 JSP
-	/*
-	 * @RequestMapping(value="/giver/signUp/step3", method=RequestMethod.GET) public
-	 * String sdfesf(Model model, Giver giver,RedirectAttributes ra) {
-	 * 
-	 * Giver giverBusinessNum = service.getGiverBusinessNum(giver);
-	 * if(giverBusinessNum!=null) { ra.addFlashAttribute("msg",
-	 * "이미 등록된 사업자 번호입니다."); return "redirect:/signupGiverStep2"; }else {
-	 * model.addAttribute("giver", giver); return "signupGiverStep3"; } }
-	 */
 	@RequestMapping(value="/signUp", method=RequestMethod.GET)
 	public String signUp(Model model, @RequestParam(required=false) String type, Giver giver, RedirectAttributes ra) {
 		if(type!=null) {

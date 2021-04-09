@@ -17,6 +17,7 @@ public class GiversDAOImpl implements GiversDAO {
 	private SqlSession session;
 	
 
+	
 	// 0302 오승주 기버의 상세 ////////////////////////////////
 	@Override
 	public Giver selectDetail(int no) {
@@ -71,23 +72,28 @@ public class GiversDAOImpl implements GiversDAO {
 	
 	//03-04 송진현 추가
 	//기버 사업자번호 받아오기-송진현
-		@Override
-		public Giver selectbusinessNum(String businessNum) {
-			// TODO Auto-generated method stub
-			return session.selectOne("givers.selectbusinessNum",businessNum);
-		}
-		//기버  회원가입-송진현
-		@Override
-		public int insertGiver(Giver giver) {
-			// TODO Auto-generated method stub
-			return session.insert("givers.insertGiver",giver);
-		}
-		//기버 구독상품번호로 기버 정보받아오기-송진현
-		@Override
-		public Giver selectDetailOne(int productNo) {
-			// TODO Auto-generated method stub
-			return session.selectOne("givers.selectDetailOne",productNo);
-		}
+	@Override
+	public Giver selectbusinessNum(String businessNum) {
+		// TODO Auto-generated method stub
+		return session.selectOne("givers.selectbusinessNum",businessNum);
+	}
+	//기버  회원가입-송진현
+	@Override
+	public int insertGiver(Giver giver) {
+		// TODO Auto-generated method stub
+		return session.insert("givers.insertGiver",giver);
+	}
+	//기버 구독상품번호로 기버 정보받아오기-송진현
+	@Override
+	public Giver selectDetailOne(int productNo) {
+		// TODO Auto-generated method stub
+		return session.selectOne("givers.selectDetailOne",productNo);
+	}
 	//03-04 송진현 추가 end
 	
+		
+	@Override
+	public Giver selectNo(int no) {
+		return session.selectOne("givers.selectNo", no);
+	}
 }
