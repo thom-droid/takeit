@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>테이커 회원가입</title>
+    <title>Take it - Sign up</title>
     <link rel="stylesheet" href="/css/signUp.css"/>
 	<c:import url="/WEB-INF/view/template/link.jsp"/>
   
@@ -36,7 +36,7 @@
 					<span>상호명</span>
 				</div>
 				<input class="business_name_input" placeholder="2~10글자"
-					name="company" />
+					name="company" maxlength=10/>
 				<div class="business_name_notice">
 					<span></span>
 				</div>
@@ -169,6 +169,7 @@
 	<button class="sign_up_btn" type="submit">회원가입 하기</button>
 </form><!--//form end-->
 </div><!---container end-->
-<script src="/js/signUpTaker.js"></script>
+<c:import url="/WEB-INF/view/template/js-import.jsp"/>
+<script src="/js/signUp.js"></script>
 </body>
 </html>

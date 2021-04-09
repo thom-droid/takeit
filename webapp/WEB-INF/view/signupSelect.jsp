@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입 유형 선택</title>
-    <c:import url="/WEB-INF/view/template/link.jsp"></c:import>
+    <c:import url="/WEB-INF/view/template/link.jsp" />
     <link rel="stylesheet" href="/css/signupSelect.css"/>
 </head>
 <body>
@@ -34,24 +34,7 @@
         </div>
     </div>
 </div>
+<c:import url="/WEB-INF/view/template/js-import.jsp" />
+<script src="/js/signUpSelect.js"></script>
 </body>
-<script src="js/jquery.js"></script>
-<script>
-    const $html = $("html");
-    const $taker = $("#taker");
-    const $giver = $("#giver");
-    const $takerIntroduce = $(".takerIntroduce");
-    const $giverIntroduce = $(".giverIntroduce");
-
-    $taker.on("click",function (){
-        $takerIntroduce.css("display","block");
-        $giverIntroduce.css("display","none");
-        $html.css("padding-right","17px");
-    });
-    $giver.on("click",function (){
-        $takerIntroduce.css("display","none");
-        $giverIntroduce.css("display","block");
-        $html.css("padding-right","0");
-    });
-</script>
 </html>

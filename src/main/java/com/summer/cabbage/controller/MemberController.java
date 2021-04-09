@@ -3,12 +3,9 @@ package com.summer.cabbage.controller;
 import java.io.File;
 import java.sql.Date;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentNavigableMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,23 +31,24 @@ public class MemberController {
 	@Autowired
 	private MembersService service;
 
+	// index GET
 	@RequestMapping(value={"/","/index"}, method=RequestMethod.GET)
 	public String index(Model model) {
 		model.addAllAttributes(service.showMainForm());
 		return "index";
 	}
 	
+	// log GET
 	@RequestMapping(value="/log",method=RequestMethod.GET)
 	public String loginForm() {
 		return "/login";
 	}
 	
 
-	
+	// log POST
 	@RequestMapping(value="/log",method=RequestMethod.POST)
 	public String login(Member member, HttpSession session, RedirectAttributes ra) {
 		// 서비스 메서드 이용해서 로그인 처리 해주기 
-		
 		
 		Map<String, Object> loginInfo = service.login(member); 
 		Member m = (Member) loginInfo.get("member");
@@ -59,21 +57,17 @@ public class MemberController {
 			
 			session.setAttribute("loginMember", loginInfo);
 			
+			// when giver logging in
 			if(m.getType().equals("G")) {
-				// 회원의 유형이 기버일 경우 
-				// 기버 마이페이지로 가자 
+				
 				return "redirect:/giver/"+m.getNo()+"/main";
+				
+			// taker logging in
 			}else if(m.getType().equals("T")){
+				
 				Taker t = (Taker) loginInfo.get("taker");
-				System.out.println(t.toString());
-				System.out.println(t.getNo());
-				System.out.println("회워번호"+m.getNo());
-				System.out.println("회원유형"+m.getType());
-				System.out.println("회원이름"+t.getName());
-				System.out.println("회원닉네임"+t.getNickname());
 				String success = "반갑습니다,"+  t.getNickname()+" 님";
 				ra.addFlashAttribute("msg", success);
-				// 회원의 유형이 테이커 일 경우 
 				return "redirect:/index";
 			}
 			
@@ -84,7 +78,7 @@ public class MemberController {
 		return "redirect:/log";
 	}
 	
-	// 03-03 강필규 추가
+	// pw find GET
 	@RequestMapping(value="/find/password",method = RequestMethod.GET )
 	public String findPassword(){
 		
@@ -92,6 +86,7 @@ public class MemberController {
 		
 	}
 	
+	// pw find PUT
 	@RequestMapping(value="/find/password",method = RequestMethod.PUT )
 	public String findPassword(Member member){
 		
@@ -100,26 +95,23 @@ public class MemberController {
 		return "redirect:/log";
 		
 	}
-	// 03-03 강필규 추가 end
 	
-	//아이디 체크 메서드
-	@RequestMapping(value="/ajax/check/id", method = RequestMethod.GET, produces = "application/json; charset=UTF-8")
+	// id Check ajax GET
+	@RequestMapping(value="/ajax/check/id", method = RequestMethod.GET)
 	@ResponseBody
 	public String checkId(String id){
 		return "{\"result\":"+service.checkId(id)+"}";
 	}
 	
-	//닉네임 체크 메서드
-	@RequestMapping(value="/ajax/check/nickname", 
-			method=RequestMethod.GET,
-			produces = "application/json; charset=UTF-8")
+	// nickname check ajax GET
+	@RequestMapping(value="/ajax/check/nickname", method=RequestMethod.GET)
 	@ResponseBody
 	public String checkNickname(String nickname) {
 		return "{\"result\":"+service.checkNickname(nickname)+"}";
-	}//checkNickname() end
+	}
 	
 	
-	// signUp
+	// signUp POST
 	@RequestMapping(value="/signUp", method=RequestMethod.POST)
 	public String takerSignUp(Member member, Taker taker, Giver giver, String type, String birthYear, String birthMonth, String birthDay, HttpSession session, RedirectAttributes ra) {
 		
@@ -129,6 +121,7 @@ public class MemberController {
 				
 				taker.setBirthDate(birthDateVal);
 				
+				// insert member, taker transaction
 				boolean signUp =  service.signUpTaker(member, taker);
 				
 				if(signUp) {
@@ -161,36 +154,35 @@ public class MemberController {
 			
 		}
 		
-		
 		return "redirect:/index";
 	}
 	
-	//03-04 이아림 추가 end
-	
-	//-- 송진현 03-04 --//
-	
-	//회원가입 giver인지 taker인지 선택하는 jsp
+	// signUp select (giver/taker) GET
 	@RequestMapping(value="/signUp/select", method=RequestMethod.GET)
 	public String sdfsf() {
 		return "signupSelect";
 	}
 	
-	//giver 회원가입 시작
+	// signUp giver 1 GET
 	@RequestMapping(value="/giver/signUp/step1", method=RequestMethod.GET)
 	public String sdfqsf() {
 		return "signupGiverStep1";
 	}
 	
-	//giver 사업자번호 등록여부 확인 JSP
+	// signUP giver 2 GET
 	@RequestMapping(value="/giver/signUp/step2", method=RequestMethod.GET)
 	public String sdfswf() {
 		return "signupGiverStep2";
 	}
 	
+	// signUp GET
 	@RequestMapping(value="/signUp", method=RequestMethod.GET)
 	public String signUp(Model model, @RequestParam(required=false) String type, Giver giver, RedirectAttributes ra) {
+		
+		// if signUp for giver
 		if(type!=null) {
 			Giver giverBusinessNum = service.getGiverBusinessNum(giver.getBusinessNum());
+			
 			if(giverBusinessNum!=null) {
 				ra.addFlashAttribute("msg", "이미 등록된 사업자 번호입니다.");
 				return "redirect:/signupGiverStep2";
@@ -200,38 +192,23 @@ public class MemberController {
 				return "signUp";
 			}
 		} else {
-			System.out.println("a");
 			return "signUp";
 		}
 		
 	}
 	
-	//giver 회원가입 중 상호명 중복확인
-	@RequestMapping(value="/ajax/check/businessName", 
-			method=RequestMethod.GET,
-			produces = "application/json; charset=UTF-8")
+	// check bizname ajax GET
+	@RequestMapping(value="/ajax/check/businessName", method=RequestMethod.GET)
 	@ResponseBody
 	public String checkBusinessName(String businessName) {
 		return "{\"result\":"+service.checkBusinessName(businessName)+"}";
 	}
 	
-	//giver 회원가입 중 ID 중복확인
-	@RequestMapping(value="/ajax/giver/check/id", 
-			method=RequestMethod.GET,
-			produces = "application/json; charset=UTF-8")
+	// profile upload ajax POST
+	@RequestMapping(value="/ajax/profile", method=RequestMethod.POST)
 	@ResponseBody
-	public String checkGiverId(String id) {
-		return "{\"result\":"+service.checkId(id)+"}";
-	}
-	
-	//giver 회원가입 중 프로필 사진 업로드
-	@RequestMapping(value="/ajax/profile",
-			method=RequestMethod.POST,
-			produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	private String uploadProfile(String type, 
-			MultipartFile uploadImg, 
-			HttpServletRequest request) throws Exception {
+	private String uploadProfile(String type, MultipartFile uploadImg, HttpServletRequest request) 
+			throws Exception {
 		// 서버
 		ServletContext application = request.getServletContext();
 		// 기본경로
@@ -253,7 +230,7 @@ public class MemberController {
 		return "{\"profileName\":\""+file.getName()+"\"}";
 	}
 	
-	// profile img delete
+	// profile ajax DELETE
 	@RequestMapping(value="/ajax/profile/{profileImage}")
 	@ResponseBody
 	private String deleteProfile(@PathVariable String profileImage, HttpServletRequest request) {
@@ -279,10 +256,6 @@ public class MemberController {
 		String msg = "deleted";
 		return "{\"msg\":\""+msg+"\"}";
 	}
-	
-	//-- 03-04 송진현 --//
-	
-		
 	
 	
 }
