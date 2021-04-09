@@ -1,0 +1,497 @@
+@charset "UTF-8";
+
+#container {
+	height: 1400px;
+	padding-top: 80px;
+}
+
+#content {
+	width: 1100px;
+	position: relative;
+	margin: 0 auto;
+	font-family: AppleSDGothic, sans-serif;
+	color: #424242;
+	/*background-color: #425F9C;*/
+}
+
+.taker_my_page_header {
+	position: relative;
+	width: 300px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	/*background-color: #00bcd4;*/
+	left: 20px;
+	top: 30px;
+}
+
+.taker_my_page_header>h1 {
+	font-size: 35px;
+}
+
+/* 프로필, 예상 결제 금액 정보 관련 css */
+.taker_profile_payment_info {
+	position: relative;
+	width: 400px;
+	height: 300px;
+	/*background-color: #0e4271;*/
+	left: 70px;
+	top: 50px;
+}
+
+.taker_profile_box {
+	position: absolute;
+	width: 170px;
+	height: 170px;
+	left: 20px;
+	top: 30px;
+	/*background-color: blue;*/
+}
+/*프로필 사진 유효성 검사 메시지 */
+.profile_msg {
+	position: relative;
+	text-align: center;
+	top: 10px;
+	color: #b00020;
+}
+/*닉네임 유효성 검사 메시지 */
+.nickname_msg {
+	color: #b00020;
+	position: relative;
+	margin: 40px auto;
+}
+
+.apply_edited_nickname_btn {
+	font-size: 20px;
+	border: none;
+	background-color: #3c7166;
+	padding: 4px 12px;
+	border-radius: 2px;
+	color: #fff;
+	position: absolute;
+	bottom: 28px;
+	left: 248px;
+}
+/*닉네임 수정 인풋 요소 */
+#nickname {
+	line-height: 36px;
+	position: relative;
+	margin: 20px auto;
+	top: 50px;
+}
+
+/*이번달 예상 결제 금액*/
+.monthly_payment_info {
+	width: 198px;
+	height: 38px;
+	border: 1px solid #757575;
+	/*background-color: #00C853;*/
+	position: absolute;
+	top: 90px;
+	right: 0;
+	padding-top: 10px;
+	padding-left: 4px;
+}
+
+.taker_profile>img {
+	border-radius: 50%;
+	width: 150px;
+	height: 150px;
+}
+
+.profile_edit_label {
+	display: inline-block;
+	position: absolute;
+	top: 110px;
+	left: 100px;
+	font-size: 40px;
+	color: #616161;
+}
+
+/*풀캘린더 관련  css */
+.full_calendar_wrap {
+	width: 500px;
+	height: 400px;
+	position: relative;
+	left: 550px;
+	top: -300px;
+}
+/* 여기에 풀캘린더 api 담을 것 임 */
+#calendar {
+	width: 500px;
+	height: 400px;
+	background-color: #fff;
+	position: relative;
+}
+/*풀캘린더 월 이동 버튼*/
+#calendar .fc-prev-button, #calendar .fc-next-button {
+	background-color: #3c7166;
+	border: none;
+}
+
+#calendar .fc-toolbar-chunk .fc-today-button {
+	background-color: #0b4d40;
+}
+/* 풀캘린더 오늘 날짜 배경색 변경 */
+.fc .fc-daygrid-day.fc-day-today {
+	background-color: rgba(60, 113, 102, 0.8);
+}
+
+/*taker 기본 정보 관련 css */
+.taker_basic_info {
+	width: 998px;
+	height: 218px;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	margin: auto;
+	margin-top: -250px;
+	background-color: #f6f6f6;
+}
+
+.taker_basic_info_header {
+	position: relative;
+	width: 300px;
+	height: 40px;
+	line-height: 40px;
+	top: 10px;
+	left: 50px;
+	/*background-color: #3EB39D;*/
+}
+
+.taker_basic_info_header>h2 {
+	font-size: 30px;
+}
+
+.taker_basic_info_list {
+	position: relative;
+	height: 180px;
+	width: 800px;
+	left: 50px;
+	top: 28px;
+	/*background-color: #438676;*/
+}
+
+.taker_basic_info_list>dt {
+	float: left;
+	width: 100px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+}
+
+.taker_basic_info_list>dd {
+	float: left;
+	width: 700px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+}
+/* 닉네임 수정관련  css */
+.nickname_edit_btn, .phone_edit_btn {
+	background-color: transparent;
+	border: none;
+	position: absolute;
+	color: #424242;
+}
+
+/*개인 정보 수정 버튼 위치 조정 */
+.nickname_edit_btn {
+	font-size: 16px;
+	left: 200px;
+	top: 50px;
+}
+
+.phone_edit_btn {
+	left: 240px;
+	top: 91px;
+}
+/* 구독 리스트 css */
+.subscribes {
+	/*position: relative;*/
+	width: 1000px;
+	/*left: 50px;
+            top: -250px;*/
+	margin: auto;
+	margin-top: 50px;
+}
+/* 내 구독리스트, 구독 히스토리 탭 */
+.subscribes_tab {
+	/*  position: relative;*/
+	width: 1000px;
+	height: 71px;
+	/*background-color: #c75550;*/
+	/*top: 0;
+            left: 0;*/
+	border-top: 2px solid #757575;
+	border-bottom: 2px solid #757575;
+	font-weight: 800;
+}
+
+/*/////////////////////////////////////////////*/
+.my_subscribe_list, .my_subscribe_history { /* position:absolute;*/
+	display:inline-block;
+	width: 498px;
+	height: 75px;
+	line-height: 75px;
+	text-align: center;
+	font-size: 32px;
+	float: left;
+}
+
+input[type=radio]+label:hover {
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+}
+
+input[type=radio]:checked+label {
+	color: #3C7166;
+	border-color: #3C7166;
+}
+/*  .my_subscribe_list{
+            border-right: 1px solid #757575;
+        }
+        .my_subscribe_list>a{
+            text-decoration: underline;
+            color: #3C7166;
+            text-decoration-color: #3C7166;
+        }
+        .my_subscribe_list>a.nodeco{
+            text-decoration: none;
+            color: #424242;
+        }
+
+        .my_subscribe_history{
+            left: 500px;
+            border-left: 1px solid #757575;
+        }*/
+/*
+        .my_subscribe_history>a{
+            text-decoration: none;
+            color: #424242;
+        }
+
+        .my_subscribe_history>a.deco{
+            text-decoration: underline;
+            color: #3C7166;
+            text-decoration-color: #3C7166;
+        }
+        .current_subscribes, .subscribes_history{
+            position:relative;
+            width: 1000px;
+            top: 20px;
+        }
+        .current_subscribes{
+            display: block; */
+/*background-color: darkgoldenrod;
+        }*/
+/* 구독 히스토리 감춰놓기 */
+/* .subscribes_history{
+            display: none;
+            background-color: #438676;
+        }*/
+
+/* 구독 item 관련 css */
+.one_subscribe {
+	position: relative;
+	width: 946px;
+	height: 196px;
+	left: 25px;
+	border: 2px solid #BDBDBD;
+	border-radius: 2px;
+	margin-top: 20px;
+	/*background-color: #ffeb3b;*/
+}
+
+.my_subscribe_essentials {
+	position: relative;
+	height: 200px;
+	width: 120px;
+	/*background-color: #c75550;*/
+}
+
+.representative_image {
+	width: 120px;
+	height: 196px;
+	position: relative;
+	background: yellow;
+}
+
+.representative_image img {
+	margin: 20px 10px;
+}
+
+.subscription_title {
+	position: relative;
+	text-align: center;
+}
+
+.my_subscribe_specifics {
+	position: relative;
+	font-size: 18px;
+	height: 160px;
+	width: 830px;
+	left: 100px;
+	top: -200px;
+	/*background-color: yellowgreen;*/
+}
+
+.my_subscribe_specifics>dt {
+	width: 140px;
+	float: left;
+	padding-left: 30px;
+	padding-top: 10px;
+}
+
+.my_subscribe_specifics>dd {
+	width: 650px;
+	float: left;
+	padding-top: 10px;
+}
+
+/*리뷰 작성, 구독 취소 a요소 css */
+#container .write_review_btn, #container .cancel_subscription_btn {
+	display: block;
+	position: absolute;
+	right: 20px;
+	top: 50px;
+	width: 80px;
+	text-align: center;
+	height: 24px;
+	line-height: 24px;
+	background-color: #438676;
+	padding: 6px 4px;
+	border-radius: 2px;
+	color: #fff;
+}
+
+#container .cancel_subscription_btn {
+	top: 90px;
+}
+
+/* 리뷰 작성 팝업창, 닉네임 변경 팝업창 css */
+.write_review_pop_up, .nickname_edit_pop_up {
+	z-index: 100;
+	/* 브라우저 기준 */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .75);
+	left: 0;
+	top: 0;
+	/*리뷰 작성 버튼 누르기 전까지는 팝업창 보이지 않게하기 위함*/
+	display: none;
+}
+
+.write_review_pop_up.write {
+	display: block;
+}
+
+.nickname_edit_pop_up.edit {
+	display: block;
+}
+
+.write_review_box, .nickname_edit_wrap {
+	width: 568px;
+	/*
+            274*2 +10*2(양 옆 마진 10px 줄거임)
+            */
+	height: 384px;
+	border: 2px solid transparent;
+	border-radius: 4px;
+	position: fixed;
+	background-color: #fafafa;
+	left: 50%;
+	top: 50%;
+	margin: -194px 0 0 -286px;
+}
+
+.review_submit_btn {
+	position: absolute;
+	bottom: 8px;
+	left: 256px;
+	border: none;
+	padding: 1px 8px;
+}
+
+.pop_review_header_wrap, .nickname_edit_header_box {
+	width: 568px;
+	height: 58px;
+	position: relative;
+	border-bottom: 2px solid #eee;
+}
+
+.pop_review_header_title, .pop_nickname_edit_header_title {
+	position: absolute;
+	top: 0;
+	left: 16px;
+	padding: 15.5px 0;
+}
+
+.pop_nickname_edit_content>label {
+	font-size: 16px;
+	position: absolute;
+	top: 48px;
+	left: 170px;
+}
+
+.writing_review, .nickname_change {
+	font-size: 25px;
+}
+
+.pop_review_content, .pop_nickname_edit_content {
+	position: relative;
+	margin: 10px 0 0 10px;
+	width: 548px;
+	height: 324px;
+	text-align: center;
+}
+
+.subscription_product_name {
+	font-size: 24px;
+	position: relative;
+}
+
+.subscriber_review_box {
+	position: relative;
+	top: 100px;
+}
+
+.subscriber_review_box>label {
+	font-size: 18px;
+}
+
+#subscriberReview {
+	position: relative;
+	resize: none;
+	top: 20px;
+}
+/*팝업창 닫기 버튼*/
+.review_close_btn, .nickname_close_btn {
+	position: absolute;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	right: 8px;
+	top: 12px;
+	color: #757575;
+	cursor: pointer;
+	font-size: 25px;
+}
+/*별 평점 관련 css */
+.rating_box {
+	position: absolute;
+	top: 60px;
+	left: 230px;
+}
+
+.grade_star_box {
+	font-size: 30px;
+	position: relative;
+	left: -48px;
+}
+
+/*라디오인풋 비활성화 */
+input[type=radio], input[type=checkbox] {
+	display: none;
+}
+/*라디오인풋+라벨 CSS */

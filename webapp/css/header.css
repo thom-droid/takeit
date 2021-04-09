@@ -189,3 +189,21 @@
 .hcb_mypage_and_logout ul>li:nth-child(1):nth-child(1) {
 	border-bottom: 1px solid #d2d2d2;
 }
+
+.logout.btn{
+	background-color: white;
+    cursor: pointer;
+    border: none;
+    color: #c0392b;
+    font-size: 18px;
+    width: 200px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    font-family: 'AppleSDGothic', sans-serif;
+}
+
+.logout:hover{
+	background-color: #8c8c8c;
+	color:white;
+}
