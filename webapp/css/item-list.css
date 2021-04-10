@@ -1,0 +1,330 @@
+@charset "UTF-8";
+
+#container {
+	font-family: "AppleSDGothic", sans-serif;
+	width: 1100px;
+	margin:auto;
+	padding-top:100px
+}
+
+select {
+	font-family: "AppleSDGothic", sans-serif;
+}
+/*1차 카테고리 css start*/
+.main_category_title {
+	position: relative;
+	margin-left: 20px;
+	font-size: 30px;
+	font-weight: 600;
+	color: #4D0B18;
+}
+
+.main_menu_wrap {
+	position: relative;
+	height: 350px;
+	margin-top: 30px;
+}
+
+.main_menu_wrap a {
+	text-decoration: none;
+	color: #424242;
+	font-size: 30px;
+}
+
+.main_menu_wrap li {
+	float: left;
+	margin-left: 20px;
+}
+
+.main_menu_wrap span {
+	display: block;
+	width: 250px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	background-color: rgb(243, 232, 229);
+}
+
+.menu_box {
+	width: 250px;
+	height: 250px;
+	overflow: hidden;
+}
+
+.menu_item:hover img {
+	transform: scale(1.2);
+	transition: ease 0.2s;
+} 
+.category_img {
+	width:250px;
+	height: 250px;
+}
+/*1차 카테고리 css end*/
+
+.second_categories_content {
+	position: relative;
+	margin: auto;
+	width: 1100px;
+	min-height: 600px;
+	margin-top: 20px;
+}
+
+/*양말/스타킹 패션스타일링 탭 css */
+.econd_categories_socks_and_stocking_list {
+	position: relative;
+	margin-left: 15px;
+	color: #E2E0E4;
+	font-weight: 600;
+	display: inline-block;
+	font-size: 25px;
+	cursor: pointer;
+}
+
+.second_categories_socks_and_stocking_list li {
+	float: left;
+	margin-right: 20px;
+}
+
+/* 카테고리 박스 css */
+.category_result_box {
+	width: 1100px;
+	min-height: 600px;
+	margin: 30px auto;
+}
+
+.fashion_styling_box {
+	display: none;
+}
+
+.search_filter_box {
+	text-align: right;
+	position: relative;
+}
+
+/*지역필터버튼 css start */
+.search_specifics {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	margin-right: 180px;
+	font-size: 25px;
+	color: #303030;
+	border: none;
+	cursor: pointer;
+	outline: none;
+}
+
+.search_specifics li {
+	float: right;
+}
+
+.search_specifics a {
+	display: inline-block;
+} /* 지역필터버튼 css end */
+
+/*지역필터 팝업 css start */
+.pop_where_wrap {
+	/* 브라우저 기준 */
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .75);
+	display: none;
+	left: 0;
+	top: 0;
+}
+
+.pop_where_wrap.on {
+	display: block;
+}
+
+.pop_where_box {
+	width: 360px;
+	height: 560px;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -281px 0 0 -181px;
+	background-color: #fafafa;
+}
+
+.pop_where_header_wrap {
+	width: 360px;
+	height: 58px;
+	position: relative;
+	border-bottom: 2px solid #eee;
+}
+
+.pop_where_header_title {
+	position: absolute;
+	top: 0;
+	left: 16px;
+	padding: 15.5px 0;
+}
+
+.pop_close_button {
+	position: absolute;
+	border: none;
+	background-color: transparent;
+	outline: none;
+	right: 8px;
+	top: 12px;
+	color: #757575;
+	cursor: pointer;
+	font-size: 25px;
+}
+
+.filter_where {
+	font-size: 25px;
+}
+
+.pop_where_container {
+	width: 360px;
+	height: 500px;
+	overflow: hidden;
+}
+
+.korea_states {
+	width: 105px;
+	height: 500px;
+	float: left;
+	overflow: scroll;
+	overflow-x: hidden;
+	/*
+    x축 스크롤 안보이게 하기 위해서 설정함
+    */
+}
+
+.korea_states li {
+	width: 90px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.states_specifics {
+	width: 255px;
+	height: 500px;
+	float: left;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+
+.states_specifics>ul {
+	display: none;
+}
+
+.states_specifics>ul.on {
+	display: block;
+}
+
+.states_specifics>ul>li {
+	width: 220px;
+	height: 50px;
+	line-height: 50px;
+	margin-left: 20px;
+} /*지역필터 팝업 css end */
+
+/*검색 정렬 필터 css */
+.search_order_filter {
+	color: #303030;
+	font-size: 25px;
+	text-align: center;
+	border: none;
+	outline: none;
+	cursor:pointer;
+}
+
+
+/* 의류 탭 박스 css*/
+.category_result_box {
+	width: 1100px;
+	min-height: 600px;
+	margin: 30px auto;
+}
+
+.search_result_item {
+	float: left;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-bottom: 50px;
+}
+
+.search_result_item img {
+	width: 250px;
+	height: 300px;
+	margin-bottom: 15px;
+}
+
+.subscription_item_info {
+	position: relative;
+	width: 250px;
+}
+/*구독 서비스 회사명 */
+.subscription_item_company {
+	font-size: 15px;
+	font-weight: 900;
+	display: inline-block;
+	color: #3c7166;
+}
+/*구독 서비스 라벨 */
+.subscription_item_label {
+	background-color: #cc5750;
+	color: #f4fffd;
+	width: 45px;
+	height: 23px;
+	font-size: 14px;
+	font-weight: 700;
+	display: inline-block;
+	position: absolute;
+	top: -5px;
+	right: 0;
+	text-align: center;
+	line-height: 25px;
+	border-radius: 5px;
+}
+/*구독 서비스 상품명 */
+.subscription_item_name {
+	font-size: 13px;
+	margin-top: 15px;
+	color: #424242;
+}
+/*구독 서비스 가격 */
+.subscription_item_price {
+	font-size: 18px;
+	margin-top: 15px;
+	font-weight: 700;
+	display: inline-block;
+}
+
+.subscription_item_price_and_rate_box {
+	position: relative;
+}
+/*평점표시 css start*/
+.subscription_item_rate {
+	display: inline-block;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}
+
+.box {
+	background-image: url("img/ico_newsview_200522.png");
+	height: 16px;
+}
+
+.grade_star {
+	width: 88px;
+	background-position: 0 -300px;
+}
+
+.inner_star {
+	width: 0px;
+	background-position: 0 -320px;
+} /*평점표시 css end*/
+.text_strong {
+	color: #3c7166;
+	font-weight: 800;
+}

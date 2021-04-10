@@ -41,7 +41,6 @@ public class TakerController {
 	@RequestMapping(value="/taker/{takerNo}/items", method=RequestMethod.GET)
 	@ResponseBody
 	public Map<String,Object> mySubList(@PathVariable int takerNo,String status,int page){
-		///taker/"+${taker.no}+"/items
 
 		return service.getSubList(takerNo,status,page);
 	}
