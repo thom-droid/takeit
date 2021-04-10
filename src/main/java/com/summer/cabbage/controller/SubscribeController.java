@@ -96,16 +96,14 @@ public class SubscribeController {
 		return "subscribeDetail";
 	}
 	//-- 03-04 송진현 --//
-	//03-04 이소현 _ 카테고리 있는 메인 목록 페이지
+	
+	//item list GET
 	@RequestMapping(value="/{category}/{categoryNo}/page/{page}", method = RequestMethod.GET)
 	public String mainList(@PathVariable String category, @PathVariable int categoryNo, @PathVariable int page, Model model) {
 		
-		System.out.println(category);
-		System.out.println(categoryNo);
-		
 		model.addAllAttributes(service.getProductListByCategory(category, categoryNo, page)); 
 
-		return "category_list";
+		return "item-list";
 		
 	}
 	// 03-05 박형우 추가

@@ -48,9 +48,21 @@
 
 /*카테고리*/
 .hcb_category {
-	margin-left: 200px
+	margin-left: 200px;
+	overflow: hidden;
 }
 
+.hcb_category li{
+	width: 80px;
+	height: 80px;
+	float: left;
+} 
+#header .hcb_category li.on{
+	background-color:  #3C7166;
+}
+.hcb_category li.on a{
+	color: white;
+}
 .hcb_category ul>li>a {
 	float: left;
 	width: 80px;

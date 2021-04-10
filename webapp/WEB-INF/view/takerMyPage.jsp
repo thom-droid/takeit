@@ -15,7 +15,7 @@
 <div id="container"><!--container start-->
     <div id="content"><!--content start-->
         <div class="taker_my_page_header">
-        <h1>테이커 마이페이지</h1>
+        <h1>마이페이지</h1>
         </div>
         <div class="taker_profile_payment_info"><!--taker_profile_payment_info-->
             <div class="taker_profile_box"><!--taker_profile_box-->
@@ -36,7 +36,7 @@
         </div><!--//full_calendar_wrap-->
         <div class="taker_basic_info"><!--taker_basic_info-->
             <div class="taker_basic_info_header">
-                <h2>테이커 정보</h2>
+                <h2>기본 정보</h2>
             </div>
             <dl class="taker_basic_info_list"><!--taker_basic_info_list-->
                 <dt>이름</dt>
