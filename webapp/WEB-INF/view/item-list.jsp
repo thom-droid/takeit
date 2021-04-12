@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>구독 상품 목록</title>
 <c:import url="/WEB-INF/view/template/link.jsp" />
-<link rel="stylesheet" href="/css/category-list.css" />
+<link rel="stylesheet" href="/css/item-list.css" />
 </head>
 <body>
 
@@ -23,29 +23,38 @@
 		</div><!--// main_menu_content end -->
 		
 		<div class="second_categories_content">	<!-- second_categories_content start-->
-			<div class="second_categories_header">	<!-- second_categories_header start-->
-				<ul class="second_categories_socks_and_stocking_list">
-					<c:forEach items="${categories}" var="category">
-						<li class="category_tab text_strong"><a href="/${category.name}/${category.no}">${category.name }</a></li>
-					</c:forEach>
-				</ul>
-				<div class="search_filter_box">
-					<!--search_filter_box start -->
-					<ul class="search_specifics">
-						<li class="where">지역 전체</li>
+			<div class="second_categories_header">	
+				<div class="category_box btn_box">
+					<button type="button" class="category_btn header_btn">품목</button>
+					<ul class="second_category_list sel_list_ul">
+						<li class="category_tab text_strong"><button class="sel_btn"
+								data-category-no="${category.no }">전체</button></li>
+						<c:forEach items="${categories}" var="category">
+							<li class="category_tab text_strong"><button class="sel_btn"
+									data-category-no="${category.no }">${category.name }</button></li>
+						</c:forEach>
 					</ul>
-					<select class="search_order_filter"><i class="fas fa-chevron-down"></i>
-						<option value="LAT" selected="selected">최신순</option>
-						<option value="SEL">구독순</option>
-						<option value="HPR">높은가격순</option>
-						<option value="LPC">낮은가격순</option>
-						<option value="HRA">평점순</option>
-					</select>
 				</div>
-				<!--//search_filter_box end -->
-			</div><!--// second_categories_header end -->
-			
-			<!-- ==================================1차 카테고리 박스================================== -->
+				<button type="button" class="location header_btn">지역</button>
+				<div class="order_filter_box btn_box">
+					<button type="button" class="order_btn header_btn">정렬</button>
+					<ul class="second_category_list sel_list_ul">
+						<li class="category_tab"><button class="sel_btn"
+								data-order="default">기본</button></li>
+						<li class="category_tab"><button class="sel_btn"
+								data-order="lat">최신순</button></li>
+						<li class="category_tab"><button class="sel_btn"
+								data-order="sub">구독순</button></li>
+						<li class="category_tab"><button class="sel_btn"
+								data-order="lowPrice">낮은가격순</button></li>
+						<li class="category_tab"><button class="sel_btn"
+								data-order="highPrice">높은가격순</button></li>
+						<li class="category_tab"><button class="sel_btn"
+								data-order="rate">평점순</button></li>
+					</ul>
+				</div>
+			</div>
+		</div><!--// second_categories_content end -->
 			
 			<div class="category_result_box">
 			
@@ -59,7 +68,7 @@
 					
 						 <a class="search_result_detail_link" href="">
                         <li class="search_result_item">
-                            <img src="/img/${subs.photo}"/>
+                            <img src="/img/products/${subs.photo}"/>
                             <div class="subscription_item_info"><!--subscription_item_info start -->
                                 <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
                                     <div class="subscription_item_company">${subs.company}</div>
@@ -67,7 +76,7 @@
                                 </div><!--//subscription_item_company_and_label end -->
                                 <div class="subscription_item_name">${subs.name}</div>
                                 <div class="subscription_item_price_and_rate_box"><!--subscription_item_price_and_rate_box start -->
-                                    <div class="subscription_item_price">${subs.realPrice}</div>
+                                    <div class="subscription_item_price">${subs.realPrice}원부터</div>
                                     <div class="subscription_item_rate"><!--subscription_item_rate start -->
                                         <div class="grade_star box">
                                             <div class="inner_star box" style="width:${subs.star*20}%"></div>
@@ -78,13 +87,35 @@
                         </li>
                     </a>
 					</c:forEach> 
-					<!-- =================================제품 카드 템플릿=================================  -->
+        									
+					</ul>
+				</div>
+				${paginate }
 				
-					
-					
-					
-					
-					<script type="text/template" id="subsCardTmpl">
+			</div><!--//category_result_box end -->
+		</div><!-- second_categories_content end-->
+	</a><!--// container end -->
+	
+	<!-- ========================지역 팝업 창==============================  -->
+	
+	<div class="pop_where_wrap">	<!--pop_where_wrap start-->
+		<div class="pop_where_box">
+			<!--pop_where_box start-->
+			<div class="pop_where_header_wrap">
+				<!--pop_where_header_wrap start-->
+				<div class="pop_where_header_title">
+					<span class="filter_where">지역</span>
+				</div>
+				<button name="close_btn" type="button" class="pop_close_button fas fa-times"></button>
+			</div><!--//pop_where_header_wrap end-->
+			<div class="pop_where_container">
+				<!--pop_where_container start-->
+			</div><!--//states_specifics end-->
+		</div><!--//pop_where_container end-->
+	</div><!--//pop_where_box end-->
+
+<!-- =================================제품 카드 템플릿=================================  -->
+<script type="text/template" id="subsCardTmpl">
   					<@ _.each(subsCardList,function(subsCard) { @>
 						
 						
@@ -116,36 +147,7 @@
 					</li>
 						
 					<@ })@>             
-        			</script>
-        									
-					</ul>
-				</div>
-				${paginate }
-				
-			</div><!--//category_result_box end -->
-		</div><!-- second_categories_content end-->
-	</a><!--// container end -->
-	
-	<!-- ========================지역 팝업 창==============================  -->
-	
-	<div class="pop_where_wrap">	<!--pop_where_wrap start-->
-		<div class="pop_where_box">
-			<!--pop_where_box start-->
-			<div class="pop_where_header_wrap">
-				<!--pop_where_header_wrap start-->
-				<div class="pop_where_header_title">
-					<span class="filter_where">지역</span>
-				</div>
-				<button name="close_btn" type="button"
-					class="pop_close_button fas fa-times"></button>
-			</div><!--//pop_where_header_wrap end-->
-			<div class="pop_where_container">
-				<!--pop_where_container start-->
-				</div><!--//states_specifics end-->
-			</div><!--//pop_where_container end-->
-		</div><!--//pop_where_box end-->
-	</div><!--//pop_where_wrap end-->
-
+</script>
 	<!-- ==========================시도구군 템플릿====================================== -->
 <script type="text/template" id="whereTmpl">
     <ul class="korea_states">
@@ -168,6 +170,6 @@
     </div>
 </script>
 <c:import url="/WEB-INF/view/template/js-import.jsp" />
-<script src="/js/category-list.js"></script>
+<script src="/js/item-list.js"></script>
 </body>
 </html>
