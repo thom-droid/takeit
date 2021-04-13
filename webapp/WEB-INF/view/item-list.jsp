@@ -25,7 +25,7 @@
 		<div class="second_categories_content">	<!-- second_categories_content start-->
 			<div class="second_categories_header">	
 				<div class="category_box btn_box">
-					<button type="button" class="category_btn header_btn">품목</button>
+					<button type="button" class="category_btn header_btn list_btn">품목</button>
 					<ul class="second_category_list sel_list_ul">
 						<li class="category_tab text_strong"><button class="sel_btn"
 								data-category-no="${category.no }">전체</button></li>
@@ -37,7 +37,7 @@
 				</div>
 				<button type="button" class="location header_btn">지역</button>
 				<div class="order_filter_box btn_box">
-					<button type="button" class="order_btn header_btn">정렬</button>
+					<button type="button" class="order_btn header_btn list_btn">정렬</button>
 					<ul class="second_category_list sel_list_ul">
 						<li class="category_tab"><button class="sel_btn"
 								data-order="default">기본</button></li>

@@ -117,3 +117,26 @@ $(".search_order_filter").change(function() {
 	});
 
 });//change() end
+
+// filter btn action
+const $listBtn = $(".list_btn");
+
+$listBtn.on("click", function(){
+	const $nextUl = $(this).next();
+	if($nextUl.css("display","none")){
+		$nextUl.css("display", "block");
+	} 
+	
+});
+
+const $selBtn = $(".sel_btn");
+
+$selBtn.on("click", function(){
+	const $this = $(this);
+	const filterSelected = $this.text();
+	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
+	$this.closest(".sel_list_ul").css("display", "none");
+});
+
+
+
