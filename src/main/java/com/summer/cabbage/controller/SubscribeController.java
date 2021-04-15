@@ -3,14 +3,17 @@ package com.summer.cabbage.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +25,7 @@ import com.summer.cabbage.service.SubscribesService;
 import com.summer.cabbage.util.FileRenameUtil;
 import com.summer.cabbage.util.ResizeImageUtil;
 import com.summer.cabbage.vo.Member;
+import com.summer.cabbage.vo.PageVO;
 import com.summer.cabbage.vo.Product;
 import com.summer.cabbage.vo.Region;
 import com.summer.cabbage.vo.Subscribe;
@@ -102,10 +106,20 @@ public class SubscribeController {
 	public String mainList(@PathVariable String category, @PathVariable int categoryNo, @PathVariable int page, Model model) {
 		
 		model.addAllAttributes(service.getProductListByCategory(category, categoryNo, page)); 
-
 		return "item-list";
 		
 	}
+	
+	// item list filter ajax GET
+	
+	@GetMapping(value="/ajax/filter/category/{page}")
+	@ResponseBody
+	public Map<String, Object> listFilteredAjax(PageVO pageVO, @RequestParam(required=false) String category, @PathVariable int page) {
+		
+		return service.getProductFiltered(pageVO, page, category);
+	}
+	
+	
 	// 03-05 박형우 추가
 	
 	//구독 등록 폼

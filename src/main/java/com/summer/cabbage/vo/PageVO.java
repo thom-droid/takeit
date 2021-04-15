@@ -10,7 +10,7 @@ public class PageVO {
 	
 	//0304 이소현 멤버필드 추가
 	private int  memberNo, priorNo, categoryNo;
-	
+
 	public int getMemberNo() {
 		return memberNo;
 	}

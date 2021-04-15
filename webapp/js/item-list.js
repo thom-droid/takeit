@@ -78,46 +78,6 @@ const $subsCard = $(".search_result_item");
 //상품카드템플릿
 const $subsCardTmpl = _.template($("#subsCardTmpl").html());
 
-//카테고리 선택시 ajax
-$(".select_category").change(function() {
-	$.ajax({
-		url: "/ajax/category/result",
-		type: "POST",
-		dataType: "json",
-		error: function() {
-			alert("점검중");
-		},
-		success: function(json) {
-			//카테고리 선택에 따른 검색결과 list 보여주기
-			alert("성공");
-
-			//이전 데이터 지우기
-			$resultUl.empty();
-			//상품 카드 템플릿
-			$resultUl.append(subsCardTmpl({ subsCardList: json }));
-
-		}// success end
-	}); // $.ajax()
-
-});
-
-//정렬필터 선택시 ajax
-$(".search_order_filter").change(function() {
-	$.ajax({
-		url: "ajax/location.json",
-		type: "POST",
-		dataType: "json",
-		error: function() {
-			alert("점검중");
-		},
-		success: function(json) {
-			//정렬 필터 선택에 따른 검색결과 list 보여주기
-			alert("성공");
-		}
-	});
-
-});//change() end
-
 // filter btn action
 const $listBtn = $(".list_btn");
 
@@ -130,13 +90,71 @@ $listBtn.on("click", function(){
 });
 
 const $selBtn = $(".sel_btn");
+let category = $(".sel_btn").first().data("categoryName");
+const url = window.location.href;
+const page = url.substring(url.lastIndexOf("/")+1, url.length);
+
+// template
+const $resultArea = $(".search_result_list");
+const categoryValue = $selBtn.first().data("categoryNo");
+
 
 $selBtn.on("click", function(){
 	const $this = $(this);
 	const filterSelected = $this.text();
+	const categoryValue = this.dataset.categoryNo;
+	const orderValue = this.dataset.order;
+	category = this.dataset.categoryName;
+	console.log(categoryValue);
+	console.log(orderValue);
+	console.log(category);
+	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
 	$this.closest(".sel_list_ul").css("display", "none");
+	
+	$.ajax({
+		url:"/ajax/filter/category/"+page,
+		type: "GET",
+		data: {"categoryNo": categoryValue, "sort": orderValue, "category": category},
+		dataType: "JSON",
+		error: function(){
+			alert("failed");
+			},
+		success: function(json){
+			alert("wait");
+			console.log(json);
+			console.log(json.subList);
+			
+			$resultUl.empty();
+			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
+		}
+	});
 });
+
+
+function getItemList(categoryValue, orderValue, category){
+	
+	$.ajax({
+		url:"/ajax/filter/category/"+page,
+		type: "GET",
+		data: {"categoryNo": categoryValue, "sort": orderValue, "category": category},
+		dataType: "JSON",
+		error: function(){
+			alert("failed");
+			},
+		success: function(json){
+			alert("wait");
+			console.log(json);
+			console.log(json.subList);
+			
+			$resultUl.empty();
+			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
+		}
+	});
+} 
+
+getItemList();
+
 
 
 

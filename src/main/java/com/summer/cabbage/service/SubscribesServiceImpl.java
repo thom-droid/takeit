@@ -257,11 +257,11 @@ public class SubscribesServiceImpl implements SubscribesService {
 			
 		Map<String, Object> map  = new ConcurrentHashMap<String, Object>();
 		
-		PageVO pageVO = new PageVO(page, 5);
+		PageVO pageVO = new PageVO(page, 8);
 		
 		int total = productsDAO.selectTotal();
 		
-		String paginate = PaginateUtil.getPaginate(page, total, 5, 12, "/"+category+"/"+categoryNo);
+		String paginate = PaginateUtil.getPaginate(page, total, 8, 12, "/"+category+"/"+categoryNo);
 		
 		//pathVariable로 카테고리 이름을 받아오기 때문에 그걸 category의 priorNo 로 바꾸기
 		int priorNo = 0;
@@ -292,10 +292,39 @@ public class SubscribesServiceImpl implements SubscribesService {
 		//페이징처리
 		map.put("paginate",paginate);
 					
-		System.out.println("여기?");
+		return map;
+	}
+	
+	
+	// item list filter ajax GET
+
+	@Override
+	public Map<String, Object> getProductFiltered(PageVO pageVO, int page, String category) {
+		
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		pageVO.setEnd(page*8);
+		pageVO.setStart(pageVO.getEnd()-8+1);
+		
+		int total =0;
+		
+		if(pageVO.getCategoryNo()!=0) {
+			 total = productsDAO.selectTotalByCategory(pageVO.getCategoryNo());
+		}
+		System.out.println(pageVO.getCategoryNo());
+		System.out.println(pageVO.getSort());
+		System.out.println(total);
+		System.out.println(page);
+		System.out.println(pageVO.getStart());
+		System.out.println(pageVO.getEnd());
+		String paginate = PaginateUtil.getPaginate(page, total, 8, 12, "/"+category+"/"+pageVO.getCategoryNo() );
+		
+		map.put("subList", productsDAO.selectProductListByCategory(pageVO));
+		map.put("paginate", paginate);
 		
 		return map;
 	}
+	
 	
 	//구독 등록 폼 서비스
 	@Override
