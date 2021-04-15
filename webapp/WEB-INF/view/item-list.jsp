@@ -11,7 +11,9 @@
 <body>
 
 <c:import url="/WEB-INF/view/template/header.jsp" />
+
 	<div id="container">
+	
 		<!--container start -->
 		<div id="main_menu_content">
 			<!--main_menu_content start -->
@@ -28,10 +30,10 @@
 					<button type="button" class="category_btn header_btn list_btn">품목</button>
 					<ul class="second_category_list sel_list_ul">
 						<li class="category_tab text_strong"><button class="sel_btn"
-								data-category-no="${category.no }">전체</button></li>
+								data-category-no="${category.no }" data-category-name="${category.name}">전체</button></li>
 						<c:forEach items="${categories}" var="category">
 							<li class="category_tab text_strong"><button class="sel_btn"
-									data-category-no="${category.no }">${category.name }</button></li>
+									data-category-no="${category.no }" data-category-name="${category.name}">${category.name }</button></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -53,48 +55,12 @@
 								data-order="rate">평점순</button></li>
 					</ul>
 				</div>
-			</div>
-		</div><!--// second_categories_content end -->
-			
+			</div><!-- categories_header_end -->
 			<div class="category_result_box">
-			
-				<!-- ----------------------2차 카테고리 박스---------------------- -->
-				
-				<a class="socks_stocking_box" href="/${category }">
-					<ul class="search_result_list">
-					
-					 
-					<c:forEach items="${subsList}" var="subs">
-					
-						 <a class="search_result_detail_link" href="">
-                        <li class="search_result_item">
-                            <img src="/img/products/${subs.photo}"/>
-                            <div class="subscription_item_info"><!--subscription_item_info start -->
-                                <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
-                                    <div class="subscription_item_company">${subs.company}</div>
-                                    <div class="subscription_item_label">인기</div>
-                                </div><!--//subscription_item_company_and_label end -->
-                                <div class="subscription_item_name">${subs.name}</div>
-                                <div class="subscription_item_price_and_rate_box"><!--subscription_item_price_and_rate_box start -->
-                                    <div class="subscription_item_price">${subs.realPrice}원부터</div>
-                                    <div class="subscription_item_rate"><!--subscription_item_rate start -->
-                                        <div class="grade_star box">
-                                            <div class="inner_star box" style="width:${subs.star*20}%"></div>
-                                        </div> 
-                                    </div><!--//subscription_item_rate end -->
-                                </div><!--//subscription_item_price_and_rate_box end -->
-                            </div><!--//subscription_item_info end -->
-                        </li>
-                    </a>
-					</c:forEach> 
-        									
-					</ul>
-				</div>
-				${paginate }
-				
-			</div><!--//category_result_box end -->
+				<ul class="search_result_list">
+				</ul>
+			</div>
 		</div><!-- second_categories_content end-->
-	</a><!--// container end -->
 	
 	<!-- ========================지역 팝업 창==============================  -->
 	
@@ -116,37 +82,34 @@
 
 <!-- =================================제품 카드 템플릿=================================  -->
 <script type="text/template" id="subsCardTmpl">
-  					<@ _.each(subsCardList,function(subsCard) { @>
-						
-						
-						<li class="search_result_item">
-							<a class="search_result_detail_link" href=""><img src="img/미하이삭스.jpg" />
-								<div class="subscription_item_info">
+	<@ _.each(subsCardList,function(subsCard) { @>
+		<li class="search_result_item">
+			<a class="search_result_detail_link" href="/taker/subscribe/<@=subsCard.no@>"><img src="/img/products/<@=subsCard.photo@>" />
+					<div class="subscription_item_info">
 									<!--subscription_item_info start -->
-									<div class="subscription_item_company_and_label">
+							<div class="subscription_item_company_and_label">
 										<!--subscription_item_company_and_label start -->
-										<div class="subscription_item_company">미하이삭스</div>
-										<div class="subscription_item_label">인기</div>
-									</div>
+								<div class="subscription_item_company"><@=subsCard.company@></div>
+								<div class="subscription_item_label">인기</div>
+							</div>
 									<!--//subscription_item_company_and_label end -->
-									<div class="subscription_item_name">양말정기배송 - 비즈니스 패키지(남성용)</div>
-									<div class="subscription_item_price_and_rate_box">
+							<div class="subscription_item_name"><@=subsCard.name@></div>
+							<div class="subscription_item_price_and_rate_box">
 										<!--subscription_item_price_and_rate_box start -->
-										<div class="subscription_item_price">6,200원</div>
-										<div class="subscription_item_rate">
+								<div class="subscription_item_price"><@=subsCard.price@>원부터</div>
+								<div class="subscription_item_rate">
 											<!--subscription_item_rate start -->
-											<div class="grade_star box">
-												<div class="inner_star box" style="width: 60%"></div>
-											</div>
-										</div>
+								<div class="grade_star box">
+									<div class="inner_star box" style="width :<@=subsCard.star*20@>"></div>
+							</div>
+						</div>
 										<!--//subscription_item_rate end -->
-									</div>
-									<!--//subscription_item_price_and_rate_box end -->
-								</div><!--//subscription_item_info end -->
-						</a>	
-					</li>
-						
-					<@ })@>             
+					</div>
+				<!--//subscription_item_price_and_rate_box end -->
+				</div><!--//subscription_item_info end -->
+			</a>	
+		</li>
+	<@ })@>             
 </script>
 	<!-- ==========================시도구군 템플릿====================================== -->
 <script type="text/template" id="whereTmpl">

@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 03-04 이소현 _ 카테고리별로(category_no) 제품 리스트 받아오기 + 페이징처리 -->
-	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
+<!-- 	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
 		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
 		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
 			FROM(SELECT p.no no, giver_no giverNo, p.name name, price, discount, price-discount realPrice, photo, sales_qty salesQty, type, sub_count subCount, star, rev_count revCount, p.regdate regdate,
@@ -55,6 +55,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				FROM products p, givers g, categories c
 				WHERE p.giver_no = g.no AND c.no = p.category_no AND c.no = #{categoryNo}))
 		WHERE r BETWEEN #{start} AND #{end}
+	</select> -->
+	
+	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
+		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
+		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
+			FROM(SELECT p.no no, giver_no giverNo, p.name name, price, discount, price-discount realPrice, photo, sales_qty salesQty, type, sub_count subCount, star, rev_count revCount, p.regdate regdate,
+					g.company company, c.prior_no priorNo, c.no categoryNo, c.name categoryName
+				FROM products p, givers g, categories c
+				WHERE p.giver_no = g.no AND c.no = p.category_no 
+				<choose>
+					<when test="categoryNo gte 1 and categoryNo lte 4">
+						AND c.prior_no = #{categoryNo}
+					</when>
+					<when test="categoryNo gt 4">
+						AND c.no = #{categoryNo}
+					</when>
+				</choose>
+				))
+		WHERE r BETWEEN #{start} AND #{end}
+		
+		<choose>
+			<when test="sort =='default'">
+			ORDER BY no
+			</when>
+			<when test="sort =='lat'">
+			ORDER BY regdate
+			</when>
+			<when test="sort =='sub'">
+			ORDER BY subCount
+			</when>
+			<when test="sort =='lowPrice'">
+			ORDER BY price ASC
+			</when>
+			<when test="sort =='highPrice'">
+			ORDER BY price DESC
+			</when>
+		</choose>
 	</select>
 	
 	<!-- 0304 이소현 _ 페이징 처리 시 필요한 목록 전체 크기 -->
@@ -63,6 +100,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM products
 	</select>
 	<!-- 03-04 이소현 추가 end -->
+	
+	<!-- select by condition -->
+	<select id="selectTotalByCategory" resultType="int" parameterType="int">
+		SELECT COUNT(*)
+		FROM products
+		WHERE category_no = #{categoryNo}
+	</select>
+	
 	
 	<!--구독 등록하기 -->
 	<insert id="insertProduct" parameterType="Product">

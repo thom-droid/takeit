@@ -54,8 +54,7 @@ public interface ProductsDAO {
 
 	public int selectItemNumbersEnded(int giverNo);
 
-	
-	
-
+	// selectTotal by categoryNo for pagination
+	public int selectTotalByCategory(int categoryNo);
 
 }

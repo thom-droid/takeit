@@ -49,7 +49,6 @@ public class ProductsDAOImpl implements ProductsDAO {
 	//03-03 이소현 _ (목록페이지) 카테고리 번호로 제품 목록 불러오기
 	@Override
 	public List<Product> selectProductListByCategory(PageVO pageVO) {
-		System.out.println("여기?22");
 		return session.selectList("products.selectProductListByCategory",pageVO);
 	}
 	
@@ -60,6 +59,12 @@ public class ProductsDAOImpl implements ProductsDAO {
 		return session.selectOne("products.selectTotal");
 	}
 	//03-04 이소현 추가 end
+	
+	//0414 selectTotal by categoryNo for pagination
+	public int selectTotalByCategory(int categoryNo) {
+		
+		return session.selectOne("products.selectTotalByCategory", categoryNo);
+	}
 	
 	//구독 등록하기 03-06 박형우
 	@Override

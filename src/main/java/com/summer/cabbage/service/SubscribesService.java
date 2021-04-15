@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.summer.cabbage.vo.Member;
+import com.summer.cabbage.vo.PageVO;
 import com.summer.cabbage.vo.Product;
 import com.summer.cabbage.vo.Region;
 import com.summer.cabbage.vo.Subscribe;
@@ -39,6 +40,8 @@ public interface SubscribesService {
 	//구독 등록하기
 	public boolean registerProduct(Member loginMember, Product product, String editorContent, int[] days, int[] deliveryAvailSubState, int[] deliveryAvailTax);
 	//210304 박형우 end--------------------------------------------------
+	
+	public Map<String, Object> getProductFiltered(PageVO pageVO, int page, String category);
 		
 	
 }
