@@ -97,7 +97,7 @@ const page = url.substring(url.lastIndexOf("/")+1, url.length);
 // template
 const $resultArea = $(".search_result_list");
 const categoryValue = $selBtn.first().data("categoryNo");
-
+const $paginating = $(".pagination");
 
 $selBtn.on("click", function(){
 	const $this = $(this);
@@ -149,6 +149,8 @@ function getItemList(categoryValue, orderValue, category){
 			
 			$resultUl.empty();
 			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
+			$paginating.append(json.paginate);
+			console.log(json.paginate);
 		}
 	});
 } 

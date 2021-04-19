@@ -60,6 +60,7 @@
 				<ul class="search_result_list">
 				</ul>
 			</div>
+			<div class="pagination"></div>
 		</div><!-- second_categories_content end-->
 	
 	<!-- ========================지역 팝업 창==============================  -->
