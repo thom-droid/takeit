@@ -60,9 +60,9 @@
 				<ul class="search_result_list">
 				</ul>
 			</div>
-			<div class="pagination"></div>
 		</div><!-- second_categories_content end-->
-	
+		<div class="pagination"></div>
+	</div><!--container  -->
 	<!-- ========================지역 팝업 창==============================  -->
 	
 	<div class="pop_where_wrap">	<!--pop_where_wrap start-->
@@ -101,7 +101,7 @@
 								<div class="subscription_item_rate">
 											<!--subscription_item_rate start -->
 								<div class="grade_star box">
-									<div class="inner_star box" style="width :<@=subsCard.star*20@>"></div>
+									<div class="inner_star box" style="width :<@=subsCard.star*20@>%"></div>
 							</div>
 						</div>
 										<!--//subscription_item_rate end -->

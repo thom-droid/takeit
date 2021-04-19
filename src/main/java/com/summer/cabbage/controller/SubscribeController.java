@@ -102,21 +102,20 @@ public class SubscribeController {
 	//-- 03-04 송진현 --//
 	
 	//item list GET
-	@RequestMapping(value="/{category}/{categoryNo}/page/{page}", method = RequestMethod.GET)
-	public String mainList(@PathVariable String category, @PathVariable int categoryNo, @PathVariable int page, Model model) {
-		
-		model.addAllAttributes(service.getProductListByCategory(category, categoryNo, page)); 
+	@RequestMapping(value="/{category}", method = RequestMethod.GET)
+	public String mainList(@PathVariable String category, Model model) {
+		model.addAllAttributes(service.getProductListByCategory(category)); 
 		return "item-list";
 		
 	}
 	
 	// item list filter ajax GET
 	
-	@GetMapping(value="/ajax/filter/category/{page}")
+	@GetMapping(value="/ajax/filter/category/")
 	@ResponseBody
-	public Map<String, Object> listFilteredAjax(PageVO pageVO, @RequestParam(required=false) String category, @PathVariable int page) {
-		
-		return service.getProductFiltered(pageVO, page, category);
+	public Map<String, Object> listFilteredAjax(PageVO pageVO, @RequestParam(defaultValue = "1") Integer page) {
+		System.out.println("ajax: "+page);
+		return service.getProductFiltered(pageVO, page);
 	}
 	
 	

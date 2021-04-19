@@ -104,8 +104,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- select by condition -->
 	<select id="selectTotalByCategory" resultType="int" parameterType="int">
 		SELECT COUNT(*)
-		FROM products
-		WHERE category_no = #{categoryNo}
+		FROM products, categories
+		WHERE categories.no = products.category_no
+		<if test="categoryNo gte 1 and categoryNo lte 4">
+			AND categories.prior_no = #{categoryNo}
+		</if>
+		<if test="categoryNo gt 4">
+			AND products.category_no = #{categoryNo}
+		</if> 
 	</select>
 	
 	

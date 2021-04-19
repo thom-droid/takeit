@@ -32,7 +32,7 @@ public class PaginateUtil {
 						paginate += "<span title=\"이전 페이지 없음\"><i class=\"fa fa-chevron-left\"></i></span>";
 					} else {
 		//활성화
-						paginate += "<a href='" + url + "/page/" + (pageNo - 1) + "' data-no='" + (pageNo - 1)
+						paginate += "<a class='paging' href='/" + url + "?page=" + (pageNo - 1) + "' data-page='" + (pageNo - 1)
 								+ "' title='이전 페이지로'><i class='fa fa-chevron-left'></i><span class='screen_out'>이전 페이지</span></a>";
 
 					} // if end
@@ -49,7 +49,7 @@ public class PaginateUtil {
 
 						} else {
 		//현재 페이지가 아님
-							paginate += "<a data-no='" + realPage + "' href='" + url + "/page/" + realPage + "' title='"
+							paginate += "<a class='paging' data-page='" + realPage + "' href='/" + url + "?page=" + realPage + "' title='"
 									+ realPage + "'>" + realPage + "</a>";
 
 						} // if ~ else end
@@ -66,7 +66,7 @@ public class PaginateUtil {
 						paginate += "<span title='다음 페이지 없음'><i class='fa fa-chevron-right'></i></span>";
 					} else {
 		//활성화
-						paginate += "<a href='" + url + "/page/" + (pageNo + 1) + "' data-no='" + (pageNo + 1)
+						paginate += "<a class='paging' href='/" + url + "?page=" + (pageNo + 1) + "' data-page='" + (pageNo + 1)
 								+ "' title='다음 페이지로'><i class='fa fa-chevron-right'></i><span class='screen_out'>다음 페이지</span></a>";
 					} // if end
 

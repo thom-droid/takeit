@@ -41,4 +41,9 @@ public class CategoriesDAOImpl implements CategoriesDAO {
 	}
 	//210305 박형우 ---------------------------------------
 	//03-05 박형우 추가 end
+	
+	@Override
+	public Category selectEngName(int no) {
+		return session.selectOne("categories.selectEngName", no);
+	}
 }

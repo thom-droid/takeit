@@ -90,72 +90,62 @@ $listBtn.on("click", function(){
 });
 
 const $selBtn = $(".sel_btn");
-let category = $(".sel_btn").first().data("categoryName");
 const url = window.location.href;
-const page = url.substring(url.lastIndexOf("/")+1, url.length);
+
 
 // template
 const $resultArea = $(".search_result_list");
 const categoryValue = $selBtn.first().data("categoryNo");
 const $paginating = $(".pagination");
+const orderValue = "";
 
 $selBtn.on("click", function(){
 	const $this = $(this);
 	const filterSelected = $this.text();
 	const categoryValue = this.dataset.categoryNo;
 	const orderValue = this.dataset.order;
-	category = this.dataset.categoryName;
 	console.log(categoryValue);
 	console.log(orderValue);
-	console.log(category);
 	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
 	$this.closest(".sel_list_ul").css("display", "none");
 	
-	$.ajax({
-		url:"/ajax/filter/category/"+page,
-		type: "GET",
-		data: {"categoryNo": categoryValue, "sort": orderValue, "category": category},
-		dataType: "JSON",
-		error: function(){
-			alert("failed");
-			},
-		success: function(json){
-			alert("wait");
-			console.log(json);
-			console.log(json.subList);
-			
-			$resultUl.empty();
-			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
-		}
-	});
+	getItemList(categoryValue, orderValue);
 });
 
+// getting page data when clicking a 
+$paginating.on("click", "a.paging", function(e){
+	e.preventDefault();
+	const $this = $(this);
+	page = $this.data("page");
+	console.log(page);
+	getItemList(categoryValue, orderValue, page);
+}); // on click
 
-function getItemList(categoryValue, orderValue, category){
+function getItemList(categoryValue, orderValue, page){
 	
 	$.ajax({
-		url:"/ajax/filter/category/"+page,
+		url:"/ajax/filter/category/",
 		type: "GET",
-		data: {"categoryNo": categoryValue, "sort": orderValue, "category": category},
+		data: {"categoryNo": categoryValue, "sort": orderValue, "page": page},
 		dataType: "JSON",
 		error: function(){
 			alert("failed");
 			},
 		success: function(json){
-			alert("wait");
 			console.log(json);
 			console.log(json.subList);
 			
 			$resultUl.empty();
 			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
+			$paginating.empty();
 			$paginating.append(json.paginate);
-			console.log(json.paginate);
 		}
 	});
 } 
 
-getItemList();
+getItemList(categoryValue, orderValue);
+
 
 
 

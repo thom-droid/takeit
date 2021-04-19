@@ -27,21 +27,25 @@
         <div class="main_menu_wrap">
             <ul>
                 <li class="menu_item">
-                <a href="/clothes/1/page/1">
-                    <div class="menu_box"><img src="/img/resource/clothing.jpg" width="250px" height="250px"/></div><span>의</span>
-                </a></li>
+                    <div class="menu_box">
+                    	<a href="/clothes"><img src="/img/resource/clothing.jpg" width="250px" height="250px"/><span>의</span></a>
+                    </div>
+                </li>
                 <li class="menu_item">
-                <a href="/food/2/page/1">
-                    <div class="menu_box"><img src="/img/resource/food.jpg" width="250px" height="250px"/></div><span>식</span>
-                </a></li>
+                    <div class="menu_box">
+                    	<a href="/food"><img src="/img/resource/food.jpg" width="250px" height="250px"/><span>식</span></a>
+                    </div>
+                </li>
                 <li class="menu_item">
-                <a href="/living/3/page/1">
-                    <div class="menu_box"><img src="/img/resource/living.jpg" width="250px" height="250px"/></div><span>주</span>
-                </a></li>
+                    <div class="menu_box">
+                    	<a href="/living"><img src="/img/resource/living.jpg" width="250px" height="250px"/><span>주</span></a>
+                    </div>
+                </li>
                 <li class="menu_item">
-                <a href="/etc/4/page/1">
-                    <div class="menu_box"><img src="/img/resource/etc.jpg" width="250px" height="250px"/></div><span>기타</span>
-                </a></li>
+                    <div class="menu_box">
+	                    <a href="/etc"><img src="/img/resource/etc.jpg" width="250px" height="250px"/><span>기타</span></a>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>

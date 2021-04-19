@@ -9,6 +9,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE no=#{no}	
 	</select>
 	<!-- 03-04 이소현 추가  -->
+	
+	<select id="selectEngName" parameterType="int" resultType="Category">
+		SELECT eng_name engName
+		FROM categories
+		<if test="no gte 1 and no lte 4">
+			WHERE no=#{no}
+		</if>
+		<if test="no gte 5">
+			WHERE no =
+			(SELECT prior_no
+			FROM categories
+			WHERE no = #{no}) 	
+		</if>
+	</select>
 	<!-- 0304 이소현 _ 2차 카테고리 목록얻어오기 위해 사용  -->
 	<select id="selectListByCategory" parameterType="int" resultType="Category">
 		SELECT no,name,prior_no priorNo, regdate

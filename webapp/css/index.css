@@ -82,14 +82,14 @@ body{
 
 .menu_box {
 	width: 250px;
-	height: 250px;
+	height: 310px;
 	overflow: hidden;
 }
 
-.menu_item:hover img {
-	transform: scale(1.2);
-	transition: ease 0.2s;
-}
+.menu_item:hover img+span {
+	background-color: #3c7166;
+	color: white;
+} 
 
 .best_seller_content {
 	clear: both;

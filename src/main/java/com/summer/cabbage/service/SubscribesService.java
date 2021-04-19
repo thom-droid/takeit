@@ -29,7 +29,7 @@ public interface SubscribesService {
 	public Map<String, Object> getProductDetail(int productNo);
 	
 	//03-04 이소현 _ (카테고리 목록) 카테고리 번호로 목록 불러오기
-	public Map<String, Object> getProductListByCategory(String category, int categoryNo, int page);
+	public Map<String, Object> getProductListByCategory(String category);
 	
 	//구독 등록 폼 서비스 03-04 박형우 추가
 	public Map<String, Object> showRegisterSubsForm(int category);
@@ -41,7 +41,7 @@ public interface SubscribesService {
 	public boolean registerProduct(Member loginMember, Product product, String editorContent, int[] days, int[] deliveryAvailSubState, int[] deliveryAvailTax);
 	//210304 박형우 end--------------------------------------------------
 	
-	public Map<String, Object> getProductFiltered(PageVO pageVO, int page, String category);
+	public Map<String, Object> getProductFiltered(PageVO pageVO, int page);
 		
 	
 }
