@@ -21,6 +21,7 @@ import com.summer.cabbage.dao.SubscribesDAO;
 import com.summer.cabbage.dao.TakerAddrsDAO;
 import com.summer.cabbage.dao.TakerCardsDAO;
 import com.summer.cabbage.util.PaginateUtil;
+import com.summer.cabbage.vo.Category;
 import com.summer.cabbage.vo.DeliveryDay;
 import com.summer.cabbage.vo.DeliveryRegion;
 import com.summer.cabbage.vo.Member;
@@ -253,15 +254,11 @@ public class SubscribesServiceImpl implements SubscribesService {
 	
 //03-04 이소현 _ (카테고리 목록) 카테고리 번호로 목록 불러오기 + 페이징 처리
 	@Override
-	public Map<String, Object> getProductListByCategory(String category, int categoryNo, int page) {  
+	public Map<String, Object> getProductListByCategory(String category) {  
 			
 		Map<String, Object> map  = new ConcurrentHashMap<String, Object>();
 		
-		PageVO pageVO = new PageVO(page, 8);
-		
-		int total = productsDAO.selectTotal();
-		
-		String paginate = PaginateUtil.getPaginate(page, total, 8, 12, "/"+category+"/"+categoryNo);
+		PageVO pageVO = new PageVO();
 		
 		//pathVariable로 카테고리 이름을 받아오기 때문에 그걸 category의 priorNo 로 바꾸기
 		int priorNo = 0;
@@ -272,25 +269,18 @@ public class SubscribesServiceImpl implements SubscribesService {
 			priorNo = 2;
 		} else if(category.equals("living")) {
 			priorNo = 3;
-		} else {
+		} else if(category.equals("etc")) {
 			priorNo = 4;
 		}//if~else if~else if~else end
 		
 		//priorNo 값을 set 으로 넣어준다. 
 		pageVO.setPriorNo(priorNo);
-		pageVO.setCategoryNo(categoryNo);
 		
 		//2차 카테고리 나타내기 위해서.
 		map.put("categories", categoriesDAO.selectListByCategory(priorNo));
 		
 		//? 
 		map.put("category", categoriesDAO.selectSecondCategory(priorNo));
-		
-		//카테고리 번호로 상품 목록 나타내기 + 페이징처리
-		map.put("subsList", productsDAO.selectProductListByCategory(pageVO));
-
-		//페이징처리
-		map.put("paginate",paginate);
 					
 		return map;
 	}
@@ -299,17 +289,21 @@ public class SubscribesServiceImpl implements SubscribesService {
 	// item list filter ajax GET
 
 	@Override
-	public Map<String, Object> getProductFiltered(PageVO pageVO, int page, String category) {
+	public Map<String, Object> getProductFiltered(PageVO pageVO, int page) {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
-		pageVO.setEnd(page*8);
-		pageVO.setStart(pageVO.getEnd()-8+1);
+		int no = pageVO.getCategoryNo();
+		pageVO.setEnd(page*6);
+		pageVO.setStart(pageVO.getEnd()-6+1);
+		Category cg = new Category();
+		cg = categoriesDAO.selectEngName(no);
 		
+		System.out.println(cg.getEngName());
 		int total =0;
 		
-		if(pageVO.getCategoryNo()!=0) {
-			 total = productsDAO.selectTotalByCategory(pageVO.getCategoryNo());
+		if(no!=0) {
+			 total = productsDAO.selectTotalByCategory(no);
 		}
 		System.out.println(pageVO.getCategoryNo());
 		System.out.println(pageVO.getSort());
@@ -317,7 +311,8 @@ public class SubscribesServiceImpl implements SubscribesService {
 		System.out.println(page);
 		System.out.println(pageVO.getStart());
 		System.out.println(pageVO.getEnd());
-		String paginate = PaginateUtil.getPaginate(page, total, 8, 12, "/"+category+"/"+pageVO.getCategoryNo() );
+		
+		String paginate = PaginateUtil.getPaginate(page, total, 6, 12, cg.getEngName());
 		
 		map.put("subList", productsDAO.selectProductListByCategory(pageVO));
 		map.put("paginate", paginate);

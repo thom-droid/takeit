@@ -6,10 +6,20 @@ public class Category {
 	private int no, priorNo;
 	private String name;
 	private Timestamp regdate;
+	private String engName;
 	
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public String getEngName() {
+		return engName;
+	}
+
+	public void setEngName(String engName) {
+		this.engName = engName;
+	}
+
 
 	public int getNo() {
 		return no;

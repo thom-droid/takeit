@@ -20,4 +20,5 @@ public interface CategoriesDAO {
 	//210305 박형우 ---------------------------------------
 	//03-05 박형우 추가 end
 	
+	public Category selectEngName(int no);
 }
