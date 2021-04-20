@@ -305,9 +305,9 @@ public class SubscribesServiceImpl implements SubscribesService {
 		if(no!=0) {
 			 total = productsDAO.selectTotalByCategory(no);
 		}
-		System.out.println(pageVO.getCategoryNo());
-		System.out.println(pageVO.getSort());
-		System.out.println(total);
+		System.out.println("categoryNo:"+pageVO.getCategoryNo());
+		System.out.println("sort:" +pageVO.getSort());
+		System.out.println("result:"+total);
 		System.out.println(page);
 		System.out.println(pageVO.getStart());
 		System.out.println(pageVO.getEnd());

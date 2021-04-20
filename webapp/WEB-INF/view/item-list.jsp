@@ -29,10 +29,10 @@
 				<div class="category_box btn_box">
 					<button type="button" class="category_btn header_btn list_btn">품목</button>
 					<ul class="second_category_list sel_list_ul">
-						<li class="category_tab text_strong"><button class="sel_btn"
+						<li class="category_tab text_strong"><button class="by_category sel_btn"
 								data-category-no="${category.no }" data-category-name="${category.name}">전체</button></li>
 						<c:forEach items="${categories}" var="category">
-							<li class="category_tab text_strong"><button class="sel_btn"
+							<li class="category_tab text_strong"><button class="by_category sel_btn"
 									data-category-no="${category.no }" data-category-name="${category.name}">${category.name }</button></li>
 						</c:forEach>
 					</ul>
@@ -41,17 +41,17 @@
 				<div class="order_filter_box btn_box">
 					<button type="button" class="order_btn header_btn list_btn">정렬</button>
 					<ul class="second_category_list sel_list_ul">
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="default">기본</button></li>
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="lat">최신순</button></li>
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="sub">구독순</button></li>
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="lowPrice">낮은가격순</button></li>
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="highPrice">높은가격순</button></li>
-						<li class="category_tab"><button class="sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="rate">평점순</button></li>
 					</ul>
 				</div>
