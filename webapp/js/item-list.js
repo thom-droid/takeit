@@ -89,21 +89,29 @@ $listBtn.on("click", function(){
 	
 });
 
-const $selBtn = $(".sel_btn");
+
 const url = window.location.href;
 
 
 // template
 const $resultArea = $(".search_result_list");
-const categoryValue = $selBtn.first().data("categoryNo");
 const $paginating = $(".pagination");
-const orderValue = "";
 
-$selBtn.on("click", function(){
+// filter var
+const $filterByCategory = $(".by_category");
+const $filterByOrder =$(".by_order");
+
+
+// filter default value when html is rendered
+let categoryValue = $filterByCategory.first().data("categoryNo");
+let orderValue = "";
+
+
+// filter by category
+$filterByCategory.on("click", function(){
 	const $this = $(this);
 	const filterSelected = $this.text();
-	const categoryValue = this.dataset.categoryNo;
-	const orderValue = this.dataset.order;
+	categoryValue = this.dataset.categoryNo;
 	console.log(categoryValue);
 	console.log(orderValue);
 	
@@ -113,7 +121,22 @@ $selBtn.on("click", function(){
 	getItemList(categoryValue, orderValue);
 });
 
-// getting page data when clicking a 
+// filtered by order
+$filterByOrder.on("click", function(){
+	const $this = $(this);
+	const filterSelected = $this.text();
+	orderValue = this.dataset.order;
+	console.log(categoryValue);
+	console.log(orderValue);
+	
+	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
+	$this.closest(".sel_list_ul").css("display", "none");
+	
+	getItemList(categoryValue, orderValue);
+});
+
+
+// getting page data when clicking a (next, prev btn)
 $paginating.on("click", "a.paging", function(e){
 	e.preventDefault();
 	const $this = $(this);
@@ -133,9 +156,6 @@ function getItemList(categoryValue, orderValue, page){
 			alert("failed");
 			},
 		success: function(json){
-			console.log(json);
-			console.log(json.subList);
-			
 			$resultUl.empty();
 			$resultUl.append($subsCardTmpl({ subsCardList: json.subList }));
 			$paginating.empty();
@@ -144,6 +164,7 @@ function getItemList(categoryValue, orderValue, page){
 	});
 } 
 
+// call list on rendering
 getItemList(categoryValue, orderValue);
 
 
