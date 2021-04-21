@@ -5,35 +5,28 @@
 _.templateSettings = { interpolate: /\<\@\=(.+?)\@\>/gim, evaluate: /\<\@([\s\S]+?)\@\>/gim, escape: /\<\@\-(.+?)\@\>/gim };
 
 
+// popup for location info
 
-//양말 스타킹 탭
-const $socksAndStockingTab = $(".socks_and_stocking_tab");
-// 양말, 스타킹 박스
-const $socksAndStockinngBox = $(".socks_stocking_box");
-//패션 스타일링 탭
-const $fashionStylingTab = $(".fashion_styling_tab");
-//패션,스타일링 박스
-const $fashionStylingBox = $(".fashion_styling_box");
+const $location = $(".location");
+const $popupLocation = $(".pop_where_wrap");
+const $popupCloseBtn = $(".pop_close_button");
 
-//탭 자바스크립트 start
-$socksAndStockingTab.click(function() {
-	$fashionStylingBox.css("display", "none");
-	$socksAndStockinngBox.css("display", "block");
-	$fashionStylingTab.removeClass("text_strong");
-	$(this).addClass("text_strong");
-});//click() end
+$location.click(function(){
+	$popupLocation.addClass("on");
+	
+}); // popup showup 
 
-$fashionStylingTab.click(function() {
-	$fashionStylingBox.css("display", "block");
-	$socksAndStockinngBox.css("display", "none");
-	//패션스타일링탭 클래스에 text_strong를 추가한것
-	$(this).addClass("text_strong");
-	$socksAndStockingTab.removeClass("text_strong");
-});//탭 자바스크립트 end
+// popup close with a btn
+$popupCloseBtn.click(function() {
+	$popupLocation.removeClass("on");
+	
+	//다시 눌렀을 때 빈 상태에서 다시 시작하게 하기 위함.
+	
+	$(".states_specifics>ul").removeClass("on");
+	$("html").removeClass("on");
+});// popup close
 
-//-------------------지역 필터 팝업----------------------
 
-//한 지역 누르면 세부 지역 뜨게 하기
 $(".korea_states li").click(function(e) {
 	e.preventDefault();
 	const sequence = $(this).index();
@@ -60,13 +53,7 @@ $(".search_specifics .where").click(function(e) {
 	$("html").addClass("on");
 });//click() end
 
-//엑스버튼 누르면 꺼지도록
-$(".pop_close_button").click(function() {
-	$(".pop_where_wrap").removeClass("on");
-	//다시 눌렀을 때 빈 상태에서 다시 시작하게 하기 위함.
-	$(".states_specifics>ul").removeClass("on");
-	$("html").removeClass("on");
-});//click() end
+
 
 
 /*  ========================카테고리에 따라서 구독 상품 카드 목록 나타내기================================ */
@@ -116,6 +103,7 @@ $filterByCategory.on("click", function(){
 	console.log(orderValue);
 	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
+	$this.closest(".btn_box").find(".list_btn").css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
 	getItemList(categoryValue, orderValue);
@@ -130,6 +118,7 @@ $filterByOrder.on("click", function(){
 	console.log(orderValue);
 	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
+	$this.closest(".btn_box").find(".list_btn").css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
 	getItemList(categoryValue, orderValue);
