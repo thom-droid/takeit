@@ -178,6 +178,7 @@ select {
 	display: none;
 	left: 0;
 	top: 0;
+	z-index: 20;
 }
 
 .pop_where_wrap.on {
@@ -185,7 +186,7 @@ select {
 }
 
 .pop_where_box {
-	width: 360px;
+	width: 600px;
 	height: 560px;
 	border-radius: 4px;
 	border: 1px solid transparent;
@@ -204,10 +205,9 @@ select {
 }
 
 .pop_where_header_title {
-	position: absolute;
-	top: 0;
-	left: 16px;
-	padding: 15.5px 0;
+	text-align: center;
+    height: 60px;
+    line-height: 60px;
 }
 
 .pop_close_button {
@@ -216,7 +216,7 @@ select {
 	background-color: transparent;
 	outline: none;
 	right: 8px;
-	top: 12px;
+	top: 15px;
 	color: #757575;
 	cursor: pointer;
 	font-size: 25px;

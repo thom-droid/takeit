@@ -49,7 +49,7 @@
 								data-order="sub">구독순</button></li>
 						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="lowPrice">낮은가격순</button></li>
-						<li class="category_tab"><button class="by_order sel_btn"
+						<li class="category_tab"><button clzass="by_order sel_btn"
 								data-order="highPrice">높은가격순</button></li>
 						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="rate">평점순</button></li>
@@ -75,9 +75,13 @@
 				</div>
 				<button name="close_btn" type="button" class="pop_close_button fas fa-times"></button>
 			</div><!--//pop_where_header_wrap end-->
-			<div class="pop_where_container">
+			<div class="location_area">
+				<div class="pop_primary_location">
 				<!--pop_where_container start-->
-			</div><!--//states_specifics end-->
+				</div><!--//states_specifics end-->
+				<div class="pop_second_location">
+				</div>
+			</div>
 		</div><!--//pop_where_container end-->
 	</div><!--//pop_where_box end-->
 
@@ -90,11 +94,11 @@
 									<!--subscription_item_info start -->
 							<div class="subscription_item_company_and_label">
 										<!--subscription_item_company_and_label start -->
-								<div class="subscription_item_company"><@=subsCard.company@></div>
+								<div class="subscription_item_company"><@=subsCard.name@></div>
 								<div class="subscription_item_label">인기</div>
 							</div>
 									<!--//subscription_item_company_and_label end -->
-							<div class="subscription_item_name"><@=subsCard.name@></div>
+							<div class="subscription_item_name"><@=subsCard.company@></div>
 							<div class="subscription_item_price_and_rate_box">
 										<!--subscription_item_price_and_rate_box start -->
 								<div class="subscription_item_price"><@=subsCard.price@>원부터</div>
@@ -112,8 +116,9 @@
 		</li>
 	<@ })@>             
 </script>
-	<!-- ==========================시도구군 템플릿====================================== -->
-<script type="text/template" id="whereTmpl">
+	
+<%-- location template --%>
+<script type="text/template" id="locationTmpl">
     <ul class="korea_states">
     <@ _.each(sidoList,function(sido) {@>
 		<li><a href="">전국구</a></li>
