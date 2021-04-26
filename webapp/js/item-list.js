@@ -13,13 +13,14 @@ const $popupCloseBtn = $(".pop_close_button");
 
 $location.click(function(){
 	$popupLocation.addClass("on");
+	$("body").css("overflow", "hidden");
 	
 }); // popup showup 
 
 // popup close with a btn
 $popupCloseBtn.click(function() {
 	$popupLocation.removeClass("on");
-	
+	$("body").css("overflow", "auto");
 	//다시 눌렀을 때 빈 상태에서 다시 시작하게 하기 위함.
 	
 	$(".states_specifics>ul").removeClass("on");

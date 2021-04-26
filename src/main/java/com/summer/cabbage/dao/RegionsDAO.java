@@ -13,4 +13,10 @@ public interface RegionsDAO {
 	public List<Region> selectSubStates(int stateNo);
 	//210304 박형우-----------------------------------------
 	
+	public Region selectPrmryLocationWithNum(int i);
+	
+	public List<Region> selectScndLocationWithNum(int i);
+	
+	
+	
 }

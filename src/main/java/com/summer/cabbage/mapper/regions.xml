@@ -23,5 +23,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE prior_no=#{no}
 	</select>
 	<!--210304 박형우 -->
+	
+	<select id="selectPrmryLocationWithNum" resultType="Region" parameterType="int">
+		SELECT r.name, count(dr.product_no) num
+		FROM delivery_regions dr
+		INNER JOIN regions r
+		ON dr.area_no = r.no
+		WHERE r.no = #{i}
+		GROUP BY r.name
+	</select>
+	
+	<select id="selectScndLocationWithNum" resultType="Region" parameterType="int">
+		SELECT r.name, count(dr.product_no) num
+		FROM delivery_regions dr
+		INNER JOIN  regions r
+		ON dr.area_no = r.no 
+		AND r.prior_no is not NULL
+		WHERE r.prior_no = #{i}
+		group by r.name 
+	</select>
 </mapper>
 
