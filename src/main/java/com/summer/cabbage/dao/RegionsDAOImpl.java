@@ -26,4 +26,15 @@ public class RegionsDAOImpl implements RegionsDAO {
 		return session.selectList("regions.selectSubStates", stateNo);
 	}
 	//210304 박형우-----------------------------------------
+	
+	@Override
+	public Region selectPrmryLocationWithNum(int i) {
+		return session.selectOne("regions.selectPrmryLocationWithNum", i);
+	}
+	
+	@Override
+	public List<Region> selectScndLocationWithNum(int i) {
+		return session.selectList("regions.selectScndLocationWithNum", i);
+	}
+	
 }

@@ -5,7 +5,17 @@ public class Region {
 	private String name;
 	//03-04 방현수 추가
 	private String primaryRegionName;
+	private int num;
 	
+	
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	public Region() {
 		// TODO Auto-generated constructor stub
 	}

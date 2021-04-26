@@ -1,6 +1,9 @@
 package com.summer.cabbage.service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,6 +40,7 @@ import com.summer.cabbage.vo.TakerCard;
 @Service
 public class SubscribesServiceImpl implements SubscribesService {
 
+	
 	@Autowired
 	private SubscribesDAO subscribesDAO;
 	
@@ -252,7 +256,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 	}
 	//송진현//
 	
-//03-04 이소현 _ (카테고리 목록) 카테고리 번호로 목록 불러오기 + 페이징 처리
+	
 	@Override
 	public Map<String, Object> getProductListByCategory(String category) {  
 			
@@ -276,12 +280,46 @@ public class SubscribesServiceImpl implements SubscribesService {
 		//priorNo 값을 set 으로 넣어준다. 
 		pageVO.setPriorNo(priorNo);
 		
+		System.out.println("priorNo :"+ priorNo);
 		//2차 카테고리 나타내기 위해서.
 		map.put("categories", categoriesDAO.selectListByCategory(priorNo));
 		
 		//? 
 		map.put("category", categoriesDAO.selectSecondCategory(priorNo));
-					
+		
+		// location info with products qty
+		List<List<Region>> list = new ArrayList<List<Region>>();
+		List<Region> items = new ArrayList<Region>();
+		List<Region> storeValue = new ArrayList<Region>();
+		Region prmryLocation = new Region();
+		List<Region> scndLocation = new ArrayList<Region>();
+		
+		// 
+		int size = 0;
+		List<Integer> idxArr = new ArrayList<Integer>();
+		idxArr.add(0);
+		for(int i = 1;i<=17;i++) {
+			prmryLocation = regionsDAO.selectPrmryLocationWithNum(i);
+			scndLocation = regionsDAO.selectScndLocationWithNum(i);
+			
+			if(prmryLocation!=null) {
+				items.add(size, regionsDAO.selectPrmryLocationWithNum(i));
+			}
+			if(scndLocation!=null) {
+				items.addAll(regionsDAO.selectScndLocationWithNum(i));
+			}
+			size = items.size();
+			idxArr.add(size);
+			
+		}
+		
+		for(Iterator<Integer> itr = idxArr.iterator();itr.hasNext();) {
+		}
+		
+		
+		System.out.println("size :" +list.size());
+		map.put("primaryLocation", regionsDAO.selectStates());
+		map.put("secondLocation", list);
 		return map;
 	}
 	

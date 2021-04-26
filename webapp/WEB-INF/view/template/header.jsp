@@ -24,10 +24,10 @@
         <!-- 카테고리 -->
         <div class="hcb_category">
             <ul>
-                <li <c:if test="${category.no==1}">class="on"</c:if>><a href="/clothes">의류</a></li>
-                <li <c:if test="${category.no==2}">class="on"</c:if>><a href="/food">식품</a></li>
-                <li <c:if test="${category.no==3}">class="on"</c:if>><a href="/living">주거</a></li>
-                <li <c:if test="${category.no==4}">class="on"</c:if>><a href="/etc">기타</a></li>
+                <li <c:if test="${category.no==1}">class="on"</c:if>><a href="/item/clothes">의류</a></li>
+                <li <c:if test="${category.no==2}">class="on"</c:if>><a href="/item/food">식품</a></li>
+                <li <c:if test="${category.no==3}">class="on"</c:if>><a href="/item/living">주거</a></li>
+                <li <c:if test="${category.no==4}">class="on"</c:if>><a href="/item/etc">기타</a></li>
             </ul>
         </div>
         <!-- end hcb_category -->

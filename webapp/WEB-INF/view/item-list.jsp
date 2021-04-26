@@ -77,10 +77,24 @@
 			</div><!--//pop_where_header_wrap end-->
 			<div class="location_area">
 				<div class="pop_primary_location">
+					<c:forEach items="${primaryLocation}" var="item">
+					<div class="primary_location_item">
+						<span class="primary_location">${item.name}</span>
+						<span class="item_numbers"></span>
+					</div>
+					</c:forEach>
 				<!--pop_where_container start-->
 				</div><!--//states_specifics end-->
+				<c:forEach items="${secondLocation}" var="list">
 				<div class="pop_second_location">
+					<c:forEach items="${list}" var="item">
+					<div class="second_location_item">
+						<span class="second_location">${item.name}</span>
+						<span class="item_numbers">${item.num}</span>
+					</div>
+					</c:forEach>
 				</div>
+				</c:forEach>
 			</div>
 		</div><!--//pop_where_container end-->
 	</div><!--//pop_where_box end-->

@@ -28,22 +28,22 @@
             <ul>
                 <li class="menu_item">
                     <div class="menu_box">
-                    	<a href="/clothes"><img src="/img/resource/clothing.jpg" width="250px" height="250px"/><span>의</span></a>
+                    	<a href="/item/clothes"><img src="/img/resource/clothing.jpg" width="250px" height="250px"/><span>의</span></a>
                     </div>
                 </li>
                 <li class="menu_item">
                     <div class="menu_box">
-                    	<a href="/food"><img src="/img/resource/food.jpg" width="250px" height="250px"/><span>식</span></a>
+                    	<a href="/item/food"><img src="/img/resource/food.jpg" width="250px" height="250px"/><span>식</span></a>
                     </div>
                 </li>
                 <li class="menu_item">
                     <div class="menu_box">
-                    	<a href="/living"><img src="/img/resource/living.jpg" width="250px" height="250px"/><span>주</span></a>
+                    	<a href="/item/living"><img src="/img/resource/living.jpg" width="250px" height="250px"/><span>주</span></a>
                     </div>
                 </li>
                 <li class="menu_item">
                     <div class="menu_box">
-	                    <a href="/etc"><img src="/img/resource/etc.jpg" width="250px" height="250px"/><span>기타</span></a>
+	                    <a href="/item/etc"><img src="/img/resource/etc.jpg" width="250px" height="250px"/><span>기타</span></a>
                     </div>
                 </li>
             </ul>

@@ -46,7 +46,7 @@ public class SubscribeController {
 		return service.getSubscriptionDays(no);
 	}
 	
-	//03-04 방현수 추가
+	// subscribe before payment 
 	@RequestMapping(value="/subscribe/{productNo}", method=RequestMethod.GET)
 	public String subscribe(Subscribe subscribe, Model model, HttpSession session , @PathVariable int productNo) {
 		 
@@ -101,8 +101,8 @@ public class SubscribeController {
 	}
 	//-- 03-04 송진현 --//
 	
-	//item list GET
-	@RequestMapping(value="/{category}", method = RequestMethod.GET)
+	// item list GET
+	@RequestMapping(value="/item/{category}", method = RequestMethod.GET)
 	public String mainList(@PathVariable String category, Model model) {
 		model.addAllAttributes(service.getProductListByCategory(category)); 
 		return "item-list";
@@ -114,98 +114,97 @@ public class SubscribeController {
 	@GetMapping(value="/ajax/filter/category/")
 	@ResponseBody
 	public Map<String, Object> listFilteredAjax(PageVO pageVO, @RequestParam(defaultValue = "1") Integer page) {
-		System.out.println("ajax: "+page);
 		return service.getProductFiltered(pageVO, page);
 	}
 	
 	
 	// 03-05 박형우 추가
+
+	//	구독 등록 폼
+	@RequestMapping(value="/subscription/{category}/register", method = RequestMethod.GET)
+	private String giverSubsRegisterForm(@PathVariable int category, Model model) {
+		model.addAllAttributes(service.showRegisterSubsForm(category));
+		return "giverSubsRegisterForm";
+	}
+	//210304 박형우------------------------------------------------------
 	
-	//구독 등록 폼
-		@RequestMapping(value="/subscription/{category}/register", method = RequestMethod.GET)
-		private String giverSubsRegisterForm(@PathVariable int category, Model model) {
-			model.addAllAttributes(service.showRegisterSubsForm(category));
-			return "giverSubsRegisterForm";
-		}
-		//210304 박형우------------------------------------------------------
-		
-		//해당 시,군의 속하는 Json
-		@RequestMapping(value="/ajax/subState", method = RequestMethod.GET)
-		@ResponseBody
-		private List<Region> subStateJson(@RequestParam int stateNo){
-			return service.getSubStateJson(stateNo);
-		}
-		//210304 박형우------------------------------------------------------
+	//해당 시,군의 속하는 Json
+	@RequestMapping(value="/ajax/subState", method = RequestMethod.GET)
+	@ResponseBody
+	private List<Region> subStateJson(@RequestParam int stateNo){
+		return service.getSubStateJson(stateNo);
+	}
+	//210304 박형우------------------------------------------------------
 
-		//이미지 업로드와 Json
-		@RequestMapping(value="/ajax/uploadImage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-		@ResponseBody
-		private String uploadImage(String type, MultipartFile uploadImg, HttpServletRequest request) throws Exception{
-			// 서버
-			ServletContext application = request.getServletContext();
+	//이미지 업로드와 Json
+	@RequestMapping(value="/ajax/uploadImage", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+	@ResponseBody
+	private String uploadImage(String type, MultipartFile uploadImg, HttpServletRequest request) throws Exception{
+		// 서버
+		ServletContext application = request.getServletContext();
+	
+		// 기본경로
+		String rootPath = application.getRealPath("/");
+	
+		// 업로드 폴더 경로
+		String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator;
+	
+		// 파일의 실제 이름
+		String fileName = uploadImg.getOriginalFilename();
+	
+		// 파일 객체 생성
+		File file = new File(uploadPath + fileName);
+	
+		// 파일이름이 같다면 숫자가 붙음
+		file = FileRenameUtil.rename(file);
 		
-			// 기본경로
-			String rootPath = application.getRealPath("/");
+		// 임시폴더에 우리 업로드폴더로 이동
+		uploadImg.transferTo(file);
 		
-			// 업로드 폴더 경로
-			String uploadPath = rootPath + "img" + File.separator + "upload" + File.separator;
-		
-			// 파일의 실제 이름
-			String fileName = uploadImg.getOriginalFilename();
-		
-			// 파일 객체 생성
-			File file = new File(uploadPath + fileName);
-		
-			// 파일이름이 같다면 숫자가 붙음
-			file = FileRenameUtil.rename(file);
-			
-			// 임시폴더에 우리 업로드폴더로 이동
-			uploadImg.transferTo(file);
-			
-			switch(type) {
-			case "PR":
-				String resizePath = rootPath + "img" + File.separator + "resize" + File.separator;
-				ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 100);
-				break;
-			default: 
-				break;
-			}
-			
-			return "{\"imageName\":\""+file.getName()+"\"}";
+		switch(type) {
+		case "PR":
+			String resizePath = rootPath + "img" + File.separator + "resize" + File.separator;
+			ResizeImageUtil.resize(file.toString(), resizePath + file.getName(), 100);
+			break;
+		default: 
+			break;
 		}
-		//210304 박형우------------------------------------------------------
+		
+		return "{\"imageName\":\""+file.getName()+"\"}";
+	}
+	//210304 박형우------------------------------------------------------
 
-		//구독 등록하기
-		@RequestMapping(value="/giver/subscription", method = RequestMethod.POST)
-		private String uploadSubs(HttpSession session, Product product, String editorContent, int[] days, int[] deliveryAvailSubState, int[] deliveryAvailTax) {
-			
-			Member loginMember=(Member)session.getAttribute("loginMember");
-			System.out.println(loginMember.getNo()+"기버번호");
-			System.out.println(product.getCategoryNo()+"카테고리번호");
-			System.out.println(product.getName()+"상품명");
-			System.out.println(product.getPrice()+"가격");
-			System.out.println(product.getDiscount()+"할인가");
-			System.out.println(product.getDateAvail() +"날짜");
-			System.out.println(product.getSalesQty()+"세일즈 qty");
-			System.out.println(product.getReqMsg()+"요청메세지");
-			System.out.println(product.getPhoto()+"썸네일");
-			System.out.println(editorContent+": 컨트롤러에서 상세");
-			System.out.println(product.getInstruction()+"제품이미지");
-			
-			boolean result = service.registerProduct(loginMember, product, editorContent, days, deliveryAvailSubState, deliveryAvailTax);
-			
-			return "redirect:/giver/"+loginMember.getNo();
-		}
-		//210304 박형우------------------------------------------------------
+	//구독 등록하기
+	@RequestMapping(value="/giver/subscription", method = RequestMethod.POST)
+	private String uploadSubs(HttpSession session, Product product, String editorContent, int[] days, int[] deliveryAvailSubState, int[] deliveryAvailTax) {
 		
-		//카테고리 선택 폼
-		@RequestMapping(value="/category", method = RequestMethod.GET)
-		private String registerCategoryForm() {
-			return "registerCategoryForm";
-		}
-		//210305 박형우------------------------------------------------------
+		Member loginMember=(Member)session.getAttribute("loginMember");
+		System.out.println(loginMember.getNo()+"기버번호");
+		System.out.println(product.getCategoryNo()+"카테고리번호");
+		System.out.println(product.getName()+"상품명");
+		System.out.println(product.getPrice()+"가격");
+		System.out.println(product.getDiscount()+"할인가");
+		System.out.println(product.getDateAvail() +"날짜");
+		System.out.println(product.getSalesQty()+"세일즈 qty");
+		System.out.println(product.getReqMsg()+"요청메세지");
+		System.out.println(product.getPhoto()+"썸네일");
+		System.out.println(editorContent+": 컨트롤러에서 상세");
+		System.out.println(product.getInstruction()+"제품이미지");
 		
-		// 03-05 박형우 추가 end
+		boolean result = service.registerProduct(loginMember, product, editorContent, days, deliveryAvailSubState, deliveryAvailTax);
+		
+		return "redirect:/giver/"+loginMember.getNo();
+	}
+	//210304 박형우------------------------------------------------------
+	
+	//카테고리 선택 폼
+	@RequestMapping(value="/category", method = RequestMethod.GET)
+	private String registerCategoryForm() {
+		return "registerCategoryForm";
+	}
+	//210305 박형우------------------------------------------------------
+	
+	// 03-05 박형우 추가 end
 	
 	
 }
