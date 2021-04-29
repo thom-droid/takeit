@@ -1,9 +1,6 @@
 package com.summer.cabbage.service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -256,7 +253,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 	}
 	//송진현//
 	
-	
+	// categories, location options
 	@Override
 	public Map<String, Object> getProductListByCategory(String category) {  
 			
@@ -280,44 +277,42 @@ public class SubscribesServiceImpl implements SubscribesService {
 		//priorNo 값을 set 으로 넣어준다. 
 		pageVO.setPriorNo(priorNo);
 		
-		System.out.println("priorNo :"+ priorNo);
-		//2차 카테고리 나타내기 위해서.
+		//System.out.println("priorNo :"+ priorNo);
+
+		// primary and secondary categories
 		map.put("categories", categoriesDAO.selectListByCategory(priorNo));
 		
-		//? 
 		map.put("category", categoriesDAO.selectSecondCategory(priorNo));
 		
 		// location info with products qty
 		List<List<Region>> list = new ArrayList<List<Region>>();
-		List<Region> items = new ArrayList<Region>();
-		List<Region> storeValue = new ArrayList<Region>();
 		Region prmryLocation = new Region();
 		List<Region> scndLocation = new ArrayList<Region>();
 		
 		// 
-		int size = 0;
-		List<Integer> idxArr = new ArrayList<Integer>();
-		idxArr.add(0);
-		for(int i = 1;i<=17;i++) {
-			prmryLocation = regionsDAO.selectPrmryLocationWithNum(i);
-			scndLocation = regionsDAO.selectScndLocationWithNum(i);
+		int no = 1;
+		pageVO.setTempNo(1);
+		
+		
+		for(int i = 0;i<17;i++) {
+			
+			List<Region> items = new ArrayList<Region>();
+			
+			prmryLocation = regionsDAO.selectPrmryLocationWithNum(no);
+			scndLocation = regionsDAO.selectScndLocationWithNum(no);
 			
 			if(prmryLocation!=null) {
-				items.add(size, regionsDAO.selectPrmryLocationWithNum(i));
+				items.add(regionsDAO.selectPrmryLocationWithNum(no));
 			}
 			if(scndLocation!=null) {
-				items.addAll(regionsDAO.selectScndLocationWithNum(i));
+				items.addAll(regionsDAO.selectScndLocationWithNum(no));
 			}
-			size = items.size();
-			idxArr.add(size);
+			list.add(items);
+			pageVO.setTempNo(pageVO.getTempNo()+1);
 			
 		}
 		
-		for(Iterator<Integer> itr = idxArr.iterator();itr.hasNext();) {
-		}
-		
-		
-		System.out.println("size :" +list.size());
+		//System.out.println("size :" +list.size());
 		map.put("primaryLocation", regionsDAO.selectStates());
 		map.put("secondLocation", list);
 		return map;
@@ -331,24 +326,19 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
+		//pagination
 		int no = pageVO.getCategoryNo();
+		
 		pageVO.setEnd(page*6);
 		pageVO.setStart(pageVO.getEnd()-6+1);
 		Category cg = new Category();
 		cg = categoriesDAO.selectEngName(no);
 		
-		System.out.println(cg.getEngName());
 		int total =0;
 		
 		if(no!=0) {
 			 total = productsDAO.selectTotalByCategory(no);
 		}
-		System.out.println("categoryNo:"+pageVO.getCategoryNo());
-		System.out.println("sort:" +pageVO.getSort());
-		System.out.println("result:"+total);
-		System.out.println(page);
-		System.out.println(pageVO.getStart());
-		System.out.println(pageVO.getEnd());
 		
 		String paginate = PaginateUtil.getPaginate(page, total, 6, 12, cg.getEngName());
 		

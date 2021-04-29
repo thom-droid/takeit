@@ -49,7 +49,7 @@
 								data-order="sub">구독순</button></li>
 						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="lowPrice">낮은가격순</button></li>
-						<li class="category_tab"><button clzass="by_order sel_btn"
+						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="highPrice">높은가격순</button></li>
 						<li class="category_tab"><button class="by_order sel_btn"
 								data-order="rate">평점순</button></li>
@@ -78,7 +78,7 @@
 			<div class="location_area">
 				<div class="pop_primary_location">
 					<c:forEach items="${primaryLocation}" var="item">
-					<div class="primary_location_item">
+					<div class="primary_location_item item_block">
 						<span class="primary_location">${item.name}</span>
 						<span class="item_numbers"></span>
 					</div>
@@ -88,7 +88,7 @@
 				<c:forEach items="${secondLocation}" var="list">
 				<div class="pop_second_location">
 					<c:forEach items="${list}" var="item">
-					<div class="second_location_item">
+					<div class="second_location_item item_block">
 						<span class="second_location">${item.name}</span>
 						<span class="item_numbers">${item.num}</span>
 					</div>

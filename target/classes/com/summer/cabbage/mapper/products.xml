@@ -46,30 +46,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE giver_no = #{giverNo}
 	</select>
 	
-	<!-- 03-04 이소현 _ 카테고리별로(category_no) 제품 리스트 받아오기 + 페이징처리 -->
-<!-- 	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
-		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
-		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
-			FROM(SELECT p.no no, giver_no giverNo, p.name name, price, discount, price-discount realPrice, photo, sales_qty salesQty, type, sub_count subCount, star, rev_count revCount, p.regdate regdate,
-					g.company company, c.prior_no priorNo, c.no categoryNo, c.name categoryName
-				FROM products p, givers g, categories c
-				WHERE p.giver_no = g.no AND c.no = p.category_no AND c.no = #{categoryNo}))
-		WHERE r BETWEEN #{start} AND #{end}
-	</select> -->
-	
 	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
 		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
 		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
-			FROM(SELECT p.no no, giver_no giverNo, p.name name, price, discount, price-discount realPrice, photo, sales_qty salesQty, type, sub_count subCount, star, rev_count revCount, p.regdate regdate,
-					g.company company, c.prior_no priorNo, c.no categoryNo, c.name categoryName
-				FROM products p, givers g, categories c
-				WHERE p.giver_no = g.no AND c.no = p.category_no 
+			FROM(SELECT p.no no, giver_no giverNo, p.name name, p.price price, p.discount discount, p.price-discount realPrice, p.photo photo, p.sales_qty salesQty, p.type type, p.sub_count subCount, p.star star, p.rev_count revCount, p.regdate regdate,
+					g.company company, 
+					c.prior_no priorNo, c.no categoryNo, c.name categoryName
+				FROM products p
+				INNER JOIN givers g
+				ON p.giver_no = g.no
+				INNER JOIN categories c
+				ON c.no = p.category_no 
+				INNER JOIN delivery_regions dr
+                ON p.no = dr.product_no
+                LEFT JOIN regions r
+                ON r.no = dr.area_no
 				<choose>
 					<when test="categoryNo gte 1 and categoryNo lte 4">
-						AND c.prior_no = #{categoryNo}
+						WHERE c.prior_no = #{categoryNo}
 					</when>
 					<when test="categoryNo gt 4">
-						AND c.no = #{categoryNo}
+						WHERE c.no = #{categoryNo}
 					</when>
 				</choose>
 				<choose>

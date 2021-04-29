@@ -5,11 +5,24 @@ public class PageVO {
 	private int start,end;
 	
 	// 필드 추가 ///////////////////////////
-	private int giverNo;
-	private String sort;
+	private int giverNo, tempNo, memberNo, priorNo, categoryNo;
+	private String sort, location;
 	
-	//0304 이소현 멤버필드 추가
-	private int  memberNo, priorNo, categoryNo;
+	public int getTempNo() {
+		return tempNo;
+	}
+
+	public void setTempNo(int tempNo) {
+		this.tempNo = tempNo;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
 
 	public int getMemberNo() {
 		return memberNo;
