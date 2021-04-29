@@ -29,9 +29,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM delivery_regions dr
 		INNER JOIN regions r
 		ON dr.area_no = r.no
-		WHERE r.no = #{i}
+		WHERE r.no = #{no}
 		GROUP BY r.name
 	</select>
+	
+	
+	<!-- 
+        
+      SELECT r.name, count(dr.product_no)
+        FROM products p
+        INNER JOIN givers g
+        ON p.giver_no = g.no
+        INNER JOIN categories c
+        ON c.no = p.category_no 
+        INNER JOIN delivery_regions dr
+        ON p.no = dr.product_no
+        LEFT JOIN regions r
+        ON r.no = dr.area_no
+        WHERE c.prior_no = 1
+        AND r.no = 1
+        GROUP BY r.name
+	
+	 -->
 	
 	<select id="selectScndLocationWithNum" resultType="Region" parameterType="int">
 		SELECT r.name, count(dr.product_no) num
@@ -39,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INNER JOIN  regions r
 		ON dr.area_no = r.no 
 		AND r.prior_no is not NULL
-		WHERE r.prior_no = #{i}
+		WHERE r.prior_no = #{no}
 		group by r.name 
 	</select>
 </mapper>

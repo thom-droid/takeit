@@ -253,7 +253,17 @@ select {
     width: 350px;
     height: 500px;
     overflow-y: scroll;
+	display: none;
+}
+
+.pop_second_location.show{
+	display:block;
 	
+}
+
+.item_block:hover{
+	background-color: #a9a9a9;
+	color: white;
 }
 
 .second_location_item{
@@ -276,22 +286,9 @@ select {
 	overflow: hidden;
 }
 
-.korea_states {
-	width: 105px;
-	height: 500px;
-	float: left;
-	overflow: scroll;
-	overflow-x: hidden;
-	/*
-    x축 스크롤 안보이게 하기 위해서 설정함
-    */
-}
-
-.korea_states li {
-	width: 90px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
+.no_item{
+	
+	
 }
 
 .states_specifics {
