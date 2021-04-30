@@ -2,6 +2,7 @@ package com.summer.cabbage.dao;
 
 import java.util.List;
 
+import com.summer.cabbage.vo.PageVO;
 import com.summer.cabbage.vo.Region;
 
 public interface RegionsDAO {
@@ -13,9 +14,9 @@ public interface RegionsDAO {
 	public List<Region> selectSubStates(int stateNo);
 	//210304 박형우-----------------------------------------
 	
-	public Region selectPrmryLocationWithNum(int no);
+	public Region selectPrmryLocationWithNum(PageVO pageVO);
 	
-	public List<Region> selectScndLocationWithNum(int no);
+	public List<Region> selectScndLocationWithNum(PageVO pageVO);
 	
 	
 }

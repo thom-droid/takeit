@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.summer.cabbage.vo.PageVO;
 import com.summer.cabbage.vo.Region;
 
 @Repository
@@ -28,13 +29,13 @@ public class RegionsDAOImpl implements RegionsDAO {
 	//210304 박형우-----------------------------------------
 	
 	@Override
-	public Region selectPrmryLocationWithNum(int no) {
-		return session.selectOne("regions.selectPrmryLocationWithNum", no);
+	public Region selectPrmryLocationWithNum(PageVO pageVO) {
+		return session.selectOne("regions.selectPrmryLocationWithNum", pageVO);
 	}
 	
 	@Override
-	public List<Region> selectScndLocationWithNum(int no) {
-		return session.selectList("regions.selectScndLocationWithNum", no);
+	public List<Region> selectScndLocationWithNum(PageVO pageVO) {
+		return session.selectList("regions.selectScndLocationWithNum", pageVO);
 	}
 	
 }
