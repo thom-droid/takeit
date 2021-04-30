@@ -1,6 +1,7 @@
 package com.summer.cabbage.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -276,6 +277,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		//priorNo 값을 set 으로 넣어준다. 
 		pageVO.setPriorNo(priorNo);
+		pageVO.setCategoryNo(priorNo);
 		
 		//System.out.println("priorNo :"+ priorNo);
 
@@ -295,17 +297,18 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		
 		for(int i = 0;i<17;i++) {
-			
+			System.out.println("tempNo :"+pageVO.getTempNo());
+			System.out.println("categoryNo :"+pageVO.getCategoryNo());
 			List<Region> items = new ArrayList<Region>();
 			
-			prmryLocation = regionsDAO.selectPrmryLocationWithNum(no);
-			scndLocation = regionsDAO.selectScndLocationWithNum(no);
+			prmryLocation = regionsDAO.selectPrmryLocationWithNum(pageVO);
+			scndLocation = regionsDAO.selectScndLocationWithNum(pageVO);
 			
 			if(prmryLocation!=null) {
-				items.add(regionsDAO.selectPrmryLocationWithNum(no));
+				items.add(regionsDAO.selectPrmryLocationWithNum(pageVO));
 			}
 			if(scndLocation!=null) {
-				items.addAll(regionsDAO.selectScndLocationWithNum(no));
+				items.addAll(regionsDAO.selectScndLocationWithNum(pageVO));
 			}
 			list.add(items);
 			pageVO.setTempNo(pageVO.getTempNo()+1);
