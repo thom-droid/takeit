@@ -108,12 +108,6 @@ $secondItem.click(function(){
 });
 
 
-
-
-
-/*  ========================카테고리에 따라서 구독 상품 카드 목록 나타내기================================ */
-
-
 $listBtn.on("click", function(){
 	const $nextUl = $(this).next();
 	if($nextUl.css("display","none")){
