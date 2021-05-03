@@ -17,18 +17,15 @@ const $secondItem = $(".second_location_item");
 const $locationBtn = $(".location.header_btn");
 
 let itemIdx = 0;
-let locationVal = '';
+
 
 // template
 const $resultArea = $(".search_result_list");
 const $paginating = $(".pagination");
-
-//상품카드 템플릿 붙일 ul 요소
 const $resultUl = $(".search_result_list");
-//상품카드
 const $subsCard = $(".search_result_item");
-//상품카드템플릿
 const $subsCardTmpl = _.template($("#subsCardTmpl").html());
+
 
 // filter btn action
 const $listBtn = $(".list_btn");
@@ -40,8 +37,13 @@ const $filterByOrder =$(".by_order");
 // filter default value when html is rendered
 let categoryValue = $filterByCategory.first().data("categoryNo");
 let orderValue = "";
+let locationVal = "";
 
-function getItemList(categoryValue, orderValue, page, locationVal){
+// reset btn
+const $filterResetBtn = $(".reset_btn");
+
+// item list ajax 
+function getItemList(categoryValue, orderValue, locationVal, page){
 	
 	$.ajax({
 		url:"/ajax/filter/category/",
@@ -69,7 +71,7 @@ function closePopup(){
 }
 
 // call list on rendering
-getItemList(categoryValue, orderValue);
+getItemList(categoryValue, orderValue, locationVal);
 
 
 // open popup 
@@ -102,7 +104,7 @@ $secondItem.click(function(){
 	console.log(locationVal);
 	$locationBtn.text(locationVal).css("color","#0057D9");
 	closePopup();
-	getItemList(categoryValue, orderValue, page, locationVal);
+	getItemList(categoryValue, orderValue, locationVal);
 });
 
 
@@ -129,14 +131,13 @@ $filterByCategory.on("click", function(){
 	console.log(categoryValue);
 	console.log(orderValue);
 	
-	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
-	$this.closest(".btn_box").find(".list_btn").css({"color": "#0057D9", "font-weight": "500"});
+	$this.closest(".btn_box").find(".list_btn").text(filterSelected).css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
-	getItemList(categoryValue, orderValue);
+	getItemList(categoryValue, orderValue, locationVal);
 });
 
-// filtered by order
+// filter by order
 $filterByOrder.on("click", function(){
 	const $this = $(this);
 	const filterSelected = $this.text();
@@ -144,11 +145,10 @@ $filterByOrder.on("click", function(){
 	console.log(categoryValue);
 	console.log(orderValue);
 	
-	$this.closest(".btn_box").find(".list_btn").text(filterSelected);
-	$this.closest(".btn_box").find(".list_btn").css({"color": "#0057D9", "font-weight": "500"});
+	$this.closest(".btn_box").find(".list_btn").text(filterSelected).css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
-	getItemList(categoryValue, orderValue);
+	getItemList(categoryValue, orderValue, locationVal);
 });
 
 
@@ -158,8 +158,16 @@ $paginating.on("click", "a.paging", function(e){
 	const $this = $(this);
 	page = $this.data("page");
 	console.log(page);
-	getItemList(categoryValue, orderValue, page, locationVal);
+	getItemList(categoryValue, orderValue, locationVal, page);
 }); // on click
+
+// reset filtered list to default
+$filterResetBtn.click(function(){
+	
+	location.reload();
+	
+});
+
 
 
 

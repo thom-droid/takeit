@@ -55,6 +55,7 @@
 								data-order="rate">평점순</button></li>
 					</ul>
 				</div>
+				<button type="button" class="reset_btn header_btn">초기화</button>
 			</div><!-- categories_header_end -->
 			<div class="category_result_box">
 				<ul class="search_result_list">
@@ -71,7 +72,16 @@
 			<div class="pop_where_header_wrap">
 				<!--pop_where_header_wrap start-->
 				<div class="pop_where_header_title">
-					<span class="filter_where">지역</span>
+					<div class="title_wrap">
+						<span class="filter_where">지역</span>
+					</div>
+					<div class="filter_info_wrap">
+						<span class="filter_info">배송가능한 지역 목록입니다(e.g. 서울은 서울 전체)</span>
+					</div>
+					<div class="filter_info_wrap">
+						<p class="filter_note">한 상품이 여러 지역에 배송이 가능한 경우가 있으므로, </p>
+						<p class="filter_note">목록에서 보여지는 상품 수와 실제 보여지는 상품 수가 다를 수 있습니다. </p>
+					</div>
 				</div>
 				<button name="close_btn" type="button" class="pop_close_button fas fa-times"></button>
 			</div><!--//pop_where_header_wrap end-->
@@ -80,7 +90,7 @@
 					<c:forEach items="${primaryLocation}" var="item">
 					<div class="primary_location_item item_block">
 						<span class="primary_location">${item.name}</span>
-						<span class="item_numbers"></span>
+						<span class="item_numbers">${item.num}</span>
 					</div>
 					</c:forEach>
 				<!--pop_where_container start-->
@@ -131,27 +141,6 @@
 	<@ })@>             
 </script>
 	
-<%-- location template --%>
-<script type="text/template" id="locationTmpl">
-    <ul class="korea_states">
-    <@ _.each(sidoList,function(sido) {@>
-		<li><a href="">전국구</a></li>
-        <li><a href=""><@=sido.name@></a></li>
-    <@}) @>
-    </ul>
-    <div class="states_specifics"><!--states_specifics start-->
-    <@ _.each(gugunList,function(guguns,idx) { @>
-		<ul class="select_all">
-			<li><a href="">전체</a></li>
-		</ul>
-        <ul class="specifics_list <@ if(idx==0){ @> on<@ } @>" >
-        <@ _.each(guguns,function(gugun) {@>
-            <li><a href=""><@=gugun.name@> <span><@=gugun.size@></span></a></li>
-       <@ })@>
-        </ul>
-    <@ })@>
-    </div>
-</script>
 <c:import url="/WEB-INF/view/template/js-import.jsp" />
 <script src="/js/item-list.js"></script>
 </body>

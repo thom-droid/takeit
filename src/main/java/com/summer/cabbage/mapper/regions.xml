@@ -24,40 +24,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!--210304 박형우 -->
 	
-	
-	<select id="selectPrmryLocationWithNum" parameterType="PageVO" resultType="Region">
-	  	SELECT r.name, count(dr.product_no) num
-        FROM products p
-        INNER JOIN givers g
-        ON p.giver_no = g.no
-        INNER JOIN categories c
-        ON c.no = p.category_no 
-        INNER JOIN delivery_regions dr
-        ON p.no = dr.product_no
-        LEFT JOIN regions r
-        ON r.no = dr.area_no
-        WHERE c.prior_no = #{categoryNo}
-        AND r.no = #{tempNo}
-        GROUP BY r.name
-	
+	<!-- select prmy location with a whole num -->
+	<select id="selectLocationWithNum" parameterType="PageVO" resultType="Region">
+        SELECT r.name, COUNT(p.no) num
+		FROM products p
+		INNER JOIN delivery_regions dr
+		ON dr.product_no = p.no
+		INNER JOIN regions r
+		ON dr.area_no = r.no
+		INNER JOIN categories c
+		ON c.no = p.category_no
+		WHERE 
+		(r.no = #{tempNo} OR r.prior_no = #{tempNo} )
+		AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+		GROUP BY r.name
 	</select>
 	
-	<select id="selectScndLocationWithNum" parameterType="PageVO" resultType="Region">
-	  	SELECT r.name, count(dr.product_no) num
-        FROM products p
-        INNER JOIN givers g
-        ON p.giver_no = g.no
-        INNER JOIN categories c
-        ON c.no = p.category_no 
-        INNER JOIN delivery_regions dr
-        ON p.no = dr.product_no
-        LEFT JOIN regions r
-        ON r.no = dr.area_no
-        WHERE c.prior_no = #{categoryNo}
-        AND r.prior_no = #{tempNo}
-        GROUP BY r.name
+	<select id="selectPrimaryLocationWithNum" parameterType="PageVO" resultType="Region">
+		SELECT r.name,
+			(SELECT SUM(count(p.no))
+			FROM products p
+			INNER JOIN delivery_regions dr
+			ON dr.product_no = p.no
+			INNER JOIN regions r
+			ON dr.area_no = r.no
+			INNER JOIN categories c
+			ON c.no = p.category_no
+			WHERE
+			(r.no = #{tempNo} OR r.prior_no =#{tempNo} )
+			AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+			GROUP BY r.name) num
+		FROM regions r
+		WHERE r.no = #{tempNo}
 	
 	</select>
-	
 </mapper>
 
