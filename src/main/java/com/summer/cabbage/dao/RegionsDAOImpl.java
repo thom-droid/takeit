@@ -29,13 +29,12 @@ public class RegionsDAOImpl implements RegionsDAO {
 	//210304 박형우-----------------------------------------
 	
 	@Override
-	public Region selectPrmryLocationWithNum(PageVO pageVO) {
-		return session.selectOne("regions.selectPrmryLocationWithNum", pageVO);
+	public List<Region> selectLocationWithNum(PageVO pageVO) {
+		return session.selectList("regions.selectLocationWithNum", pageVO);
 	}
 	
 	@Override
-	public List<Region> selectScndLocationWithNum(PageVO pageVO) {
-		return session.selectList("regions.selectScndLocationWithNum", pageVO);
+	public Region selectPrimaryLocationWithNum(PageVO pageVO) {
+		return session.selectOne("regions.selectPrimaryLocationWithNum", pageVO);
 	}
-	
 }

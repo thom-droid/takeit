@@ -49,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
 		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
 		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
-			FROM(SELECT p.no no, giver_no giverNo, p.name name, p.price price, p.discount discount, p.price-discount realPrice, p.photo photo, p.sales_qty salesQty, p.type type, p.sub_count subCount, p.star star, p.rev_count revCount, p.regdate regdate,
+			FROM(SELECT DISTINCT p.no no, giver_no giverNo, p.name name, p.price price, p.discount discount, p.price-discount realPrice, p.photo photo, p.sales_qty salesQty, p.type type, p.sub_count subCount, p.star star, p.rev_count revCount, p.regdate regdate,
 					g.company company, 
 					c.prior_no priorNo, c.no categoryNo, c.name categoryName
 				FROM products p
@@ -62,13 +62,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 LEFT JOIN regions r
                 ON r.no = dr.area_no
 				<choose>
-					<when test="categoryNo gte 1 and categoryNo lte 4">
+					<when test="categoryNo gte 1 and categoryNo lt 4">
 						WHERE c.prior_no = #{categoryNo}
 					</when>
-					<when test="categoryNo gt 4">
+					<when test="categoryNo gte 4">
 						WHERE c.no = #{categoryNo}
 					</when>
 				</choose>
+				<if test="location !=''">
+					AND r.name = #{location}
+				</if> 
 				<choose>
 					<when test="sort =='default'">
 						ORDER BY no
@@ -103,10 +106,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*)
 		FROM products, categories
 		WHERE categories.no = products.category_no
-		<if test="categoryNo gte 1 and categoryNo lte 4">
+		<if test="categoryNo gte 1 and categoryNo lt 4">
 			AND categories.prior_no = #{categoryNo}
 		</if>
-		<if test="categoryNo gt 4">
+		<if test="categoryNo gte 4">
 			AND products.category_no = #{categoryNo}
 		</if> 
 	</select>

@@ -275,48 +275,40 @@ public class SubscribesServiceImpl implements SubscribesService {
 			priorNo = 4;
 		}//if~else if~else if~else end
 		
-		//priorNo 값을 set 으로 넣어준다. 
+		//setting priorNo 
 		pageVO.setPriorNo(priorNo);
-		pageVO.setCategoryNo(priorNo);
 		
-		//System.out.println("priorNo :"+ priorNo);
-
 		// primary and secondary categories
 		map.put("categories", categoriesDAO.selectListByCategory(priorNo));
 		
 		map.put("category", categoriesDAO.selectSecondCategory(priorNo));
 		
-		// location info with products qty
+		// location info with product numbers
 		List<List<Region>> list = new ArrayList<List<Region>>();
-		Region prmryLocation = new Region();
 		List<Region> scndLocation = new ArrayList<Region>();
+		List<Region> prmy = new ArrayList<Region>();
 		
-		// 
-		int no = 1;
+		pageVO.setCategoryNo(priorNo);
 		pageVO.setTempNo(1);
 		
 		
 		for(int i = 0;i<17;i++) {
-			System.out.println("tempNo :"+pageVO.getTempNo());
-			System.out.println("categoryNo :"+pageVO.getCategoryNo());
 			List<Region> items = new ArrayList<Region>();
 			
-			prmryLocation = regionsDAO.selectPrmryLocationWithNum(pageVO);
-			scndLocation = regionsDAO.selectScndLocationWithNum(pageVO);
+			// primary, secondary location search with categoryNo, tempNo(1 to 17)
+			scndLocation = regionsDAO.selectLocationWithNum(pageVO);
 			
-			if(prmryLocation!=null) {
-				items.add(regionsDAO.selectPrmryLocationWithNum(pageVO));
-			}
 			if(scndLocation!=null) {
-				items.addAll(regionsDAO.selectScndLocationWithNum(pageVO));
+				items.addAll(regionsDAO.selectLocationWithNum(pageVO));
 			}
+
+			// add a List<Region> object to the new List to get indexed
 			list.add(items);
+			prmy.add(regionsDAO.selectPrimaryLocationWithNum(pageVO));
 			pageVO.setTempNo(pageVO.getTempNo()+1);
-			
 		}
 		
-		//System.out.println("size :" +list.size());
-		map.put("primaryLocation", regionsDAO.selectStates());
+		map.put("primaryLocation", prmy);
 		map.put("secondLocation", list);
 		return map;
 	}
@@ -328,12 +320,16 @@ public class SubscribesServiceImpl implements SubscribesService {
 	public Map<String, Object> getProductFiltered(PageVO pageVO, int page) {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		System.out.println("categoryNo :" +pageVO.getCategoryNo());
+		System.out.println("sort:" +pageVO.getSort());
+		System.out.println("location :" +pageVO.getLocation());
 		
 		//pagination
 		int no = pageVO.getCategoryNo();
 		
 		pageVO.setEnd(page*6);
 		pageVO.setStart(pageVO.getEnd()-6+1);
+		
 		Category cg = new Category();
 		cg = categoriesDAO.selectEngName(no);
 		
