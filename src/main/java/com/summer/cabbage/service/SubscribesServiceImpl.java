@@ -331,12 +331,12 @@ public class SubscribesServiceImpl implements SubscribesService {
 		pageVO.setStart(pageVO.getEnd()-6+1);
 		
 		Category cg = new Category();
-		cg = categoriesDAO.selectEngName(no);
+		cg = categoriesDAO.selectEngName(pageVO.getCategoryNo());
 		
 		int total =0;
 		
 		if(no!=0) {
-			 total = productsDAO.selectTotalByCategory(no);
+			 total = productsDAO.selectTotalByCategory(pageVO);
 		}
 		
 		String paginate = PaginateUtil.getPaginate(page, total, 6, 12, cg.getEngName());

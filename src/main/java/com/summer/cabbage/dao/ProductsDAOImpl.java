@@ -61,9 +61,9 @@ public class ProductsDAOImpl implements ProductsDAO {
 	//03-04 이소현 추가 end
 	
 	//0414 selectTotal by categoryNo for pagination
-	public int selectTotalByCategory(int categoryNo) {
+	public int selectTotalByCategory(PageVO pageVO) {
 		
-		return session.selectOne("products.selectTotalByCategory", categoryNo);
+		return session.selectOne("products.selectTotalByCategory", pageVO);
 	}
 	
 	//구독 등록하기 03-06 박형우
