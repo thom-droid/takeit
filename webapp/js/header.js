@@ -79,7 +79,8 @@ $searchBtn.click(function(){
 $searchResetBtn.click(function(){
 	
 	// reset type value  
-	searchType.val('');
+	searchType.value="";
+	searchInput.value="";
 	
 	// bar disappear, btn appear back 
 	$searchBar.fadeOut(100, function(){
@@ -88,3 +89,29 @@ $searchResetBtn.click(function(){
 	
 });
 
+// search input validation check
+
+let searchInput = document.querySelector(".search_input");
+let queryValue = "";
+	
+let validationCheck = true;
+searchInput.addEventListener("keydown", (event) =>{
+	const keyName = event.key;
+	
+	if(keyName ==="Enter"){
+		queryValue = searchInput.value; 
+		console.log(queryValue);
+		if(!queryValue){
+			alert("검색어를 입력해주세요");
+			validationCheck = false;
+			console.log(validationCheck);
+			event.preventDefault();
+			searchInput.focus();
+			return false;
+		}
+		console.log(validationCheck);
+		return validationCheck;
+	}
+});
+
+console.log(validationCheck);
