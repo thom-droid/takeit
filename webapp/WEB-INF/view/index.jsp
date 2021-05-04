@@ -65,7 +65,7 @@
                     <c:forEach items="${hotCProducts }" var="hotCProduct">
                     <li>
                         <a href="">
-                            <img src="img/${hotCProduct.photo }.jpg"/>
+                            <img src="/img/product/${hotCProduct.photo }"/>
                             <div class="subscription_item_info"><!--subscription_item_info start -->
                                 <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
                                     <div class="subscription_item_company">${hotCProduct.company }</div>
@@ -87,7 +87,7 @@
                     <c:forEach items="${hotFProducts }" var="hotFProduct">
                     <li>
                         <a href="">
-                            <img src="img/${hotFProduct.photo }"/>
+                            <img src="/img/product/${hotFProduct.photo }"/>
                             <div class="subscription_item_info"><!--subscription_item_info start -->
                                 <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
                                     <div class="subscription_item_company">${hotFProduct.company }</div>
@@ -109,7 +109,7 @@
                     <c:forEach items="${hotHProducts }" var="hotHProduct">
                     <li>
                         <a href="">
-                            <img src="img/${hotHProduct.photo }"/>
+                            <img src="/img/product/${hotHProduct.photo }"/>
                             <div class="subscription_item_info"><!--subscription_item_info start -->
                                 <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
                                     <div class="subscription_item_company">${hotHProduct.company }</div>
@@ -140,13 +140,13 @@
             	<c:forEach items="${currentProducts }" var="currentProduct">
                 <li>
                     <a href="">
-                        <img src="/img/${currentProduct.photo }"/>
+                        <img src="/img/products/${currentProduct.photo }"/>
                         <div class="subscription_item_info"><!--subscription_item_info start -->
                             <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
-                                <div class="subscription_item_company">${currentProduct.company }</div>
+                                <div class="subscription_item_company">${currentProduct.name }</div>
                                 <div class="subscription_item_label">인기</div>
                             </div><!--//subscription_item_company_and_label end -->
-                            <div class="subscription_item_name">${currentProduct.name }</div>
+                            <div class="subscription_item_name">${currentProduct.company}</div>
                             <div class="subscription_item_price_and_rate_box"><!--subscription_item_price_and_rate_box start -->
                                 <div class="subscription_item_price">${currentProduct.price}원</div>
                                 <div class="subscription_item_rate"><!--subscription_item_rate start -->

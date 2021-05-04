@@ -327,8 +327,8 @@ public class SubscribesServiceImpl implements SubscribesService {
 		//pagination
 		int no = pageVO.getCategoryNo();
 		
-		pageVO.setEnd(page*6);
-		pageVO.setStart(pageVO.getEnd()-6+1);
+		pageVO.setEnd(page*8);
+		pageVO.setStart(pageVO.getEnd()-8+1);
 		
 		Category cg = new Category();
 		cg = categoriesDAO.selectEngName(pageVO.getCategoryNo());
@@ -338,8 +338,8 @@ public class SubscribesServiceImpl implements SubscribesService {
 		if(no!=0) {
 			 total = productsDAO.selectTotalByCategory(pageVO);
 		}
-		
-		String paginate = PaginateUtil.getPaginate(page, total, 6, 12, cg.getEngName());
+		System.out.println("total found" +total);
+		String paginate = PaginateUtil.getPaginate(page, total, 8, 16, cg.getEngName());
 		
 		map.put("subList", productsDAO.selectProductListByCategory(pageVO));
 		map.put("paginate", paginate);
