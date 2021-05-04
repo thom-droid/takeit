@@ -46,6 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE giver_no = #{giverNo}
 	</select>
 	
+	<!-- selectList by category, location, order -->
 	<select id="selectProductListByCategory" resultType="Product" parameterType="PageVO">
 		SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
 		FROM(SELECT no, giverNo, categoryNo, name, price, discount,realPrice, photo, salesQty, type,  subCount, star,revCount,  regdate,company, priorNo, categoryName, rownum r
@@ -65,7 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<when test="categoryNo gte 1 and categoryNo lt 4">
 						WHERE c.prior_no = #{categoryNo}
 					</when>
-					<when test="categoryNo gte 4">
+					<when test="categoryNo gte 4 and categoryNo lte 11">
 						WHERE c.no = #{categoryNo}
 					</when>
 				</choose>
@@ -103,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- select by condition -->
 	<select id="selectTotalByCategory" resultType="int" parameterType="PageVO">
-		SELECT COUNT(*)
+		SELECT COUNT(DISTINCT p.no)
 		FROM products p
 		INNER JOIN categories c
 		ON p.category_no = c.no
@@ -122,16 +123,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="location !=''">
 			AND r.name = #{location}
 		</if> 
-		
-		<!-- SELECT COUNT(*)
-		FROM products, categories
-		WHERE categories.no = products.category_no
-		<if test="categoryNo gte 1 and categoryNo lt 4">
-			AND categories.prior_no = #{categoryNo}
-		</if>
-		<if test="categoryNo gte 4">
-			AND products.category_no = #{categoryNo}
-		</if>  -->
 	</select>
 	
 	

@@ -82,6 +82,8 @@
 
 /*검색*/
 .hcb_search {
+	width: 260px;
+	height: 40px;
 	margin-left: 650px;
 }
 
@@ -90,25 +92,22 @@
 	top: 50%;
 	margin-top: -20px;
 	height: 40px;
-	border-bottom: 1px solid black;
 	background-color: white;
 }
 
-.hcb_search form>div>input[type="text"] {
-	width: 250px;
+
+.search_input {
+	width: 200px;
 	height: 40px;
 	border: none;
 	outline: none;
 	box-sizing: border-box;
 	font-size: 16px;
 	padding-right: 40px;
+	
 }
 
-.hcb_search form>div>button {
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	margin-left: -40px;
+.bar_component {
 	color: #424242;
 	cursor: pointer;
 	background-color: transparent;
@@ -218,4 +217,34 @@
 .logout:hover{
 	background-color: #8c8c8c;
 	color:white;
+}
+
+.search_area{
+	width: 260px;
+	height: 40px;
+	display: flex;
+    flex-direction: row;
+    transition-property: search-bar; 
+    transition: search-bar, 1.5s, ease, 500ms;
+}
+
+.search_by_btn{
+	width: 130px;
+	height: 40px;
+	font-family: 'AppleSDGothic', sans-serif;
+	cursor: pointer;
+	border: none;
+	transition-property: search-btn;
+	transition: search-btn,1s, linear;
+}
+
+.search_by_btn:hover{
+	background-color: #3C7166;
+	color: white;
+}
+
+.search_bar{
+	display:none;
+	flex-wrap: wrap;
+	flex-direction: row;
 }

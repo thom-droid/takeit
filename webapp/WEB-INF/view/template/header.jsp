@@ -34,11 +34,21 @@
 
         <!-- 검색 -->
         <div class="hcb_search">
-            <form>
-                <div>
-                    <input type="text">
-                    <button><i class="fas fa-search"></i></button>
+            <form method="GET" action="/">
+                <div class="search_area">
+				    <div class="search_by">
+				        <button type="button" class="search_btn_item search_by_btn" data-type="item">상품명검색</button>
+				    </div>
+				    <div class="search_by">
+				        <button type="button" class="search_btn_locaction search_by_btn" data-type="location">배달지역으로검색 </button>
+				    </div>
+				    <div class="search_bar">
+					    <input class="search_input" type="text" name="searchValue" placeholder="무엇을 찾으시나요?">
+					    <button class="search_input_btn fas fa-search bar_component" type="button"></button>
+					    <button class="reset_search_btn fas fa-times bar_component" type="button"></button>
+				    </div>
                 </div>
+                <input type="hidden" name="searchType" value="">                
             </form>
         </div>
         <!-- end hcb_search -->
