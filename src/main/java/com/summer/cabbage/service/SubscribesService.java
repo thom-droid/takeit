@@ -43,5 +43,6 @@ public interface SubscribesService {
 	
 	public Map<String, Object> getProductFiltered(PageVO pageVO, int page);
 		
+	public Map<String, Object> getSearchResult(PageVO pageVO);
 	
 }
