@@ -143,5 +143,6 @@
 	
 <c:import url="/WEB-INF/view/template/js-import.jsp" />
 <script src="/js/item-list.js"></script>
+<script src="/js/header.js"></script>
 </body>
 </html>

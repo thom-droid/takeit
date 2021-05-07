@@ -273,8 +273,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 			priorNo = 3;
 		} else if(category.equals("etc")) {
 			priorNo = 4;
-		}//if~else if~else if~else end
-		
+		}
 		//setting priorNo 
 		pageVO.setPriorNo(priorNo);
 		
@@ -320,6 +319,10 @@ public class SubscribesServiceImpl implements SubscribesService {
 	public Map<String, Object> getProductFiltered(PageVO pageVO, int page) {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		
+		System.out.println("type :" +pageVO.getSearchType());
+		System.out.println("value :" +pageVO.getSearchValue());
 		System.out.println("categoryNo :" +pageVO.getCategoryNo());
 		System.out.println("sort:" +pageVO.getSort());
 		System.out.println("location :" +pageVO.getLocation());
@@ -331,13 +334,14 @@ public class SubscribesServiceImpl implements SubscribesService {
 		pageVO.setStart(pageVO.getEnd()-8+1);
 		
 		Category cg = new Category();
-		cg = categoriesDAO.selectEngName(pageVO.getCategoryNo());
-		
-		int total =0;
-		
-		if(no!=0) {
-			 total = productsDAO.selectTotalByCategory(pageVO);
+		if (no!=0) {
+			cg = categoriesDAO.selectEngName(pageVO.getCategoryNo());
+		} else if (no ==0) {
+			cg.setEngName("search");
 		}
+		
+		int total = productsDAO.selectTotalByCategory(pageVO);
+		
 		System.out.println("total found" +total);
 		String paginate = PaginateUtil.getPaginate(page, total, 8, 16, cg.getEngName());
 		
@@ -345,6 +349,17 @@ public class SubscribesServiceImpl implements SubscribesService {
 		map.put("paginate", paginate);
 		
 		return map;
+	}
+	
+	// item list from search result
+	@Override
+	public Map<String, Object> getSearchResult(PageVO pageVO) {
+		
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		System.out.println("searchType :" + pageVO.getSearchType());
+		System.out.println("searchValue :" + pageVO.getSearchValue());
+		return null;
 	}
 	
 	

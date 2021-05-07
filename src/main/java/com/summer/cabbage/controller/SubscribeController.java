@@ -106,7 +106,6 @@ public class SubscribeController {
 	public String mainList(@PathVariable String category, Model model) {
 		model.addAllAttributes(service.getProductListByCategory(category)); 
 		return "item-list";
-		
 	}
 	
 	// item list filter ajax GET
@@ -115,6 +114,12 @@ public class SubscribeController {
 	@ResponseBody
 	public Map<String, Object> listFilteredAjax(PageVO pageVO, @RequestParam(defaultValue = "1") Integer page) {
 		return service.getProductFiltered(pageVO, page);
+	}
+	
+	// item list result from search GET
+	@GetMapping(value="/item/search")
+	public String listSearched(PageVO pageVO, Model model) {
+		return "item-list";
 	}
 	
 	

@@ -42,13 +42,27 @@ let locationVal = "";
 // reset btn
 const $filterResetBtn = $(".reset_btn");
 
+// check search value
+const queryString = window.location.search;
+const searchParams = new URLSearchParams(queryString);
+
+const searchType = searchParams.get("searchType");
+console.log(searchType);
+const searchValue = searchParams.get("searchValue");
+console.log(searchValue);
+const paramCheck = Boolean(searchParams.get("searchValue")); // false whne there is no query string 
+
 // item list ajax 
-function getItemList(categoryValue, orderValue, locationVal, page){
+function getItemList(categoryValue, orderValue, locationVal, searchType, searchValue, page){
 	
+	
+	if (!categoryValue){
+		categoryValue = 0;
+	}
 	$.ajax({
 		url:"/ajax/filter/category/",
 		type: "GET",
-		data: {"categoryNo": categoryValue, "sort": orderValue, "page": page, "location": locationVal },
+		data: {"categoryNo": categoryValue, "sort": orderValue, "page": page, "location": locationVal, "searchType": searchType, "searchValue": searchValue},
 		dataType: "JSON",
 		error: function(){
 			alert("failed");
@@ -70,8 +84,14 @@ function closePopup(){
 	$("body").css("overflow", "auto");
 }
 
-// call list on rendering
-getItemList(categoryValue, orderValue, locationVal);
+// call list on rendering 
+if (paramCheck){
+	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue );
+	console.log(`paramCheck is ${paramCheck}!`);
+} else{
+	getItemList(categoryValue, orderValue, locationVal);
+	console.log(`paramCheck is ${paramCheck}!`);	
+}
 
 
 // open popup 
@@ -150,7 +170,7 @@ $filterByOrder.on("click", function(){
 $paginating.on("click", "a.paging", function(e){
 	e.preventDefault();
 	const $this = $(this);
-	page = $this.data("page");
+	let page = $this.data("page");
 	console.log(page);
 	getItemList(categoryValue, orderValue, locationVal, page);
 }); // on click

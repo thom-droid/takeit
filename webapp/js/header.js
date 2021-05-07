@@ -70,7 +70,7 @@ $searchBtn.click(function(){
 	
 	// btn disappear
 	$searchBy.fadeOut(100, function(){
-		$searchBar.fadeIn();	
+		$searchBar.fadeIn(function (){$searchInput.focus()});	
 	});
 	
 });
@@ -95,6 +95,7 @@ let searchInput = document.querySelector(".search_input");
 let queryValue = "";
 	
 let validationCheck = true;
+
 searchInput.addEventListener("keydown", (event) =>{
 	const keyName = event.key;
 	
