@@ -1,12 +1,22 @@
 @charset "UTF-8";
+body{
+	background-color: #f4f7f6;
+	font-family: 'AppleSDGothic', serif;
+	color: #202121;
+	user-select: none;
+}
 
+a {
+	font-family: 'AppleSDGothic', serif;
+}
 #header {
 	top: 0;
-	position: fixed;
+	position: sticky;
 	width: 100%;
-	background: #fff;
-	border-bottom: 1px solid #8c8c8c;
+	background: #f4f7f6;
+	border-bottom: 1px solid #E6EAEA;
 	z-index: 10;
+	height: 80px;
 }
 
 .welcome_msg{
@@ -23,118 +33,156 @@
 }
 
 .header_contents_box {
-	width: 1100px;
-	height: 80px;
-	margin: 0 auto;
+    width: 100%;
+    display: flex;
+    height: 80px;
+    margin: 0 auto;
+    flex-direction: row;
 }
 
 /*로고*/
+
+.hcb_logo{
+	flex:1;
+	border-right: 1px solid #E6EAEA;
+}
+
+.logo_box{
+    position: absolute;
+    display: block;
+    width: auto;
+    left: 50%;
+    transform: translateX(-80%);
+}
+
 .hcb_logo a>img {
-	position: absolute;
+	vertical-align: middle;
 	width: 80px;
 	height: 40px;
-	top: 50%;
-	margin-top: -20px;
 }
 
 .hcb_logo a>span {
-	position: absolute;
-	line-height: 80px;
-	margin-left: 80px;
+	line-height: 80px;	
 	font-size: 25px;
 	color: #424242;
 	font-family: 'AppleSDGothic', serif;
 }
 
 /*카테고리*/
-.hcb_category {
-	margin-left: 200px;
-	overflow: hidden;
+.hcb_category_list{
+	display: flex;
+	flex-direction: row;
 }
 
 .hcb_category li{
-	width: 80px;
+	border-right: 1px solid #E6EAEA;
+	width: 120px;
 	height: 80px;
-	float: left;
 } 
+
 #header .hcb_category li.on{
 	background-color:  #3C7166;
 }
+
 .hcb_category li.on a{
 	color: white;
 }
+
 .hcb_category ul>li>a {
-	float: left;
-	width: 80px;
+	display:block;
 	text-align: center;
 	line-height: 80px;
-	font-size: 20px;
-	color: #424242;
-	font-family: 'AppleSDGothic', serif;
+	font-size: 16px;
+	color: #202121;
+	transition: all 0.3s ease-in-out;
 }
 
 .hcb_category ul>li>a:hover {
-	transition: .1s, ease;
-	background-color: #3C7166;
-	color: white;
-	font-size: 22px;
+	background-color: white;
+	color: #A6ABAB;
 }
 
 /*검색*/
 .hcb_search {
-	width: 260px;
-	height: 40px;
-	margin-left: 650px;
+	width: 262px;
+	height: 80px;
 }
 
 .hcb_search form>div {
-	position: absolute;
-	top: 50%;
-	margin-top: -20px;
-	height: 40px;
-	background-color: white;
+	line-height: 80px;
 }
 
-
 .search_input {
-	width: 200px;
-	height: 40px;
+	margin-left: 15px;
+	width: 190px;
 	border: none;
 	outline: none;
 	box-sizing: border-box;
 	font-size: 16px;
 	padding-right: 40px;
+	background-color: #f4f7f6;
 	
 }
 
 .bar_component {
+	margin-right: 5px;
 	color: #424242;
 	cursor: pointer;
 	background-color: transparent;
 	border: none;
 }
 
+.search_area{
+	width: 260px;
+	display: flex;
+    flex-direction: row;
+    transition: all 0.3s ease-in-out;
+}
+
+.search_by_btn{
+	text-align: center;
+	width: 130px;
+	cursor: pointer;
+	border-right: 1px solid #E6EAEA;
+	transition: all 0.3s ease-in-out;
+}
+
+.search_by_btn:hover{
+	background-color: white;
+	color: #A6ABAB;
+}
+
+.search_bar{
+	display:none;
+	flex-direction: row;
+    width: 100%;
+    height: 80px;
+}
+
 /*로그인*/
 .hcb_login {
-	margin-left: 1000px;
+	width: 120px;
+    height: auto;
+    border-right: 1px solid #E6EAEA;
 }
+
 /*로그인 안했을 경우*/
 .hcb_login_btn {
-	position: absolute;
-	width: 60px;
-	height: 40px;
-	top: 50%;
-	margin-top: -20px;
-	line-height: 40px;
-	text-align: center;
-	font-size: 18px;
-	font-family: 'AppleSDGothic', serif;
-	border: 1px solid #424242;
-	border-radius: 3px;
+	line-height: 80px;
+    text-align: center;
+    font-size: 18px;
+    background-color: rgba(60,113, 102, .8);
+    transition: all 0.3s ease-in-out;
+}
+
+.hcb_login_btn:hover{
+	background-color: rgba(60,113, 102);
 }
 
 .hcb_login_btn a {
-	color: #424242
+	display: block;
+	width: auto;
+	color: white;
 }
 
 /* 로그인 했을 경우 */
@@ -219,32 +267,3 @@
 	color:white;
 }
 
-.search_area{
-	width: 260px;
-	height: 40px;
-	display: flex;
-    flex-direction: row;
-    transition-property: search-bar; 
-    transition: search-bar, 1.5s, ease, 500ms;
-}
-
-.search_by_btn{
-	width: 130px;
-	height: 40px;
-	font-family: 'AppleSDGothic', sans-serif;
-	cursor: pointer;
-	border: none;
-	transition-property: search-btn;
-	transition: search-btn,1s, linear;
-}
-
-.search_by_btn:hover{
-	background-color: #3C7166;
-	color: white;
-}
-
-.search_bar{
-	display:none;
-	flex-wrap: wrap;
-	flex-direction: row;
-}

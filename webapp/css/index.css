@@ -1,16 +1,20 @@
 @charset "UTF-8";
+html{
+	box-sizing: box-content;
+}
 body{
 	font-family: "AppleSDGothic", sans-serif;
+	margin: auto;
+	width: 100%;
 }
 #container {
-	padding-top: 80px;
-	width: 1100px;
-	margin: auto;
+	width: 100%;
 }
 
 
 #hero_img_content {
-	height: 500px;
+	position: relative;
+	height: calc(100vh - 80px);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-image: url("/img/resource/hero_img.jpg");
@@ -18,12 +22,13 @@ body{
 }
 
 .hero_cover {
-	position: relative;
-	margin-top: -200px;
-	width: 1100px;
-	height: 5000px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top:0;
 	background-color: #424242;
 	opacity: 0.35;
+	z-index: 1;
 }
 
 .hero_comment_wrap {
@@ -34,7 +39,7 @@ body{
 	top: 50%;
 	margin-left: -200px;
 	margin-top: -80px;
-	z-index: 1;
+	z-index: 5;
 }
 
 .msg {
@@ -53,6 +58,11 @@ body{
 	font-size: 18px;
 }
 
+.menu_list{
+	display: grid;
+	grid: auto-flow / 1fr 1fr 1fr 1fr;
+}
+
 .main_menu_wrap {
 	position: relative;
 	height: 350px;
@@ -67,17 +77,7 @@ body{
 }
 
 .main_menu_wrap li {
-	float: left;
 	margin-left: 20px;
-}
-
-.main_menu_wrap span {
-	display: block;
-	width: 250px;
-	height: 60px;
-	line-height: 60px;
-	text-align: center;
-	background-color: rgb(243, 232, 229);
 }
 
 .menu_box {
@@ -86,29 +86,35 @@ body{
 	overflow: hidden;
 }
 
-.menu_item:hover img+span {
-	background-color: #3c7166;
-	color: white;
-} 
+.menu_box > img{
+	display: block;
+}
+
 
 .best_seller_content {
-	clear: both;
 	position: relative;
 	height: 1700px;
-	margin-top: 75px;
+	width: 100%;
+    margin: 75px auto 0 auto;
+}
+
+.best_seller_p{
+    font-size: 22px;
+    margin-left: 30px;
 }
 
 .best_seller_msg {
-	display: inline-block;
-	width: 1100px;
-	text-align: center;
-	font-size: 40px;
-	color: #424242;
+	font-size: 24px;
 	user-select: none;
 }
 
 .best_seller_wrap {
 	margin-top: 80px;
+}
+
+.msg_caption{
+	margin-left: 10px;
+	font-weight: 100;
 }
 
 .slide_box {
@@ -146,21 +152,8 @@ body{
 
 .steady_seller_content {
 	margin-top: 200px;
-	width: 1100px;
 	height: 800px;
 	margin-bottom: 100px;
-	user-select: none;
-	color: #424242;
-}
-
-.steady_seller_content span {
-	display: inline-block;
-	float: left;
-	position: relative;
-	height: 50px;
-	width: 500px;
-	font-size: 30px;
-	line-height: 50px;
 }
 
 .slide_list {
@@ -220,9 +213,16 @@ body{
 }
 
 .search_result_wrap {
-	width: 1100px;
 	min-height: 600px;
 	margin: 30px auto;
+}
+
+/* item list (recently added) */
+
+.search_result_list{
+	padding: 0 66px;
+	display: grid;
+	grid: auto-flow / 1fr 1fr 1fr 1fr;
 }
 
 .search_result_list img {
