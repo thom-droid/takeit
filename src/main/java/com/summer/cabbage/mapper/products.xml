@@ -63,6 +63,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 LEFT JOIN regions r
                 ON r.no = dr.area_no
 				<choose>
+					<when test="searchType =='item'">
+						WHERE p.name LIKE '%'|| #{searchValue} || '%'
+					</when>
+					<when test="searchType =='location'">
+						WHERE r.name LIKE '%'|| #{searchValue} || '%'
+					</when>
 					<when test="categoryNo gte 1 and categoryNo lt 4">
 						WHERE c.prior_no = #{categoryNo}
 					</when>
@@ -113,6 +119,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         LEFT JOIN regions r
         ON r.no = dr.area_no
 		<choose>
+			<when test="categoryNo eq 0 and searchType =='item'">
+				WHERE p.name LIKE '%'|| #{searchValue} || '%'
+			</when>
+			<when test="categoryNo eq 0 and searchType =='location'">
+				WHERE r.name LIKE '%'|| #{searchValue} || '%'
+			</when>
 			<when test="categoryNo gte 1 and categoryNo lt 4">
 				WHERE c.prior_no = #{categoryNo}
 			</when>

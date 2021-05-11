@@ -21,4 +21,6 @@ public interface CategoriesDAO {
 	//03-05 박형우 추가 end
 	
 	public Category selectEngName(int no);
+	
+	public List<Category> selectListBySearch(String searchValue);
 }

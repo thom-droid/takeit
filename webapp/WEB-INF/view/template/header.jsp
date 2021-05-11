@@ -12,43 +12,41 @@
     <div class="header_contents_box">
     	
         <!-- hcb == header_contents_box를 줄인 단어 -->
-        <!-- 로고 -->
-        <div class="hcb_logo">
-            <a href="/">
-                <img src="/img/resource/logo.png" class="header_logo_img">
-                <span class="header_logo_font">TAKE IT</span>
-            </a>
-        </div>
-        <!-- end hcb_logo -->
-
-        <!-- 카테고리 -->
         <div class="hcb_category">
-            <ul>
-                <li <c:if test="${category.no==1}">class="on"</c:if>><a href="/item/clothes">의류</a></li>
-                <li <c:if test="${category.no==2}">class="on"</c:if>><a href="/item/food">식품</a></li>
-                <li <c:if test="${category.no==3}">class="on"</c:if>><a href="/item/living">주거</a></li>
-                <li <c:if test="${category.no==4}">class="on"</c:if>><a href="/item/etc">기타</a></li>
+            <ul class="hcb_category_list">
+                <li <c:if test="${category.no==1}">class="on"</c:if>><a href="/item/clothes">CLOTHING</a></li>
+                <li <c:if test="${category.no==2}">class="on"</c:if>><a href="/item/food">FOOD</a></li>
+                <li <c:if test="${category.no==3}">class="on"</c:if>><a href="/item/living">LIVING</a></li>
+                <li <c:if test="${category.no==4}">class="on"</c:if>><a href="/item/etc">ETC.</a></li>
             </ul>
         </div>
-        <!-- end hcb_category -->
+        
+        <div class="hcb_logo">
+        	<div class="logo_box">
+	            <a href="/">
+	                <img src="/img/resource/logo.png" class="header_logo_img">
+	                <span class="header_logo_font">TAKE IT</span>
+	            </a>
+            </div>
+        </div>
 
         <!-- 검색 -->
         <div class="hcb_search">
             <form id="form" method="GET" action="/item/search">
                 <div class="search_area">
 				    <div class="search_by">
-				        <button type="button" class="search_btn_item search_by_btn" data-type="item">상품명검색</button>
+				        <div class="search_btn_item search_by_btn" data-type="item">상품검색</div>
 				    </div>
 				    <div class="search_by">
-				        <button type="button" class="search_btn_locaction search_by_btn" data-type="location">배달지역으로검색 </button>
+				        <div class="search_btn_locaction search_by_btn" data-type="location">지역검색</div>
 				    </div>
 				    <div class="search_bar">
-					    <input class="search_input" name="searchValue" placeholder="무엇을 찾으시나요?">
+					    <input id="searchInput" class="search_input" name="searchValue" placeholder="무엇을 찾으시나요?">
 					    <button class="search_input_btn fas fa-search bar_component" type="button"></button>
 					    <button class="reset_search_btn fas fa-times bar_component" type="button"></button>
 				    </div>
                 </div>
-                <input type="hidden" name="searchType" value="">                
+                <input id="searchType" type="hidden" name="searchType" value="">                
             </form>
         </div>
         <!-- end hcb_search -->

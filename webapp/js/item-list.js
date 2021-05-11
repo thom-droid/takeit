@@ -84,11 +84,31 @@ function closePopup(){
 	$("body").css("overflow", "auto");
 }
 
+const resultText = document.querySelector(".result_text");
+const resultNum = document.querySelector(".result_num");
+const locationNum = document.getElementsByClassName("location_num");
+
 // call list on rendering 
 if (paramCheck){
 	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue );
+	
+	// search result 
+	const resultTxt = `${searchValue} 검색결과`;
+	let num = 0;
+	
+	// numbers of location found
+	for (var i =0;i<locationNum.length;i++){
+		const val = parseInt(locationNum[i].innerHTML);
+		num += val;
+	}
+		
+	resultNum.innerText = num;
+	resultText.innerText = resultTxt;
+	
 	console.log(`paramCheck is ${paramCheck}!`);
+	
 } else{
+	
 	getItemList(categoryValue, orderValue, locationVal);
 	console.log(`paramCheck is ${paramCheck}!`);	
 }
@@ -139,16 +159,21 @@ $listBtn.on("click", function(){
 
 // filter by category
 $filterByCategory.on("click", function(){
+	
 	const $this = $(this);
 	const filterSelected = $this.text();
+	
 	categoryValue = this.dataset.categoryNo;
+	
 	console.log(categoryValue);
 	console.log(orderValue);
+	console.log(searchType);
+	console.log(searchValue);
 	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected).css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
-	getItemList(categoryValue, orderValue, locationVal);
+	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue);
 });
 
 // filter by order
@@ -162,7 +187,7 @@ $filterByOrder.on("click", function(){
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected).css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
 	
-	getItemList(categoryValue, orderValue, locationVal);
+	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue);
 });
 
 
@@ -172,7 +197,7 @@ $paginating.on("click", "a.paging", function(e){
 	const $this = $(this);
 	let page = $this.data("page");
 	console.log(page);
-	getItemList(categoryValue, orderValue, locationVal, page);
+	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue, page);
 }); // on click
 
 // reset filtered list to default

@@ -23,35 +23,11 @@
         <div class="hero_cover"></div>
     </div>
     <!--//hero_img_content-->
-    <div id="main_menu_content">
-        <div class="main_menu_wrap">
-            <ul>
-                <li class="menu_item">
-                    <div class="menu_box">
-                    	<a href="/item/clothes"><img src="/img/resource/clothing.jpg" width="250px" height="250px"/><span>의</span></a>
-                    </div>
-                </li>
-                <li class="menu_item">
-                    <div class="menu_box">
-                    	<a href="/item/food"><img src="/img/resource/food.jpg" width="250px" height="250px"/><span>식</span></a>
-                    </div>
-                </li>
-                <li class="menu_item">
-                    <div class="menu_box">
-                    	<a href="/item/living"><img src="/img/resource/living.jpg" width="250px" height="250px"/><span>주</span></a>
-                    </div>
-                </li>
-                <li class="menu_item">
-                    <div class="menu_box">
-	                    <a href="/item/etc"><img src="/img/resource/etc.jpg" width="250px" height="250px"/><span>기타</span></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
     <!--//main_menu_content-->
     <div class="best_seller_content">
-        <span class="best_seller_msg">금주의 Best 구독</span>
+    	<div class="best_seller_box">
+        	<p class="best_seller_p"><span class="best_seller_msg">주간 구독 서비스</span><span class="msg_caption">구독 신청이 많은 서비스</span></p>
+        </div>
         <div class="best_seller_wrap">
             <div class="kategorie_box">
                 <ul class="kategorie_list">
@@ -133,7 +109,9 @@
     </div>
     <!--//best_seller_content-->
     <div class="steady_seller_content">
-        <span>인기있는 구독</span>
+    	<div class="best_seller_box">
+        	<p class="best_seller_p"><span class="best_seller_msg">최신 서비스</span><span class="msg_caption">최근에 등록된 서비스</span></p>
+        </div>
         <a href="" class="btn">더보기</a>
         <div class="search_result_wrap">
             <ul class="search_result_list">

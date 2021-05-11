@@ -32,12 +32,13 @@ $(function() {
 
 	$(window).scroll(function() {
 		var scroll = getCurrentScroll();
+		//when scrolled down
 		if (scroll >= shrinkHeader) {
-			$('.hcb_category ul').css("display", "none");
-			$searchBarArea.css("transform", "translate(-215px, 0)")
+			
+			
 		} else {
-			$('.hcb_category ul').css("display", "block");
-			$searchBarArea.css("transform", "translate(0, 0)")
+			
+			
 		}
 	});
 	
@@ -46,10 +47,10 @@ $(function() {
 //아이콘 클릭시 리스트 display 변경함수
 $hp.click(function() {
 	if (displayNum == 0) {
-		$hmal.css("display", "block")
+		$hmal.css("display", "flex");
 		displayNum = 1;
 	} else {
-		$hmal.css("display", "none")
+		$hmal.css("display", "none");
 		displayNum = 0;
 	}
 })//end hp.click
@@ -58,19 +59,21 @@ const $searchBar = $(".search_bar");
 const $searchBy = $(".search_by");
 const $searchInput = $(".search_input");
 const $searchResetBtn = $(".fas.fa-times.bar_component");
-const searchType = $("input[name=searchType]");
+const type = document.getElementById("searchType");
 
 // selection to bar
 $searchBtn.click(function(){
 	
 	// get type value 
-	const type = $(this).data("type");
-	searchType.val(type);
-	$searchInput.attr("placeholder", type=="item"?"무엇을 찾으시나요?":"배송지역(예. 송파구)");
+	const typeVal = this.dataset.type;
+	type.value = typeVal;
+	$searchInput.attr("placeholder", typeVal=="item"?"무엇을 찾으시나요?":"배송지역(예. 송파구)");
 	
 	// btn disappear
 	$searchBy.fadeOut(100, function(){
-		$searchBar.fadeIn(function (){$searchInput.focus()});	
+		$searchInput.focus();
+		$searchBar.css("display", "flex");
+				
 	});
 	
 });
@@ -79,7 +82,7 @@ $searchBtn.click(function(){
 $searchResetBtn.click(function(){
 	
 	// reset type value  
-	searchType.value="";
+	type.value="";
 	searchInput.value="";
 	
 	// bar disappear, btn appear back 

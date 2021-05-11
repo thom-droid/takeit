@@ -21,6 +21,10 @@
 				<!--main_category_title start -->
 				<span>Category</span>
 			</div>
+			<div class="result_text_area">
+				<span class="result_text"></span>
+				<span class="result_num"></span>
+			</div>
 			<!--//main_category_title end -->
 		</div><!--// main_menu_content end -->
 		
@@ -37,7 +41,9 @@
 						</c:forEach>
 					</ul>
 				</div>
+				<c:if test="${locations ==null }">
 				<button type="button" class="location header_btn">지역</button>
+				</c:if>
 				<div class="order_filter_box btn_box">
 					<button type="button" class="order_btn header_btn list_btn">정렬</button>
 					<ul class="second_category_list sel_list_ul">
@@ -57,6 +63,13 @@
 				</div>
 				<button type="button" class="reset_btn header_btn">초기화</button>
 			</div><!-- categories_header_end -->
+			<div class="loc_tag_box">
+				<ul class="loc_tag_list">
+				<c:forEach items="${locations }" var="location">
+					<li class="loc_item_tag"><button type="button" class="loc_tag_btn">${location.name } <span class="loc_num_deco"><span class="location_num">${location.num}</span></span></button></li>
+				</c:forEach>
+				</ul>
+			</div>
 			<div class="category_result_box">
 				<ul class="search_result_list">
 				</ul>
