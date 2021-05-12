@@ -1,0 +1,13 @@
+# ignore all the files in the build
+build/
+
+# ignore class file
+*.class
+
+# ignore target file
+target/
+
+# ignore maven pom
+pom.properties
+
+
