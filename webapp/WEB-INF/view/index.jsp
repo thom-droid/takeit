@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Take It</title>
     <c:import url="/WEB-INF/view/template/link.jsp" />
-    <link rel="stylesheet" href="/css/searchResult.css">
 	<link rel="stylesheet" href="/css/index.css"/>
 </head>
 <body>
@@ -117,16 +117,22 @@
             <ul class="search_result_list">
             	<c:forEach items="${currentProducts }" var="currentProduct">
                 <li>
-                    <a href="">
-                        <img src="/img/products/${currentProduct.photo }"/>
+                    <!-- <a href=""> -->
+                    	<div class="item_photo">
+                    		<a href="/taker/subscribe/${currentProduct.no}">
+                        		<img src="/img/products/${currentProduct.photo }"/>
+                        	</a>
+                        </div>
                         <div class="subscription_item_info"><!--subscription_item_info start -->
                             <div class="subscription_item_company_and_label"><!--subscription_item_company_and_label start -->
-                                <div class="subscription_item_company">${currentProduct.name }</div>
-                                <div class="subscription_item_label">인기</div>
+                                <div class="subscription_item_name">
+                                	<a href="/taker/subscribe/${currentProduct.no}">${currentProduct.name }</a>
+                                </div>
                             </div><!--//subscription_item_company_and_label end -->
-                            <div class="subscription_item_name">${currentProduct.company}</div>
+                            <div class="subscription_item_label">hot</div>
+                            <div class="subscription_item_company">${currentProduct.company}</div>
                             <div class="subscription_item_price_and_rate_box"><!--subscription_item_price_and_rate_box start -->
-                                <div class="subscription_item_price">${currentProduct.price}원</div>
+                                <div class="subscription_item_price"><fmt:formatNumber currencyCode="KRW">${currentProduct.price}</fmt:formatNumber>원</div>
                                 <div class="subscription_item_rate"><!--subscription_item_rate start -->
                                     <div class="grade_star box">
                                         <div class="inner_star box" style="width:${currentProduct.star*20}%"></div>
@@ -134,7 +140,7 @@
                                 </div><!--//subscription_item_rate end -->
                             </div><!--//subscription_item_price_and_rate_box end -->
                         </div><!--//subscription_item_info end -->
-                    </a>
+                   <!--  </a> -->
                 </li>
                 </c:forEach>
             </ul>

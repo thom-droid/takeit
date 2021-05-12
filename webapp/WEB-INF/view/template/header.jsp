@@ -61,18 +61,18 @@
          	</c:when>
          	<c:otherwise>
 	            <div class="hcb_profile">
-	               <p>
-	                  <i class="fas fa-bars"></i> <i class="far fa-user-circle"></i>
-	               </p>
+                  	<i class="far fa-user-circle"></i>
 	            </div>
 	            <div class="hcb_mypage_and_logout">
 	               <ul>
-	                  <li><a href="/taker/${loginMember['taker'].no}">마이페이지</a></li>
+	                  <li><a href="/taker/${loginMember['taker'].no}">MYPAGE</a></li>
 	                  <li>
+                		<div>
 		                  <form id="logOutForm" action="/log" method="post">
 		                  <input type="hidden" name="_method" value="delete"/>
 		                  <button form="logOutForm" class="logout btn">로그아웃</button>
-	                  </form>
+	                  	  </form>
+	                    </div>
 	                  </li>
 	               </ul>
 	            </div>
