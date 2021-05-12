@@ -23,4 +23,8 @@ public interface CategoriesDAO {
 	public Category selectEngName(int no);
 	
 	public List<Category> selectListBySearch(String searchValue);
+	
+	public List<Category> selectCategoryWithNum();
+	
+	public String selectCategoryName(int no);
 }

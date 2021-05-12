@@ -17,4 +17,7 @@ public interface RegionsDAO {
 	public List<Region> selectLocationWithNum(PageVO pageVO);
 	
 	public Region selectPrimaryLocationWithNum(PageVO pageVO);
+	
+	public List<Region> selectLocationWithNumBySearch(String searchValue);
+	
 }

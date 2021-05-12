@@ -42,7 +42,7 @@ public interface SubscribesService {
 	//210304 박형우 end--------------------------------------------------
 	
 	public Map<String, Object> getProductFiltered(PageVO pageVO, int page);
-		
+	public Map<String, Object> getProductListByCategory();
 	public Map<String, Object> getSearchResult(PageVO pageVO);
 	
 }

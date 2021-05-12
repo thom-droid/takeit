@@ -26,9 +26,14 @@ const $resultUl = $(".search_result_list");
 const $subsCard = $(".search_result_item");
 const $subsCardTmpl = _.template($("#subsCardTmpl").html());
 
+// query string object
+const queryString = window.location.search;
+const searchParams = new URLSearchParams(queryString);
 
 // filter btn action
 const $listBtn = $(".list_btn");
+const $orderBtn = $(".order_btn");
+const locTagBtnAll = document.querySelectorAll(".loc_tag_btn");
 
 // filter var
 const $filterByCategory = $(".by_category");
@@ -36,21 +41,21 @@ const $filterByOrder =$(".by_order");
 
 // filter default value when html is rendered
 let categoryValue = $filterByCategory.first().data("categoryNo");
-let orderValue = "";
+let orderValue = searchParams.get("sort");
+console.log(orderValue);
 let locationVal = "";
 
 // reset btn
 const $filterResetBtn = $(".reset_btn");
 
-// check search value
-const queryString = window.location.search;
-const searchParams = new URLSearchParams(queryString);
-
+// check search value from query string
 const searchType = searchParams.get("searchType");
 console.log(searchType);
 const searchValue = searchParams.get("searchValue");
 console.log(searchValue);
 const paramCheck = Boolean(searchParams.get("searchValue")); // false whne there is no query string 
+
+
 
 // item list ajax 
 function getItemList(categoryValue, orderValue, locationVal, searchType, searchValue, page){
@@ -88,7 +93,7 @@ const resultText = document.querySelector(".result_text");
 const resultNum = document.querySelector(".result_num");
 const locationNum = document.getElementsByClassName("location_num");
 
-// call list on rendering 
+// check whether or not value is typed from search
 if (paramCheck){
 	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue );
 	
@@ -108,7 +113,9 @@ if (paramCheck){
 	console.log(`paramCheck is ${paramCheck}!`);
 	
 } else{
-	
+	if(orderValue === "lat"){
+		$orderBtn.text("최신순").css({"color":"#0057D9", "font-weight": "500"});	
+	}
 	getItemList(categoryValue, orderValue, locationVal);
 	console.log(`paramCheck is ${paramCheck}!`);	
 }
@@ -207,7 +214,24 @@ $filterResetBtn.click(function(){
 	
 });
 
+// getting list by location from search result
+locTagBtnAll.forEach(item =>{
+	item.addEventListener("click", function(){
+	
+		locationVal = this.dataset.locName;
+		getItemList(categoryValue, orderValue, locationVal,searchType, searchValue);
+		locTagBtn.style.backgroundColor = "#DBE0DF";	
+	});
+	
+});
 
+/*addEventListener("click", function(){
+	console.log(this.dataset.locName);
+	locationVal = this.dataset.locName;
+	getItemList(categoryValue, orderValue, locationVal,searchType, searchValue);
+	locTagBtn.style.backgroundColor = "#DBE0DF";
+	
+});*/
 
 
 

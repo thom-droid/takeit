@@ -112,7 +112,9 @@
     	<div class="best_seller_box">
         	<p class="best_seller_p"><span class="best_seller_msg">최신 서비스</span><span class="msg_caption">최근에 등록된 서비스</span></p>
         </div>
-        <a href="" class="btn">더보기</a>
+        <div class="view_more_box">
+        	<a href="/item/list?sort=lat" class="view_more_btn">더보기</a>
+        </div>
         <div class="search_result_wrap">
             <ul class="search_result_list">
             	<c:forEach items="${currentProducts }" var="currentProduct">

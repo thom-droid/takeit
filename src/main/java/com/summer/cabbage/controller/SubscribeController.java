@@ -102,6 +102,14 @@ public class SubscribeController {
 	//-- 03-04 송진현 --//
 	
 	// item list GET
+	
+	@GetMapping(value="/item/list")
+	public String maniList(Model model){
+		model.addAllAttributes(service.getProductListByCategory());
+		return "item-list";
+	}
+	
+	// item list by category GET
 	@RequestMapping(value="/item/{category}", method = RequestMethod.GET)
 	public String mainList(@PathVariable String category, Model model) {
 		model.addAllAttributes(service.getProductListByCategory(category)); 
@@ -119,6 +127,7 @@ public class SubscribeController {
 	// item list result from search GET
 	@GetMapping(value="/item/search")
 	public String listSearched(PageVO pageVO, Model model) {
+		model.addAllAttributes(service.getSearchResult(pageVO));
 		return "item-list";
 	}
 	

@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						ORDER BY no
 					</when>
 					<when test="sort =='lat'">
-						ORDER BY regdate
+						ORDER BY regdate DESC
 					</when>
 					<when test="sort =='sub'">
 						ORDER BY subCount
@@ -162,9 +162,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
 			  FROM products p JOIN givers g ON p.giver_no = g.no
 			  ORDER BY regdate DESC)
-		WHERE rownum &lt; 10
-	</select>
-	<!-- 210306 박형우 -->
+		WHERE rownum &lt; 13
+	</select>	<!-- 210306 박형우 -->
 	
 	<!-- 03-12 방 모든 상품 목록 -->
 	<select id="selectTotalListByGiverNo" parameterType="int" resultType="Product">

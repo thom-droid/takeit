@@ -216,6 +216,14 @@ body{
 
 /* item list (recently added) */
 
+.view_more_box{
+	text-align: right;
+	margin: 25px 120px 15px 0;
+}
+
+.view_more_box .view_more_btn{
+	color: rgb(0, 87, 217);
+}
 .search_result_list{
 	padding: 0 66px;
 	display: flex;

@@ -37,4 +37,9 @@ public class RegionsDAOImpl implements RegionsDAO {
 	public Region selectPrimaryLocationWithNum(PageVO pageVO) {
 		return session.selectOne("regions.selectPrimaryLocationWithNum", pageVO);
 	}
+	
+	@Override
+	public List<Region> selectLocationWithNumBySearch(String searchValue) {
+		return session.selectList("regions.selectLocationWithNumBySearch", searchValue);
+	}
 }
