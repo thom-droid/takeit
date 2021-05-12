@@ -11,7 +11,6 @@ body{
 	width: 100%;
 }
 
-
 #hero_img_content {
 	position: relative;
 	height: calc(100vh - 80px);
@@ -93,7 +92,6 @@ body{
 
 .best_seller_content {
 	position: relative;
-	height: 1700px;
 	width: 100%;
     margin: 75px auto 0 auto;
 }
@@ -152,7 +150,6 @@ body{
 
 .steady_seller_content {
 	margin-top: 200px;
-	height: 800px;
 	margin-bottom: 100px;
 }
 
@@ -221,21 +218,37 @@ body{
 
 .search_result_list{
 	padding: 0 66px;
-	display: grid;
-	grid: auto-flow / 1fr 1fr 1fr 1fr;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin-left: 35px;
+	margin-top: 75px;
+}
+
+.search_result_list li {
+	margin: 10px 12px;
+	width: 400px;
+	height: 400px;
+	transition: all 0.3s ease-in-out;
+}
+
+.item_photo{
+	width: 100%;
+	height: 300px;
+	overflow:hidden;
 }
 
 .search_result_list img {
-	width: 250px;
-	height: 250px;
+	width: 400px;
+	height: 300px;
+	transition: all 0.3s ease-in-out;
 }
 
 .search_result_wrap .subscription_item_info {
-	width: 250px;
-}
-
-.search_result_wrap .subscription_item_company {
-	font-size: 15px;
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 15px 0 0 5px;
 }
 
 .search_result_wrap .subscription_item_label {
@@ -246,25 +259,52 @@ body{
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 25px;
+	text-align: center;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    border-radius: 45px;
 }
 
-.search_result_wrap .subscription_item_name {
-	font-size: 13px;
+.search_result_wrap .subscription_item_company {
+	margin-top: 15px;
+}
+
+.subscription_item_name{
+	font-size: 20px;
+    color: #3c7166;
+}
+
+.subscription_item_name>a{
+	color: #3c7166;
+	transition: all 0.3s ease-in-out;
+}
+
+.subscription_item_name>a:hover{
+	color: #A6ABAB;
 }
 
 .search_result_wrap .subscription_item_price {
 	font-size: 18px;
+	color: #A6ABAB;
+	margin-top: 10px;
+	transition: all 0.3s ease-in-out;
 }
 
-.search_result_list {
-	margin-top: 75px;
+
+.search_result_list li:hover  {
+	background-color: white;
 }
 
-.search_result_list li {
-	margin: 0 12px;
-	float: left;
+.search_result_list li:hover .subscription_item_price{
+	color: #202121;
 }
 
-.search_result_list a:hover .subscription_item_price {
-	color: #424242;
+.item_photo>a {
+	display: block;
 }
+
+.item_photo img:hover{
+	transform: scale(1.1);
+}
+
