@@ -254,6 +254,29 @@ public class SubscribesServiceImpl implements SubscribesService {
 	}
 	//송진현//
 	
+	// categories and location options of the all items 
+	@Override
+	public Map<String, Object> getProductListByCategory() {
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		List<Category> cgList = categoriesDAO.selectCategoryWithNum();
+		
+		// int arr containing categories no
+		Integer[] intArr = new Integer[cgList.size()];
+		
+		// retrieving category names and setting into vo
+		for(int i = 0 ; i < cgList.size() ; i++) {
+			
+			intArr[i] = cgList.get(i).getNo();
+			
+			cgList.get(i).setName(categoriesDAO.selectCategoryName(intArr[i]));
+		}
+		
+		map.put("categories", cgList);
+		
+		return map;
+	}
+	
 	// categories, location options
 	@Override
 	public Map<String, Object> getProductListByCategory(String category) {  
@@ -265,6 +288,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 		//pathVariable로 카테고리 이름을 받아오기 때문에 그걸 category의 priorNo 로 바꾸기
 		int priorNo = 0;
 		
+		// setting when accessing to list with category value
 		if(category.equals("clothes")) {
 			priorNo = 1;
 		} else if(category.equals("food")) {
@@ -274,6 +298,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 		} else if(category.equals("etc")) {
 			priorNo = 4;
 		}
+		
 		//setting priorNo 
 		pageVO.setPriorNo(priorNo);
 		
@@ -314,12 +339,10 @@ public class SubscribesServiceImpl implements SubscribesService {
 	
 	
 	// item list filter ajax GET
-
 	@Override
 	public Map<String, Object> getProductFiltered(PageVO pageVO, int page) {
 		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
-		
 		
 		System.out.println("type :" +pageVO.getSearchType());
 		System.out.println("value :" +pageVO.getSearchValue());
@@ -334,6 +357,7 @@ public class SubscribesServiceImpl implements SubscribesService {
 		pageVO.setStart(pageVO.getEnd()-8+1);
 		
 		Category cg = new Category();
+		
 		if (no!=0) {
 			cg = categoriesDAO.selectEngName(pageVO.getCategoryNo());
 		} else if (no ==0) {
@@ -355,11 +379,17 @@ public class SubscribesServiceImpl implements SubscribesService {
 	@Override
 	public Map<String, Object> getSearchResult(PageVO pageVO) {
 		
-		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
-		
 		System.out.println("searchType :" + pageVO.getSearchType());
 		System.out.println("searchValue :" + pageVO.getSearchValue());
-		return null;
+		
+		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
+		
+		// retrieve categories
+		map.put("categories", categoriesDAO.selectListBySearch(pageVO.getSearchValue()));
+		
+		
+		map.put("locations", regionsDAO.selectLocationWithNumBySearch(pageVO.getSearchValue()));
+		return map;
 	}
 	
 	

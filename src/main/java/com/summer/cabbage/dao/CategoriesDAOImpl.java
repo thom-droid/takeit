@@ -51,4 +51,14 @@ public class CategoriesDAOImpl implements CategoriesDAO {
 	public List<Category> selectListBySearch(String searchValue) {
 		return session.selectList("categories.selectListBySearch", searchValue);
 	}
+	
+	@Override
+	public List<Category> selectCategoryWithNum() {
+		return session.selectList("categories.selectCategoryWithNum");
+	}
+	
+	@Override
+	public String selectCategoryName(int no) {
+		return session.selectOne("categories.selectCategoryName", no);
+	}
 }

@@ -8,6 +8,16 @@ public class Category {
 	private Timestamp regdate;
 	private String engName;
 	
+	private int num;
+	
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
 	public Category() {
 		// TODO Auto-generated constructor stub
 	}

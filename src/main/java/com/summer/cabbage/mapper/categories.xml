@@ -61,5 +61,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE p.name LIKE '%' || #{searchValue} || '%'
 		GROUP BY c.name
 	</select>
+	
+	<select id="selectCategoryWithNum" resultType ="Category">
+		SELECT no, count(pNum) num
+		FROM (SELECT DISTINCT c.name name, c.prior_no priorNo, c.no no, p.no pNum
+				FROM categories c
+				INNER JOIN products p
+				ON p.category_no = c.no)
+		GROUP BY no
+		ORDER BY no ASC
+	</select>
+	
+	<select id="selectCategoryName" parameterType="int" resultType="String">
+		SELECT name
+		FROM categories
+		WHERE no = #{no}
+	</select>
 </mapper>
 

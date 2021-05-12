@@ -37,7 +37,7 @@
 								data-category-no="${category.no }" data-category-name="${category.name}">전체</button></li>
 						<c:forEach items="${categories}" var="category">
 							<li class="category_tab text_strong"><button class="by_category sel_btn"
-									data-category-no="${category.no }" data-category-name="${category.name}">${category.name }</button></li>
+									data-category-no="${category.no }" data-category-name="${category.name}">${category.name } ${category.num}</button></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -66,7 +66,7 @@
 			<div class="loc_tag_box">
 				<ul class="loc_tag_list">
 				<c:forEach items="${locations }" var="location">
-					<li class="loc_item_tag"><button type="button" class="loc_tag_btn">${location.name } <span class="loc_num_deco"><span class="location_num">${location.num}</span></span></button></li>
+					<li class="loc_item_tag"><button type="button" class="loc_tag_btn" data-loc-name="${location.name}">${location.name} <span class="loc_num_deco"><span class="location_num">${location.num}</span></span></button></li>
 				</c:forEach>
 				</ul>
 			</div>
