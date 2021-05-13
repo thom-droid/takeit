@@ -73,6 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON c.no = p.category_no
 		
         WHERE p.name LIKE '%' ||#{searchValue} ||'%'
+        OR c.name LIKE '%' ||#{searchValue} ||'%'
         
         GROUP BY r.name
 	</select>

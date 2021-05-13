@@ -26,5 +26,7 @@ public interface CategoriesDAO {
 	
 	public List<Category> selectCategoryWithNum();
 	
+	public List<Category> selectCategoryWithNum(int priorNo);
+	
 	public String selectCategoryName(int no);
 }

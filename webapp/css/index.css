@@ -98,7 +98,7 @@ body{
 
 .best_seller_p{
     font-size: 22px;
-    margin-left: 30px;
+    margin-left: 80px;
 }
 
 .best_seller_msg {
@@ -218,7 +218,7 @@ body{
 
 .view_more_box{
 	text-align: right;
-	margin: 25px 120px 15px 0;
+	margin: 25px 200px 15px 0;
 }
 
 .view_more_box .view_more_btn{
@@ -229,13 +229,13 @@ body{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin-left: 35px;
-	margin-top: 75px;
+	margin-left: 105px;
+	margin-top: 30px;
 }
 
 .search_result_list li {
 	margin: 10px 12px;
-	width: 400px;
+	width: 360px;
 	height: 400px;
 	transition: all 0.3s ease-in-out;
 }
@@ -247,7 +247,7 @@ body{
 }
 
 .search_result_list img {
-	width: 400px;
+	width: 360px;
 	height: 300px;
 	transition: all 0.3s ease-in-out;
 }

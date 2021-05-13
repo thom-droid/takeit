@@ -29,7 +29,8 @@
 		</div><!--// main_menu_content end -->
 		
 		<div class="second_categories_content">	<!-- second_categories_content start-->
-			<div class="second_categories_header">	
+			<div class="second_categories_header">
+				<c:if test="${locations == null }">	
 				<div class="category_box btn_box">
 					<button type="button" class="category_btn header_btn list_btn">품목</button>
 					<ul class="second_category_list sel_list_ul">
@@ -41,9 +42,10 @@
 						</c:forEach>
 					</ul>
 				</div>
-				<c:if test="${locations ==null }">
-				<button type="button" class="location header_btn">지역</button>
 				</c:if>
+				<c:if test="${param.searchType == null}">
+				<button type="button" class="location header_btn">지역</button>
+				</c:if>	
 				<div class="order_filter_box btn_box">
 					<button type="button" class="order_btn header_btn list_btn">정렬</button>
 					<ul class="second_category_list sel_list_ul">
@@ -66,7 +68,12 @@
 			<div class="loc_tag_box">
 				<ul class="loc_tag_list">
 				<c:forEach items="${locations }" var="location">
-					<li class="loc_item_tag"><button type="button" class="loc_tag_btn" data-loc-name="${location.name}">${location.name} <span class="loc_num_deco"><span class="location_num">${location.num}</span></span></button></li>
+					<li class="loc_item_tag">
+						<input id="${location.name}" type="radio" name="locName" class="loc_tag_btn" data-loc-name="${location.name}">
+							<label for="${location.name}" >${location.name}
+								<span class="loc_num_deco"><span class="location_num">${location.num}</span></span>
+							</label>
+					</li>
 				</c:forEach>
 				</ul>
 			</div>

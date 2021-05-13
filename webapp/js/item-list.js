@@ -95,6 +95,8 @@ const locationNum = document.getElementsByClassName("location_num");
 
 // check whether or not value is typed from search
 if (paramCheck){
+	
+	
 	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue );
 	
 	// search result 
@@ -113,10 +115,13 @@ if (paramCheck){
 	console.log(`paramCheck is ${paramCheck}!`);
 	
 } else{
+	
 	if(orderValue === "lat"){
 		$orderBtn.text("최신순").css({"color":"#0057D9", "font-weight": "500"});	
 	}
+	
 	getItemList(categoryValue, orderValue, locationVal);
+	
 	console.log(`paramCheck is ${paramCheck}!`);	
 }
 
@@ -170,6 +175,14 @@ $filterByCategory.on("click", function(){
 	const $this = $(this);
 	const filterSelected = $this.text();
 	
+	let locCheck = Boolean(document.getElementsByName("locName")); // false if location tag is not present
+	const locTag = $(".loc_tag_list input[type='radio']");
+	
+	if(locCheck){
+		locationVal = "";	
+		locTag.prop("checked", false);
+	}	
+	
 	categoryValue = this.dataset.categoryNo;
 	
 	console.log(categoryValue);
@@ -179,6 +192,7 @@ $filterByCategory.on("click", function(){
 	
 	$this.closest(".btn_box").find(".list_btn").text(filterSelected).css({"color": "#0057D9", "font-weight": "500"});
 	$this.closest(".sel_list_ul").css("display", "none");
+	
 	
 	getItemList(categoryValue, orderValue, locationVal, searchType, searchValue);
 });
@@ -216,22 +230,19 @@ $filterResetBtn.click(function(){
 
 // getting list by location from search result
 locTagBtnAll.forEach(item =>{
-	item.addEventListener("click", function(){
 	
+	item.addEventListener("click", function(){
+		
 		locationVal = this.dataset.locName;
-		getItemList(categoryValue, orderValue, locationVal,searchType, searchValue);
-		locTagBtn.style.backgroundColor = "#DBE0DF";	
+		console.log(locationVal);
+		getItemList(categoryValue, orderValue, locationVal,searchType, searchValue);	
+	
 	});
 	
 });
 
-/*addEventListener("click", function(){
-	console.log(this.dataset.locName);
-	locationVal = this.dataset.locName;
-	getItemList(categoryValue, orderValue, locationVal,searchType, searchValue);
-	locTagBtn.style.backgroundColor = "#DBE0DF";
-	
-});*/
+
+
 
 
 
