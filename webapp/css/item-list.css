@@ -440,7 +440,13 @@ select {
 	display: flex;
 	flex-direction: row;
 }
-.loc_tag_btn{
+
+input.loc_tag_btn{
+	display: none;
+}
+
+input.loc_tag_btn+label{
+	
 	border: 1px solid #DBE0DF;
     cursor: pointer;
     background-color: white;
@@ -450,9 +456,14 @@ select {
     margin-right: 10px;
     font-weight: 300;
     transition: all 0.3s ease-in-out;
+    
 }
 
-.loc_tag_btn:hover{
+input[type="radio"]:checked + label{
+	background-color: #DBE0DF;
+}
+
+.loc_tag_btn+label:hover{
 	color: #3c7166;
 	border-color: #3c7166;
 }

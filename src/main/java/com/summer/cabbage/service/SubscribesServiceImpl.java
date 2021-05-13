@@ -259,6 +259,8 @@ public class SubscribesServiceImpl implements SubscribesService {
 	public Map<String, Object> getProductListByCategory() {
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
+		
+		// categories value
 		List<Category> cgList = categoriesDAO.selectCategoryWithNum();
 		
 		// int arr containing categories no
@@ -273,6 +275,9 @@ public class SubscribesServiceImpl implements SubscribesService {
 		}
 		
 		map.put("categories", cgList);
+		
+		
+		
 		
 		return map;
 	}
@@ -303,9 +308,25 @@ public class SubscribesServiceImpl implements SubscribesService {
 		pageVO.setPriorNo(priorNo);
 		
 		// primary and secondary categories
-		map.put("categories", categoriesDAO.selectListByCategory(priorNo));
 		
 		map.put("category", categoriesDAO.selectSecondCategory(priorNo));
+		
+		// categories with numbers of item
+		List<Category> cgList = categoriesDAO.selectCategoryWithNum(priorNo);
+		
+		// int arr containing categories no
+		Integer[] intArr = new Integer[cgList.size()];
+		
+		// retrieving category names and setting into vo
+		for(int i = 0 ; i < cgList.size() ; i++) {
+			
+			intArr[i] = cgList.get(i).getNo();
+			
+			cgList.get(i).setName(categoriesDAO.selectCategoryName(intArr[i]));
+		}
+		
+		map.put("categories", cgList);
+		
 		
 		// location info with product numbers
 		List<List<Region>> list = new ArrayList<List<Region>>();
@@ -385,10 +406,30 @@ public class SubscribesServiceImpl implements SubscribesService {
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
 		// retrieve categories
-		map.put("categories", categoriesDAO.selectListBySearch(pageVO.getSearchValue()));
 		
+		List<Category> cgList = categoriesDAO.selectListBySearch(pageVO.getSearchValue());
 		
-		map.put("locations", regionsDAO.selectLocationWithNumBySearch(pageVO.getSearchValue()));
+		// int arr containing categories no
+				Integer[] intArr = new Integer[cgList.size()];
+				
+			// retrieving category names and setting into vo
+			for(int i = 0 ; i < cgList.size() ; i++) {
+				
+				intArr[i] = cgList.get(i).getNo();
+				
+				cgList.get(i).setName(categoriesDAO.selectCategoryName(intArr[i]));
+			}
+			
+		// categories when searched with location
+		if(pageVO.getSearchType().equals("location")){
+			map.put("categories", cgList);
+		}
+		
+		// locations when searched with item
+		if(pageVO.getSearchType().equals("item")) {
+			map.put("locations", regionsDAO.selectLocationWithNumBySearch(pageVO.getSearchValue()));
+		}
+		
 		return map;
 	}
 	

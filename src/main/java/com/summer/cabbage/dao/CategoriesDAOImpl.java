@@ -58,6 +58,13 @@ public class CategoriesDAOImpl implements CategoriesDAO {
 	}
 	
 	@Override
+	public List<Category> selectCategoryWithNum(int priorNo) {
+		
+		return session.selectList("categories.selectCategoryWithNum", priorNo);
+	}
+	
+	
+	@Override
 	public String selectCategoryName(int no) {
 		return session.selectOne("categories.selectCategoryName", no);
 	}

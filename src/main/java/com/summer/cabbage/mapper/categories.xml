@@ -54,20 +54,45 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 210305 박형우 end -->
 	
 	<select id="selectListBySearch" parameterType="String" resultType="Category">
-		SELECT c.name, COUNT(c.no) num
-		FROM categories c
-		INNER JOIN products p
-		ON p.category_no = c.no
-		WHERE p.name LIKE '%' || #{searchValue} || '%'
-		GROUP BY c.name
+		SELECT no, COUNT(no) num
+		FROM
+	        (SELECT DISTINCT p.no pNo, p.name pName, c.no no, r.name name
+	        
+	        FROM categories c
+	        
+			INNER JOIN products p
+			ON p.category_no = c.no
+			
+			INNER JOIN delivery_regions dr
+			ON dr.product_no = p.no
+			
+			INNER JOIN regions r
+			ON r.no = dr.area_no
+	        
+	        WHERE r.name LIKE '%'||#{searchValue}||'%'
+			)
+		
+		GROUP BY no
+        ORDER BY no ASC
 	</select>
 	
-	<select id="selectCategoryWithNum" resultType ="Category">
+	<select id="selectCategoryWithNum" parameterType="int" resultType ="Category">
 		SELECT no, count(pNum) num
 		FROM (SELECT DISTINCT c.name name, c.prior_no priorNo, c.no no, p.no pNum
 				FROM categories c
 				INNER JOIN products p
 				ON p.category_no = c.no)
+		<if test="priorNo !=0">
+			<choose>
+				<when test="priorNo gte 1 and priorNo lte 3">
+					WHERE priorNo = #{priorNo}
+				</when>
+				<when test="priorNo eq 4">
+					WHERE no = #{priorNo}
+				</when>
+			</choose>
+		 
+		</if>
 		GROUP BY no
 		ORDER BY no ASC
 	</select>
