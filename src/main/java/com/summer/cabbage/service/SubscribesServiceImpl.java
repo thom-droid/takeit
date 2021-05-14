@@ -276,8 +276,34 @@ public class SubscribesServiceImpl implements SubscribesService {
 		
 		map.put("categories", cgList);
 		
+		// location info with product numbers
+		PageVO pageVO = new PageVO();
+		List<List<Region>> list = new ArrayList<List<Region>>();
+		List<Region> scndLocation = new ArrayList<Region>();
+		List<Region> prmy = new ArrayList<Region>();
+		
+		pageVO.setTempNo(1);
 		
 		
+		for(int i = 0;i<17;i++) {
+			List<Region> items = new ArrayList<Region>();
+			
+			// primary, secondary location search with categoryNo, tempNo(1 to 17)
+			scndLocation = regionsDAO.selectLocationWithNum(pageVO);
+			
+			if(scndLocation!=null) {
+				items.addAll(regionsDAO.selectLocationWithNum(pageVO));
+			}
+
+			// add a List<Region> object to the new List to get indexed
+			list.add(items);
+			prmy.add(regionsDAO.selectPrimaryLocationWithNum(pageVO));
+			pageVO.setTempNo(pageVO.getTempNo()+1);
+		}
+		
+		map.put("primaryLocation", prmy);
+		map.put("secondLocation", list);
+
 		
 		return map;
 	}
