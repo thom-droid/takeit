@@ -4,11 +4,19 @@ body{
 	font-family: 'AppleSDGothic', serif;
 	color: #202121;
 	user-select: none;
+	font-weight: 500;
+}
+
+input, button {
+     font-family: "AppleSDGothic", sans-serif;
 }
 
 a {
 	font-family: 'AppleSDGothic', serif;
+	font-weight: 500;
+	color: #202121;
 }
+
 #header {
 	top: 0;
 	position: sticky;

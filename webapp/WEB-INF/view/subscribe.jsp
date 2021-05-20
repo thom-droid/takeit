@@ -8,7 +8,6 @@
     <title>TakeIt</title>
     <c:import url="/WEB-INF/view/template/link.jsp" />
     <link rel="stylesheet" href="/css/subscribe.css" />
-    <link rel="stylesheet" href="/css/paginate.css" />
     <link rel="stylesheet" href="/css/datepicker.css" />
 
 </head>
@@ -359,52 +358,12 @@
     </tr>
 </script>
 
+<c:import url="/WEB-INF/view/template/js-import.jsp"/>
 <script src="/js/subscribe.js"></script>
-<!--datepicker-->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/tui-date-picker.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<!--============================================= 다음 주소 api =================================================-->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<script>
-
-    /* ==========================datepicker 이용================================= */
-
-    /* datepicker 한글로 변경 */
-
-    $.datepicker.setDefaults({
-        dateFormat: 'yy-mm-dd',
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        showMonthAfterYear: true,
-        yearSuffix: '년'
-    });
-
-    $(function() {
-
-        //오늘 날짜를 출력
-        $("#today").text(new Date().toLocaleDateString());
-
-        $("#datepicker").datepicker({
-            /*
-                선택할 수 있는 최소 날짜 (3이면 현재 날짜로부터 3일 이후부터 가능)
-                => 나중에 서버에서 기버가 배송 가능한 날짜 선택하면
-                그 값 받아서 나타내면 될 듯!
-             */
-            minDate: 3,
-            /* 뭔가 이거는 다같이 얘기 해봐야 하지 않을까? 최대 기간 정해두는 게 나을 것 같다. */
-            maxDate: 14
-        });
-
-    }); //function() end
-    
-    
-</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구독 상품 목록</title>
+<title>Take It - 구독 아이템</title>
 <c:import url="/WEB-INF/view/template/link.jsp" />
 <link rel="stylesheet" href="/css/item-list.css" />
 </head>
@@ -133,16 +133,19 @@
 <script type="text/template" id="subsCardTmpl">
 	<@ _.each(subsCardList,function(subsCard) { @>
 		<li class="search_result_item">
+			<div class="item_photo">
 			<a class="search_result_detail_link" href="/taker/subscribe/<@=subsCard.no@>"><img src="/img/products/<@=subsCard.photo@>" />
+			</a>	
+			</div>
 					<div class="subscription_item_info">
 									<!--subscription_item_info start -->
 							<div class="subscription_item_company_and_label">
 										<!--subscription_item_company_and_label start -->
-								<div class="subscription_item_company"><@=subsCard.name@></div>
+								<div class="subscription_item_name"><a href="/taker/subscribe/<@=subsCard.no@>"><@=subsCard.name@></a></div>
 								<div class="subscription_item_label">인기</div>
 							</div>
 									<!--//subscription_item_company_and_label end -->
-							<div class="subscription_item_name"><@=subsCard.company@></div>
+							<div class="subscription_item_company"><@=subsCard.company@></div>
 							<div class="subscription_item_price_and_rate_box">
 										<!--subscription_item_price_and_rate_box start -->
 								<div class="subscription_item_price"><@=subsCard.price@>원부터</div>
@@ -156,7 +159,7 @@
 					</div>
 				<!--//subscription_item_price_and_rate_box end -->
 				</div><!--//subscription_item_info end -->
-			</a>	
+			
 		</li>
 	<@ })@>             
 </script>

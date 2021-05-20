@@ -5,12 +5,13 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>제품의 상세 페이지</title>
-	<c:import url="/WEB-INF/view/template/link.jsp"></c:import>
-	  <link rel="stylesheet" href="/css/subscribeDetail.css"/>
-	  <link rel="stylesheet" href="/css/datepicker.css" />
+    <title>${product.name}</title>
+	<c:import url="/WEB-INF/view/template/link.jsp" />
+  	<link rel="stylesheet" href="/css/item.css"/>
+  	<link rel="stylesheet" href="/css/datepicker.css" />
 </head>
 <body>
+<c:import url="/WEB-INF/view/template/header.jsp" />
     <div class="product_detail_page_container">
         <div class="product_detail_page_head_contents">
             <div class="product_detail_page_content_head">
@@ -40,15 +41,19 @@
 
             <div class="product_detail_page_content_left">
                 <!-- 구독 제품 대표 이미지-->
-                <img class="product_thumbnail_img" src="/img/${product.photo }">
+                <img class="product_thumbnail_img" src="/img/products/${product.photo }">
             </div>
             <div class="product_detail_page_content_right">
                 <h2 class="subs_title">${product.name }</h2>
                 <div class="item_info_box">
                     <dl>
                         <dt>배송 시작일</dt>
-                        <!-- 데이터피커 이용-->
-                        <dd> <input name="delivery_start_date" type="text" id="datepicker"></dd>
+                        <dd>
+                        	<div role="button"> 
+                        		<input name="deliveryStart" id="datepicker" >
+                        		<label for="datepicker" class="datepicker_label">희망배송시작일자</label>
+                        	</div>
+                        </dd>
                     </dl>
                     <dl>
                         <dt>배송일</dt>
@@ -97,22 +102,20 @@
                             		<c:otherwise></c:otherwise>
 	                            	</c:choose>
                             	</c:forEach>">토</div>
-                                
-                                
                                
-                                
                             </div>
                         </dd>
                     </dl>
                     <!--기본가격에 옵션, 배송추가 가격 표시되면 좋을 것 같음-->
                     <dl>
                         <dt class="delivery_addr_option">배송지역 선택</dt>
-                        <dd>
-                            <input name="deliveryAddrOption" value="서울시 관악구" id="deliveryAddrOption1" class="addr_option_input" type="radio" checked><label for="deliveryAddrOption1" >서울시 관악구</label>
-                            <input name="deliveryAddrOption" value="서울시 관악구" id="deliveryAddrOption2" class="addr_option_input" type="radio"><label for="deliveryAddrOption2">서울시 관악구</label>
-                            <input name="deliveryAddrOption" value="서울시 관악구" id="deliveryAddrOption3" class="addr_option_input" type="radio"><label for="deliveryAddrOption3">서울시 관악구</label>
-                            <input name="deliveryAddrOption" value="서울시 관악구" id="deliveryAddrOption4" class="addr_option_input" type="radio"><label for="deliveryAddrOption4">서울시 관악구</label>
-                            <input name="deliveryAddrOption" value="서울시 관악구" id="deliveryAddrOption5" class="addr_option_input" type="radio"><label for="deliveryAddrOption5">서울시 관악구</label>
+                        <dd class="opt_area">
+                        	<c:forEach items="${deliveryOpt}" var="opt">
+                         		
+                            <input id="deliveryAddrOption${opt.areaNo}" name="addrOpt" value="${opt.primaryRegionName}${opt.regionName}+${opt.price}" class="addr_option_input" type="radio" <c:if test="${opt.areaNo eq param.regionNo}"> checked</c:if>>
+                            <label class="delivery_opt_label" for="deliveryAddrOption${opt.areaNo }" data-price="${opt.price+product.price}" data-sido="${opt.primaryRegionName}" data-sigungu="${opt.regionName}">${opt.primaryRegionName}${opt.regionName}/+<span class="opt_price">${opt.price}</span></label>
+                            <input type="hidden" class="opt_price_input" name="optPrice" value="${opt.price}" />
+                            </c:forEach>
                         </dd>
                     </dl>
                     <!-- 남은 수량이 9개 이하가 되면, 나타남 -->
@@ -122,7 +125,8 @@
                     </dl>
                     <dl class="price_tag">
                         <dt>총 가격</dt>
-                        <dd name="total_price">9900원</dd>
+                        <dd><span class="product_price">${product.price}</span>원</dd>
+                            <input class="total_price_input" type="hidden" name="price" value="${product.price}" />
                     </dl>
                     <!-- 일반 유저들이 보는 페이지에서는 구독 하기 버튼이 보임-->
                     <button class="subscribeBtn" onclick = "location.href = '' ">구독하기</button>
@@ -184,71 +188,15 @@
 
         </div>
     </div>
-
-
+<c:import url="/WEB-INF/view/template/footer.jsp"/>
+<input id="dateVal" type="hidden" name="dateVal" value="${product.dateAvail}" />
 </body>
 
-<!-- ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■이제부터 자바스크립트 영역■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ -->
+<c:import url="/WEB-INF/view/template/js-import.jsp"/>
 <script src="/js/tui-date-picker.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-
-    /* ======================탭 내용 & css 변경========================= */
-    /* 탭 */
-    const $tab = $(".product_detail_tab_box");
-    /* 탭 안의 컨텐츠 */
-    const $content = $(".content");
-
-    /* 탭 클릭 시 css 변경 & 변경된 탭 내용 보여주기 */
-    $tab.on("click", function () {
-        $tab.removeClass("on");
-        $(this).addClass("on");
-
-        const onTab = $(this).attr("data-tab");
-
-        $content.removeClass("on");
-        $(this).addClass("on");
-        $("#"+onTab).addClass("on");
-
-    }); //$tab click() end
+<script src="/js/item.js"></script>
 
 
-    /* ==========================datepicker 이용================================= */
-
-    /* datepicker 한글로 변경 */
-
-    $.datepicker.setDefaults({
-        dateFormat: 'yy-mm-dd',
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        showMonthAfterYear: true,
-        yearSuffix: '년'
-    });
-
-    $(function() {
-
-        //오늘 날짜를 출력
-        $("#today").text(new Date().toLocaleDateString());
-
-        $("#datepicker").datepicker({
-            /*
-                선택할 수 있는 최소 날짜 (3이면 현재 날짜로부터 3일 이후부터 가능)
-                => 나중에 서버에서 기버가 배송 가능한 날짜 선택하면
-                그 값 받아서 나타내면 될 듯!
-             */
-            minDate: ${product.dateAvail},
-            /* 뭔가 이거는 다같이 얘기 해봐야 하지 않을까? 최대 기간 정해두는 게 나을 것 같다. */
-            maxDate: 14
-        });
-
-    }); //function() end
-
-
-</script>
 </html>

@@ -75,8 +75,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					<when test="categoryNo gte 4 and categoryNo lte 11">
 						WHERE c.no = #{categoryNo}
 					</when>
+					<when test="categoryNo eq 0 and location !=''">
+						WHERE r.name = #{location}
+					</when>
 				</choose>
-				<if test="location !=''">
+				<if test="categoryNo gt 0 and location !=''">
 					AND r.name = #{location}
 				</if> 
 				<choose>
@@ -119,10 +122,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         LEFT JOIN regions r
         ON r.no = dr.area_no
 		<choose>
-			<when test="categoryNo eq 0 and searchType =='item'">
+			<when test="searchType =='item'">
 				WHERE p.name LIKE '%'|| #{searchValue} || '%'
 			</when>
-			<when test="categoryNo eq 0 and searchType =='location'">
+			<when test="searchType =='location'">
 				WHERE r.name LIKE '%'|| #{searchValue} || '%'
 			</when>
 			<when test="categoryNo gte 1 and categoryNo lt 4">
@@ -131,8 +134,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<when test="categoryNo gte 4">
 				WHERE c.no = #{categoryNo}
 			</when>
+			<when test="categoryNo eq 0 and location !=''">
+				WHERE r.name = #{location}
+			</when>
 		</choose>
-		<if test="location !=''">
+		<if test="categoryNo gt 0 and location !=''">
 			AND r.name = #{location}
 		</if> 
 	</select>

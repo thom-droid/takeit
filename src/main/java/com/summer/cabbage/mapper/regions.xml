@@ -36,7 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON c.no = p.category_no
 		WHERE 
 		(r.no = #{tempNo} OR r.prior_no = #{tempNo} )
-		AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+		<if test="categoryNo gt 0">
+			AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+		</if>
 		GROUP BY r.name
 	</select>
 	
@@ -52,7 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ON c.no = p.category_no
 			WHERE
 			(r.no = #{tempNo} OR r.prior_no =#{tempNo} )
-			AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+			<if test="categoryNo gt 0">
+				AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+			</if>
 			GROUP BY r.name) num
 		FROM regions r
 		WHERE r.no = #{tempNo}
