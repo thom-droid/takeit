@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.javassist.expr.Instanceof;
 import org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,23 +51,14 @@ public class SubscribeController {
 	// subscribe before payment 
 	@RequestMapping(value="/subscribe/{productNo}", method=RequestMethod.GET)
 	public String subscribe(Subscribe subscribe, Model model, HttpSession session , @PathVariable int productNo) {
-		 
-			 //구현해야 하는 내용 -> 필요한 정보
-		 
-		 /*
-		  *  1. 유저 정보를 통한 배송지 정보 출력 -> 유저 번호 위한 HttpSession, 배송지 정보 위한 Model 필요 
-		  *  2. 이전 구독
-		 *	 상세 페이지에서 넘어온 파라미터(유저가 선택한 옵션)를 받아서 출력 -> Subscribe VO 
-		 *	3. 구독 서비스의 상세 정보 ->
-		 *   subsNo를 통해 select 후 출력 -> Model 필요
-		 */
-			 
-		//서블릿과 달리 session 저장 안해도 바로 불러올 수 있다. 멤버 정보를 얻어옴
-		Member loginMember = (Member) session.getAttribute("loginMember");
-		System.out.println(loginMember.getNo());
+		// loginMember is a map that consists of two parts - member, taker/giver 
+		ConcurrentHashMap<String, Object> loginMember = (ConcurrentHashMap<String, Object>) session.getAttribute("loginMember"); 
+		
+		Member m = (Member) loginMember.get("member");
+		System.out.println(m.getNo());
 		 
 		// 유저 배송지 
-		model.addAllAttributes(service.applySubscribes(loginMember.getNo(), productNo));
+		model.addAllAttributes(service.applySubscribes(m.getNo(), productNo));
 		 
 		return "/subscribe"; 
 	}
@@ -88,16 +81,15 @@ public class SubscribeController {
 		
 		return "redirect:/index";
 	}
-	//03-04 방현수 추가 end
 	
-	//-- 송진현 --//
-	//구독상품 detail
+	
+	// item detail
 	@RequestMapping(value="/taker/subscribe/{productNo}",method=RequestMethod.GET)
 	public String adad(Model model,@PathVariable int productNo) {
 		
 		model.addAllAttributes(service.getProductDetail(productNo));
 		
-		return "subscribeDetail";
+		return "item";
 	}
 	//-- 03-04 송진현 --//
 	
