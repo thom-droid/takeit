@@ -137,12 +137,12 @@ a:visited, a{
     font-size: 14px;
     cursor: pointer;
     float: left;
-    border-radius: 4px;
     border: 1px solid #3C7166;
+    color: #A6ABAB;
 }
 .addr_option_input:checked+label {
-    background-color: #3C7166;
-    color: white;
+    background-color: white;
+    color: rgb(0, 87, 217);
 }
 .deliver_date_box {
     overflow: hidden;
@@ -347,11 +347,18 @@ a:visited, a{
     letter-spacing: 0.03em;
 }
 
-input[name='deliveryStart']{
-	visibility: hidden;
+.datepicker_input{
+    background-color: #DBE0DF;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    width: 250px;
+    height: 35px;
+    border: 1px solid #E6EAEA;
+    color: rgb(0, 87, 217);
+    transition: all 0.3s ease-in-out;
 }
 
-input[name='deliveryStart']+label{
-	display:block;
-	
+.datepicker_input:hover{
+	background-color: white;
 }
