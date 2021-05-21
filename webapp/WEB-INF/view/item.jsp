@@ -46,12 +46,12 @@
             <div class="product_detail_page_content_right">
                 <h2 class="subs_title">${product.name }</h2>
                 <div class="item_info_box">
+                <form action="/test" method="GET">
                     <dl>
                         <dt>배송 시작일</dt>
                         <dd>
-                        	<div role="button"> 
-                        		<input name="deliveryStart" id="datepicker" >
-                        		<label for="datepicker" class="datepicker_label">희망배송시작일자</label>
+                        	<div role="button">
+                        		<input id="datepicker" class="datepicker_input" name="deliveryStart" autocomplete ="off" placeholder="희망배송시작일">
                         	</div>
                         </dd>
                     </dl>
@@ -107,6 +107,7 @@
                         </dd>
                     </dl>
                     <!--기본가격에 옵션, 배송추가 가격 표시되면 좋을 것 같음-->
+                    
                     <dl>
                         <dt class="delivery_addr_option">배송지역 선택</dt>
                         <dd class="opt_area">
@@ -118,6 +119,7 @@
                             </c:forEach>
                         </dd>
                     </dl>
+                   
                     <!-- 남은 수량이 9개 이하가 되면, 나타남 -->
                     <dl class="sold_out">
                         <dt>남은 수량</dt>
@@ -131,6 +133,7 @@
                     <!-- 일반 유저들이 보는 페이지에서는 구독 하기 버튼이 보임-->
                     <button class="subscribeBtn" onclick = "location.href = '' ">구독하기</button>
                     <!-- 이 구독 상품의 기버가 제품 상세 페이지에 들어왔을 때 보이는 버튼 -->
+                    </form>
                     <div class="giver_view_btn_box">
                         <button class="subscribe_pause">구독 일시정지</button>
                         <button class="subscribe_delete">구독 삭제</button>
@@ -193,6 +196,7 @@
 </body>
 
 <c:import url="/WEB-INF/view/template/js-import.jsp"/>
+<script src="/js/header.js"></script>
 <script src="/js/tui-date-picker.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
