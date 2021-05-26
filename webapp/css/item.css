@@ -1,14 +1,7 @@
 @charset "UTF-8";
-  /* ======================페이지 공통 css==================*/
-a:visited, a{
-    color: black;
-    text-decoration: none;
-}
-/* =============페이지 전체 감싸는 container======*/
 .product_detail_page_container {
     width: 1000px;
     margin: auto;
-    /*background-color: #4c9384;*/
 }
 /* =====================페이지 상단 contents=====================*/
 .product_detail_page_head_contents {
@@ -35,34 +28,30 @@ a:visited, a{
     float: left;
 }
 .subs_info_box {
-    width: 130px;
-    height: 30px;
-    line-height: 30px;
-    float: right;
+    height: 50px;
+    line-height: 50px;
     display: flex;
-    vertical-align: middle;
 }
 .star_review_num {
-    display: flex;
-    height: 25px;
-    line-height: 25px;
+    height: 50px;
+    line-height: 50px;
 }
 .star {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
+
 .subs_num, .star_review {
     width: 50px;
-    height: 30px;
-    line-height: 30px;
-}
-.star_review {
-    margin-left: 5px;
+    height: 50px;
+    line-height: 50px;
 }
 .giver_information_box {
     width: 495px;
-    /*background-color: blanchedalmond;*/
-    float: left;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .giver_information {
@@ -100,15 +89,18 @@ a:visited, a{
 }
 .subs_title {
     width:495px;
-    height:70px ;
-    line-height: 70px;
+    height:50px ;
+    line-height: 50px;
     text-align: center;
     font-size: 24px;
     font-weight: 900;
-    margin: 20px 0  10px 0;
 }
 .item_info_wrap .item_img_box img{
     vertical-align: middle;
+}
+
+.item_info_box{
+	margin-top: 60px;	
 }
 
 .item_info_box dl{
@@ -137,7 +129,7 @@ a:visited, a{
     font-size: 14px;
     cursor: pointer;
     float: left;
-    border: 1px solid #3C7166;
+    border: 1px solid #E6EAEA;
     color: #A6ABAB;
 }
 .addr_option_input:checked+label {
@@ -185,15 +177,20 @@ a:visited, a{
 }
 /* 구독하기 버튼 */
 .subscribeBtn {
-    width: 440px;
+    width: 480px;
     height: 50px;
-    background-color:#264a43;
+    background-color: rgba(60,113, 102, .8);
     color: #fff;
-    border-radius: 4px;
     font-size: 20px;
     font-weight: 500;
     margin-left: 20px;
     cursor: pointer;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.subscribeBtn:hover{
+	background-color: rgba(60,113, 102);
 }
 /* ------------기버가 보는 상세페이지에서 나타내는 버튼 박스------------*/
 .giver_view_btn_box {
@@ -217,17 +214,20 @@ a:visited, a{
     overflow: hidden;
     margin: auto;
     width: 918px;
+    border-top: 1px solid #A6ABAB;
+    border-bottom: 1px solid #A6ABAB;
+    border-left: 1px solid #A6ABAB;
 }
 .product_detail_tab_box {
     float: left;
-    width: 300px;
+    width: 305px;
     height: 60px;
     line-height: 60px;
     text-align: center;
-    background-color:#f4fffd;
-    margin: 0 3px 20px 3px;
+    background-color:#f3f3f3;
     font-size: 22px;
     cursor: pointer;
+    border-right: 1px solid #A6ABAB;
 }
 .product_detail_tab_box.on {
     background-color: #264a43;
@@ -289,26 +289,19 @@ a:visited, a{
     font-size: 14px;
     color: #424242;
 }
-.review_detail{
-    margin-top: 30px;
-    line-height: 25px;
-}
 .review_item{
     margin-top: 30px;
     margin-bottom: 20px;
-    background-color: #b9b9b9;
+    background-color: #f4f7f6;
 }
 /* 리뷰_ 기버가 남기는 댓글 box*/
 .reply_detail_box {
     width: 650px;
-    margin: 20px 0 30px 10px;
 }
 .reply_detail{
-    display: inline-block;
     position: relative;
     width: 570px;
     background-color: #fff;
-    box-shadow: 2px 2px 2px #424242;
 }
 /* 리뷰 _ 기버 프로필 이미지*/
 .reply_giver_profile_img{
@@ -361,4 +354,11 @@ a:visited, a{
 
 .datepicker_input:hover{
 	background-color: white;
+}
+
+.rating{
+	text-indent: -9999px;
+}
+.rating_parenthesis{
+	color: #A6ABAB;
 }

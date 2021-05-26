@@ -59,5 +59,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES(#{no},#{id},#{password},#{type},#{profileImg},systimestamp)
 	</insert>
 	<!-- // 03-04 송진현 추가 -->
+	
+	<select id="selectMemberByNo" parameterType="int" resultType="Member">
+		SELECT no, id, type, profile_img profileImg, regdate
+		FROM members
+		WHERE no = #{no}
+	</select>
 </mapper>
 

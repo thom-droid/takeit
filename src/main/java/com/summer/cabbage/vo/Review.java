@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Review {
 	private int no, productNo, takerNo, star, giverNo;
-	private String review, productName, takerName, MemberProfileImg, takerNickname;
+	private String review, productName, takerName, memberProfileImg, takerNickname;
 	private Timestamp regdate;
 	private Reply reply;
 	public Review() {
@@ -36,11 +36,11 @@ public class Review {
 	}
 
 	public String getMemberProfileImg() {
-		return MemberProfileImg;
+		return memberProfileImg;
 	}
 
 	public void setMemberProfileImg(String memberProfileImg) {
-		MemberProfileImg = memberProfileImg;
+		this.memberProfileImg = memberProfileImg;
 	}
 
 	public String getTakerNickname() {

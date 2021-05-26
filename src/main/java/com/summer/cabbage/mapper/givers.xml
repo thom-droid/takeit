@@ -94,9 +94,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="selectDetailOne" parameterType="int" resultType="Giver">
-		select company
-		from givers g, products p
-		where p.no=#{productNo} AND p.giver_no=g.no
+		SELECT g.company company, g.no no
+		FROM givers g 
+		INNER JOIN products p
+		ON g.no = p.giver_no
+		WHERE p.no=#{productNo}
 	</select>
 	<!--// 03-04 송진현 추가 end-->
 </mapper>

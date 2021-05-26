@@ -83,7 +83,7 @@ public class SubscribeController {
 	}
 	
 	
-	// item detail
+	// item detail GET
 	@RequestMapping(value="/taker/subscribe/{productNo}",method=RequestMethod.GET)
 	public String adad(Model model,@PathVariable int productNo) {
 		
@@ -91,7 +91,6 @@ public class SubscribeController {
 		
 		return "item";
 	}
-	//-- 03-04 송진현 --//
 	
 	// item list GET
 	

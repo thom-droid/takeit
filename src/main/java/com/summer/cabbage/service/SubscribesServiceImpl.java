@@ -1,7 +1,6 @@
 package com.summer.cabbage.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,6 +24,7 @@ import com.summer.cabbage.util.PaginateUtil;
 import com.summer.cabbage.vo.Category;
 import com.summer.cabbage.vo.DeliveryDay;
 import com.summer.cabbage.vo.DeliveryRegion;
+import com.summer.cabbage.vo.Giver;
 import com.summer.cabbage.vo.Member;
 import com.summer.cabbage.vo.PageVO;
 import com.summer.cabbage.vo.Payment;
@@ -42,11 +42,9 @@ public class SubscribesServiceImpl implements SubscribesService {
 	@Autowired
 	private SubscribesDAO subscribesDAO;
 	
-	// 03-04 정진하 추가
 	@Autowired
 	private DeliveryDaysDAO deliveryDaysDAO;
 	
-	// 03-04 방현수 추가
 	@Autowired
 	private TakerAddrsDAO takerAddrsDAO;
 	
@@ -56,7 +54,6 @@ public class SubscribesServiceImpl implements SubscribesService {
 	@Autowired
 	private DeliveryRegionsDAO deliveryRegionsDAO;
 	
-	// 03-09 방현수 추가
 	@Autowired
 	private TakerCardsDAO takerCardsDAO;
 	
@@ -64,21 +61,19 @@ public class SubscribesServiceImpl implements SubscribesService {
 	private PaymentsDAO paymentsDAO;
 	
 	
-	//03-04 송진현 추가
 	@Autowired
 	private GiversDAO giversDAO;
 
 	@Autowired
 	private ReviewsDAO reviewsDAO;
-	// 03-04 이소현 추가
+	
 	@Autowired
 	private CategoriesDAO categoriesDAO; 
-	//03-04 박형우 추가
+	
 	@Autowired
 	private RegionsDAO regionsDAO;
 	@Autowired
 	private ProductsDAO productDAO;
-	
 	
 	// 03-04 정진하 추가
 	@Override
@@ -101,8 +96,6 @@ public class SubscribesServiceImpl implements SubscribesService {
 	// 03-04 정진하 추가 end
 	
 	// 03-04 방현수 추가 (구독 결제단계 정보 불러오기)
-	// 03-09 방 수정
-	// 03-11
 	@Override
 	public Map<String, Object> applySubscribes(int takerNo, int productNo) {
 		
@@ -241,72 +234,50 @@ public class SubscribesServiceImpl implements SubscribesService {
 		return result;
 	}
 	
-	//송진현 구독상품 detail 03-04 추가//
+	// item detail
 	@Override
 	public Map<String, Object> getProductDetail(int productNo) {
 		Map<String, Object> map= new ConcurrentHashMap<String, Object>();
 		
+		Giver giver = giversDAO.selectDetailOne(productNo);
 		map.put("product",productsDAO.selectDetailOne(productNo));
-		map.put("giver",giversDAO.selectDetailOne(productNo));
+		map.put("giver", giver);
+		map.put("giverInfo", giversDAO.selectDetail(giver.getNo()));
 		map.put("deliveryDays",deliveryDaysDAO.selectListDay(productNo));
-		map.put("reviews",reviewsDAO.selectListreview(productNo));
+		map.put("reviews",reviewsDAO.selectReviewsByProductNo(productNo));
 		
-		// 구독 상품의 배송지 옵션 받아오기
-		
+		// delivery options available
 		List<DeliveryRegion> dr = new ArrayList<DeliveryRegion>();
-		DeliveryRegion drNoPrNo = new DeliveryRegion();
 		
-		// prior_no가 없는 경우 (서울 전체/ 경기 전체인 경우) 와 아닌 경우(서울 송파 / 경기도 안산시)를 나눠서 DAO 실행
-		// prior_no SELECT결과가 null로 나온 경우
-		if(deliveryRegionsDAO.selectWhether(productNo).contains(null)) {
+		// primary region select
+		if(deliveryRegionsDAO.selectPrimary(productNo)!=null) {
 			
-			// prior_no가 없는 지역의 번호를 받아옴
-			List<DeliveryRegion> regionNums = deliveryRegionsDAO.selectOptsWithPrimaryRegion(productNo);
-			
-			// 해당 지역의 이름을 추가함
-			for(int i =0;i<regionNums.size();i++) {
-				
-				drNoPrNo.setNo(regionNums.get(i).getNo());
-				drNoPrNo.setProductNo(productNo);
-				
-				dr.add(i, deliveryRegionsDAO.selectOptPrimaryRegionName(drNoPrNo));
-			}
-		} // if
-		
-		//현재 no 에는 prior_no가 들어가 있음
-		List<DeliveryRegion> optRegionNames = deliveryRegionsDAO.selectOptRegion(productNo);
-		
-		// optRegionNames의 idx에 번호(prior_no)로 selectOptPrimaryRegionName(지역이름 얻기) DAO를 수행하고, 
-		// 리턴값인 DeliveryRegion VO에서 지역 이름을 얻어와 세팅
-		for (int i = 0;i<optRegionNames.size();i++) {
-			
-			drNoPrNo.setNo(optRegionNames.get(i).getNo());
-			System.out.println(drNoPrNo.getNo());
-
-			drNoPrNo.setProductNo(productNo);
-			System.out.println(drNoPrNo.getProductNo());
-				
-			/*
-			 * optRegionNames.get(i).setPrimaryRegionName( deliveryRegionsDAO
-			 * .selectOptPrimaryRegionName(drNoPrNo).getPrimaryRegionName());
-			 */
+			dr.addAll(deliveryRegionsDAO.selectPrimary(productNo));
 			
 		}
 		
+		// secondary region select (e.g. 송파구, 수원시 장안구...)
+		if(deliveryRegionsDAO.selectSecondary(productNo)!=null) {
 			
-			// 세팅된 위의 list 를 dr list에 추가
-			dr.addAll(optRegionNames);
-			 
-		for(DeliveryRegion item:dr) {
-			System.out.println(item.getPrimaryRegionName());
-			System.out.println(item.getRegionName());
+			List<DeliveryRegion> secondaryList = deliveryRegionsDAO.selectSecondary(productNo);
+			
+			for(int i = 0;i<secondaryList.size();i++) {
+				
+				// setting primary region (e.g. 서울, 경기...) to combine with secondary region
+				DeliveryRegion prmyName = deliveryRegionsDAO.selectPrimaryName(secondaryList.get(i).getNo());
+				
+				secondaryList.get(i).setPrimaryRegionName(prmyName.getPrimaryRegionName());
+				
+			}
+			
+			dr.addAll(secondaryList);
+			
 		}
 		
 		map.put("deliveryOpt", dr);
 		
 		return map;
 	}
-	//송진현//
 	
 	// categories and location options of the all items 
 	@Override
