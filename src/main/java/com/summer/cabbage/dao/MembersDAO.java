@@ -23,6 +23,8 @@ public interface MembersDAO {
 	public int selectId(String id);
 	//기버회원가입-송진현
 	public int insertMember(Member member);
-	//03-04 송진현 추가 end
+	//03-04 송진현 추가 end\
+
+	public Member selectMemberByNo(int no);
 
 }

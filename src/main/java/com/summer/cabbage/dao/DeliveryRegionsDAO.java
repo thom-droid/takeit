@@ -29,6 +29,12 @@ public interface DeliveryRegionsDAO {
 	//구독 등록하기 210304 박형우
 	public int insertDeliveryRegions(DeliveryRegion deliveryRegion);
 
+	public List<DeliveryRegion> selectPrimary(int productNo);
+
+	public List<DeliveryRegion> selectSecondary(int productNo);
+
+	public DeliveryRegion selectPrimaryName(int no);
+
 	
 
 

@@ -83,3 +83,23 @@ $(function() {
 	});
 
 }); //function() end
+
+let allRatings = document.querySelectorAll(".rating");
+
+let ratingSum = 0;
+
+allRatings.forEach(item =>{
+	
+	ratingSum += parseInt(item.textContent);
+	
+});
+
+let rating = ratingSum/allRatings.length;
+console.log(rating);
+console.log(ratingSum);
+console.log(allRatings.length);
+
+document.querySelector(".star_review").textContent = rating;
+
+document.querySelector(".rating_num").innerHTML = allRatings.length; 
+

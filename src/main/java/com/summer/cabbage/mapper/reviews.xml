@@ -16,10 +16,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!--  03-03 이소현 _ 리뷰 받아오기   -->
 	<select id="selectReviewsByProductNo" parameterType="int" resultType="Review">
-		SELECT r.no no, p.name productName, p.no productNo, r.review, r.star, r.taker_no takerNo, t.name takerName, r.regdate, m.profile_img MemberProfileImg,
-				 t.nickname takerNickname, p.giver_no giverNo
-		FROM products p, reviews r, takers t, members m
-		WHERE p.no=r.product_no AND r.taker_no=t.no AND m.no =t.no  AND p.no = #{productNo}
+		SELECT r.no no, r.review review, r.star star, r.taker_no takerNo, t.name takerName, r.regdate regdate, 
+				 t.nickname takerNickname, p.giver_no giverNo,
+				 p.name productName, p.no productNo,
+				 m.profile_img memberProfileImg
+		FROM products p 
+		INNER JOIN reviews r
+		ON p.no = r.product_no
+		INNER JOIN takers t
+		ON t.no = r.taker_no
+		INNER JOIN members m
+		ON m.no = t.no
+		WHERE p.no = #{productNo}
 	</select>
 </mapper>
 

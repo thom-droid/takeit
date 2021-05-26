@@ -55,4 +55,18 @@ public class DeliveryRegionsDAOImpl implements DeliveryRegionsDAO {
 		return session.insert("deliveryRegions.insertDeliveryRegions", deliveryRegion);
 	}
 	
+	@Override
+	public List<DeliveryRegion> selectPrimary(int productNo) {
+		return session.selectList("deliveryRegions.selectPrimary", productNo);
+	}
+	
+	@Override
+	public List<DeliveryRegion> selectSecondary(int productNo) {
+		return session.selectList("deliveryRegions.selectSecondary", productNo);
+	}
+	
+	@Override
+	public DeliveryRegion selectPrimaryName(int no) {
+		return session.selectOne("deliveryRegions.selectPrimaryName", no);
+	}
 }

@@ -53,4 +53,9 @@ public class MembersDAOImpl implements MembersDAO {
 	}
 	//03-04 송진현 추가 end
 	
+	@Override
+	public Member selectMemberByNo(int no) {
+		return session.selectOne("members.selectMemberByNo", no);
+	}
+	
 }

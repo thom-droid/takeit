@@ -95,6 +95,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	
+	<!-- test -->
+	
+	<select id="selectPrimary" parameterType="int" resultType="DeliveryRegion">
+		SELECT r.name primaryRegionName, r.prior_no no, dr.area_no areaNo, dr.price price
+		FROM regions r
+		INNER JOIN delivery_regions dr ON dr.area_no = r.no
+		INNER JOIN products p ON dr.product_no = p.no
+		WHERE p.no = #{productNo}
+        AND r.prior_no IS NULL
+	</select>
+	
+	<select id="selectSecondary" parameterType="int" resultType ="DeliveryRegion">
+		SELECT r.name regionName, r.prior_no no, dr.area_no areaNo, dr.price price
+		FROM regions r
+		INNER JOIN delivery_regions dr ON dr.area_no = r.no
+		INNER JOIN products p ON dr.product_no = p.no
+		WHERE p.no = #{productNo}
+        AND r.prior_no IS NOT NULL
+	</select>
+	
+	<select id="selectPrimaryName" parameterType="int" resultType="DeliveryRegion">
+		SELECT name primaryRegionName
+		FROM regions
+		WHERE no = #{no}
+	</select>
 	
 </mapper>
 
