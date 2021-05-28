@@ -111,63 +111,45 @@ public class SubscribesServiceImpl implements SubscribesService {
 			System.out.println("배송지 정보가 없음");
 		}
 		
-		// 구독 상품 정보 받아오기
-		map.put("product", productsDAO.selectOne(productNo));
-		
-		// 구독 상품의 배송지 옵션 받아오기
-		
+		// delivery options available
 		List<DeliveryRegion> dr = new ArrayList<DeliveryRegion>();
-		DeliveryRegion drNoPrNo = new DeliveryRegion();
 		
-		// prior_no가 없는 경우 (서울 전체/ 경기 전체인 경우) 와 아닌 경우(서울 송파 / 경기도 안산시)를 나눠서 DAO 실행
-		// prior_no SELECT결과가 null로 나온 경우
-		if(deliveryRegionsDAO.selectWhether(productNo).contains(null)) {
+		// primary region select
+		if(deliveryRegionsDAO.selectPrimary(productNo)!=null) {
 			
-			// prior_no가 없는 지역의 번호를 받아옴
-			List<DeliveryRegion> regionNums = deliveryRegionsDAO.selectOptsWithPrimaryRegion(productNo);
+			dr.addAll(deliveryRegionsDAO.selectPrimary(productNo));
 			
-			// 해당 지역의 이름을 추가함
-			for(int i =0;i<regionNums.size();i++) {
-				
-				drNoPrNo.setNo(regionNums.get(i).getNo());
-				drNoPrNo.setProductNo(productNo);
-				
-				dr.add(i, deliveryRegionsDAO.selectOptPrimaryRegionName(drNoPrNo));
-			}
-		} // if
-		
-		//현재 no 에는 prior_no가 들어가 있음
-		List<DeliveryRegion> optRegionNames = deliveryRegionsDAO.selectOptRegion(productNo);
-		
-		// optRegionNames의 idx에 번호(prior_no)로 selectOptPrimaryRegionName(지역이름 얻기) DAO를 수행하고, 
-		// 리턴값인 DeliveryRegion VO에서 지역 이름을 얻어와 세팅
-		for (int i = 0;i<optRegionNames.size();i++) {
-			
-			drNoPrNo.setNo(optRegionNames.get(i).getNo());
-			System.out.println(drNoPrNo.getNo());
-
-			drNoPrNo.setProductNo(productNo);
-			System.out.println(drNoPrNo.getProductNo());
-				
-			optRegionNames.get(i).setPrimaryRegionName(
-					deliveryRegionsDAO
-					.selectOptPrimaryRegionName(drNoPrNo)
-					.getPrimaryRegionName());
 		}
 		
+		// secondary region select (e.g. 송파구, 수원시 장안구...)
+		if(deliveryRegionsDAO.selectSecondary(productNo)!=null) {
 			
-			// 세팅된 위의 list 를 dr list에 추가
-			dr.addAll(optRegionNames);
-			 
-		for(DeliveryRegion item:dr) {
-			System.out.println(item.getPrimaryRegionName());
-			System.out.println(item.getRegionName());
+			List<DeliveryRegion> secondaryList = deliveryRegionsDAO.selectSecondary(productNo);
+			
+			for(int i = 0;i<secondaryList.size();i++) {
+				
+				// setting primary region (e.g. 서울, 경기...) to combine with secondary region
+				DeliveryRegion prmyName = deliveryRegionsDAO.selectPrimaryName(secondaryList.get(i).getNo());
+				
+				secondaryList.get(i).setPrimaryRegionName(prmyName.getPrimaryRegionName());
+				
+			}
+			
+			dr.addAll(secondaryList);
+			
 		}
 		
 		map.put("deliveryOpt", dr);
 		
 		// 구독 상품의 배송 요일 받아오기
 		map.put("daysOpt", deliveryDaysDAO.selectListDays(productNo));
+		
+		Giver giver = giversDAO.selectDetailOne(productNo);
+		map.put("product",productsDAO.selectDetailOne(productNo));
+		map.put("giver", giver);
+		map.put("giverInfo", giversDAO.selectDetail(giver.getNo()));
+		map.put("reviews",reviewsDAO.selectReviewsByProductNo(productNo));
+		map.put("deliveryDays",deliveryDaysDAO.selectListDay(productNo));
 		
 		return map;
 	}

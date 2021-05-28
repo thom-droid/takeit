@@ -44,13 +44,20 @@ let verifyingMsg = $(".verifying_msg");
 const numOnly = /^[0-9]+$/;
 const $paymentInput = $("#paymentPopContainer input");
 
+// datepicker
+let minDateInput = document.getElementById("dateVal");
+let dateVal = minDateInput.value;
 
 
 // 배송지 옵션 선택 + 가격 변동
 
+// delivery option 
 $optArea.on("click", ".delivery_opt_label", function() {
-	$(".total_price_input").val(this.dataset.price);
+	
 	$(".product_price").text(this.dataset.price);
+	$(".opt_price_input").val(this.dataset.optPrice);
+	$(".opt_region1_input").val(this.dataset.sido);
+	$(".opt_region2_input").val(this.dataset.sigungu);
 
 	// 시도 / 시군구
 	curAddrOptSido = this.dataset.sido;
@@ -355,6 +362,38 @@ $(".phone_num_check").on("keyup", "input.new_delivery", function() {
 
 
 }); // on keyup
+
+
+
+// datepicker setup
+$.datepicker.setDefaults({
+	dateFormat: 'yy-mm-dd',
+	prevText: '이전 달',
+	nextText: '다음 달',
+	monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	showMonthAfterYear: true,
+	yearSuffix: '년'
+});
+
+
+$(function() {
+
+	//오늘 날짜를 출력
+	$("#today").text(new Date().toLocaleDateString());
+
+	$("#datepicker").datepicker({
+		
+		// date range available. 2 weeks from today
+		minDate: dateVal,
+		maxDate: 14
+	});
+
+}); //function() end
+
 
 
 

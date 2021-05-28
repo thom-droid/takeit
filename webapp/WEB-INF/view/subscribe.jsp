@@ -14,64 +14,124 @@
 <body>
 
 	<c:import url="/WEB-INF/view/template/header.jsp" />
-    <div id="pageHeader">
-        <div class="item_category_box">
-            <p><span class="category"><a href="">${product.primaryCategoryName}</a></span> > <span>${product.categoryName}</span></p>
-        </div>
-    </div><!--header-->
 <form id="subscribeForm" action="/subscribe" method="POST">
+
     <div id="container">
-		
-        <input type="hidden" name="takerNo" value="${loginMember.no}" />
             <div>
-                <div class="item_content">
-                    <h1 class="subs_title">${product.name}</h1>
-                    <input type="hidden" name="productNo" value="${product.no}"/>
-                    <div class="item_info_wrap">
-                        <div class="item_img_box">
-                            <img src="/img/${product.photo}" width="250" height="250" />
-                        </div>
-                        <div class="item_info_box">
-                            <dl>
-                                <dt>배송 시작일</dt>
-                                <!--datepicker-->
-                                <dd><input name="deliveryStart" type="text" id="datepicker"></dd>
-                            </dl>	
-                            <dl>
-                                <dt>배송일</dt>
-                                <dd><!--월화수목금 표기. 전 단계에서 받아와서 보여주면 됨-->
-                                    <div class="deliver_date_box">
-                                    	<c:forEach items="${daysOpt}" var="day">
-                                        <div class="delivery_date selected" >${day.deliveryDay}</div>
-                                        </c:forEach>
-                                        <%-- <div class="delivery_date selected">월</div>
-                                        <div class="delivery_date">화</div>
-                                        <div class="delivery_date">수</div>
-                                        <div class="delivery_date">목</div>
-                                        <div class="delivery_date">금</div>
-                                        <div class="delivery_date">토</div> --%>
-                                    </div>
-                                </dd>
-                            </dl>
-                            <dl>
-                                <dt class="delivery_addr_option">배송지역 선택</dt>
-                                <dd class="opt_area">
-                                	<c:forEach items="${deliveryOpt}" var="opt">
-                                		
-                                    <input id="deliveryAddrOption${opt.areaNo}" name="addrOpt" value="${opt.primaryRegionName}${opt.regionName}+${opt.price}" class="addr_option_input" type="radio" <c:if test="${opt.areaNo eq param.regionNo}"> checked</c:if>>
-                                    <label class="delivery_opt_label" for="deliveryAddrOption${opt.areaNo }" data-price="${opt.price+product.price}" data-sido="${opt.primaryRegionName}" data-sigungu="${opt.regionName}">${opt.primaryRegionName}${opt.regionName}/+<span class="opt_price">${opt.price}</span></label>
-                                    <input type="hidden" class="opt_price_input" name="optPrice" value="${opt.price}" />
-                                    </c:forEach>
-                                </dd>
-                            </dl>
-                            <dl class="price_tag">
-                                <dt>총 가격</dt>
-                                <dd><span class="product_price">${product.price}</span>원</dd>
-                                <input class="total_price_input" type="hidden" name="price" value="${product.price}" />
-                            </dl>
-                        </div><!--item_info_box-->
-                    </div><!--info_wrap-->
-                </div><!--item_content-->
+                <div class="product_detail_page_head_contents">
+            <div class="product_detail_page_content_left">
+                <!-- 구독 제품 대표 이미지-->
+                <img class="product_thumbnail_img" src="/img/products/${product.photo }">
+            </div>
+            <div class="product_detail_page_content_right">
+                <h2 class="subs_title">${product.name }</h2>
+                <div class="giver_information_box">
+                    <div class="giver_information">
+                       <!-- taker 가 보는 giver 상세 페이지로 이동 -->
+                        <a href=""><img class="giver_profile_img" src="/img/upload/profile/${giverInfo.profileImg }"></a>
+                        <a href=""><span>${giver.company }</span></a>
+                    </div>
+                </div>
+                <div class="item_info_box">
+                    <dl>
+                        <dt>배송 시작일</dt>
+                        <dd>
+                        	<div role="button">
+                        		<input id="datepicker" class="datepicker_input" name="deliveryStart" autocomplete ="off" placeholder="희망배송시작일" readonly value="${param.deliveryStart}">
+                        	</div>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>배송일</dt>
+                        <dd>
+                            <div class="deliver_date_box">
+                        
+                            	<div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==0}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">일</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==1}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">월</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==2}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">화</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==3}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">수</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==4}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">목</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==5}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">금</div>
+                                <div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
+                                    <c:choose>
+                            		<c:when test="${deliveryDay.day==6}">selected</c:when>
+                            		<c:otherwise></c:otherwise>
+	                            	</c:choose>
+                            	</c:forEach>">토</div>
+                               
+                            </div>
+                        </dd>
+                    </dl>
+                    
+                    <dl>
+                        <dt class="delivery_addr_option">배송지역 선택</dt>
+                        <dd class="opt_area">
+                        	<c:forEach items="${deliveryOpt}" var="opt">
+                         		
+                            <input id="deliveryAddrOption${opt.areaNo}" name="addrOpt" value="${opt.primaryRegionName}${opt.regionName}+${opt.price}" class="addr_option_input" type="radio" <c:if test="${opt.areaNo eq param.optAreaNo}"> checked</c:if>>
+                            <label class="delivery_opt_label" for="deliveryAddrOption${opt.areaNo }" data-opt-price="${opt.price}" data-price="${opt.price+product.price}" data-sido="${opt.primaryRegionName}" data-sigungu="${opt.regionName}">${opt.primaryRegionName}${opt.regionName}/+<span class="opt_price">${opt.price}</span></label>
+                            
+                            </c:forEach>
+                        </dd>
+                        <dd>
+                        	<input type="hidden" name="takerNo" value="${loginMember['member'].no}" />
+                        	<input id="optPrice" type="hidden" class="opt_price_input" name="optPrice" value="${param.price }"/>
+                        	<input id="primaryRegion" type="hidden" class="opt_region1_input" name="primaryRegion" value="${param.primaryRegion }" />
+                        	<input id="secondaryRegion" type="hidden" class="opt_region2_input" name="secondaryRegion" value="${param.secondaryRegion }" />
+                        	<input id="optNo" type="hidden" class="opt_no" name="optNo" />
+                        	<input id="optAreaNo" type="hidden" class="opt_area_no" name="optAreaNo" />
+                        	<input id="productNo" type="hidden" class="product_no" name="productNo" value="${product.no }"/>
+                        	
+                        </dd>
+                    </dl>
+                   
+                    <dl class="sold_out">
+                        <dt>남은 수량</dt>
+                        <dd class="last_qnt">9 개</dd>
+                    </dl>
+                    <dl class="price_tag">
+                        <dt>총 가격</dt>
+                       		<dd>
+                       		<span class="product_price">
+                        	<c:out value=" ${param.price + param.optPrice }" />
+                        	</span>
+                        	원</dd>
+                            <input class="total_price_input" type="hidden" name="price" value="${param.price + param.optPrice}" />
+                    </dl>
+
+                </div><!--item_info_box-->
+            </div>
+        </div>
 
                 <div class="division_line"></div>
 
@@ -221,7 +281,7 @@
                 </div>
             </div>
     </div><!--container-->
-    
+    <input id="dateVal" type="hidden" name="dateVal" value="${product.dateAvail}" />
 
 <c:import url="/WEB-INF/view/template/footer.jsp" />
 
@@ -359,11 +419,11 @@
 </script>
 
 <c:import url="/WEB-INF/view/template/js-import.jsp"/>
-<script src="/js/subscribe.js"></script>
+<script src="/js/header.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/tui-date-picker.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="/js/subscribe.js"></script>
 </body>
 </html>

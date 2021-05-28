@@ -51,6 +51,7 @@ public class SubscribeController {
 	// subscribe before payment 
 	@RequestMapping(value="/subscribe/{productNo}", method=RequestMethod.GET)
 	public String subscribe(Subscribe subscribe, Model model, HttpSession session , @PathVariable int productNo) {
+		
 		// loginMember is a map that consists of two parts - member, taker/giver 
 		ConcurrentHashMap<String, Object> loginMember = (ConcurrentHashMap<String, Object>) session.getAttribute("loginMember"); 
 		
@@ -68,16 +69,17 @@ public class SubscribeController {
 	@RequestMapping(value="/subscribe", method=RequestMethod.POST)
 	public String subscribe(HttpSession session, TakerAddr takerAddr,
 			@RequestParam(required = false) String addDeliveryList, @RequestParam(required = false) String noAddr, Subscribe subscribe, TakerCard takerCard) {
-		//System.out.println("productNo  :" +productNo);
-		Member loginMember = (Member) session.getAttribute("loginMember");
+
+		ConcurrentHashMap<String, Object> loginMember = (ConcurrentHashMap<String, Object>) session.getAttribute("loginMember");
 		
+		Member member = (Member) loginMember.get("member");
 		// 같은 데이터인데 db상 이름이 달라서 set해줌
 		subscribe.setDelLocation(takerAddr.getName());
 		
 		//System.out.println(addDeliveryList);
 		//System.out.println(takerAddr.getType());
 		
-		service.registerSubscribe(loginMember.getNo(), takerAddr, addDeliveryList, noAddr, subscribe, takerCard);
+		service.registerSubscribe(member.getNo(), takerAddr, addDeliveryList, noAddr, subscribe, takerCard);
 		
 		return "redirect:/index";
 	}
