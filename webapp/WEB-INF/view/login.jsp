@@ -6,13 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <title>TakeIt</title>
-    
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/login.css" />
     <link rel="stylesheet" href="css/appleSDGothic.css"/>
 </head>
 <body>
-TEST 
+<c:if test="${msg != null}">
+	<input id="loginFailed" type="hidden" name="loginFailed" value="${msg}" /> 
+</c:if>
+<form id="taker" action="/log" method="post">
 <div id="wrap">
     <div id="header">
         <div class="logo_box">
@@ -26,7 +28,7 @@ TEST
        
         <div class="login_box">
             <div class="login_form taker show">
-                <form id="taker" action="/log" method="post">
+                
 		             <div id="loginSelect">
 				            <div>
 				                <div>
@@ -41,33 +43,34 @@ TEST
 			            </div>
 	                    <div class="taker_id">
 	                        <p>아이디</p>
-	                        <input class="login_input" name="id" placeholder="ex) taketiallfromit@gmail.com"/>
+	                        <input id="userid" class="login_input" name="id" placeholder="ex) taketiallfromit@gmail.com"/>
 	                    </div>
 	                    <div class="taker_password">
 	                        <p>비밀번호</p>
-	                        <input class="login_input" name="password" placeholder="영문/숫자/특수문자 포함 8~10자"/>
+	                        <input id="userpw" class="login_input" name="password" placeholder="영문/숫자/특수문자 포함 8~10자"/>
 	                    </div>
-	                    <p class="validation_check">테스트</p>
-	                    <button type="submit" class="taker_login_submit txt">로그인</button>
-                </form>
+	                    <button id="submitBtn" type="submit" class="taker_login_submit txt">로그인</button>
+                
             </div>
        </div>    
         <div class="login_footer">
-            <div class="join_box">
-                <button><a href="/signUp/select">회원가입</a> </button>
-            </div>
-            <div class="find_password">
-                <button><a href="/find/password">비밀번호찾기</a></button>
+        	<div class="keep_logged_in">
+        		<input id="keepLoggedInBox" type="checkbox" name="keepLoggedInBox" />
+        		<label for="keepLoggedInBox" class="logged_in_label">로그인 정보 저장</label>
+        	</div>
+        	<div class="login_aux_box">
+	            <div class="join_box">
+	                <a href="/signUp/select">회원가입</a> 
+	            </div>
+	            <div class="find_password">
+	                <a href="/find/password">비밀번호찾기</a>
+	            </div>
             </div>
         </div>
     </div><!--content-->
 </div> <!--wrap-->
-<script src="js/jquery.js"></script>
-<script>
-
-    // 유효성 검사 불일치는 서버에서 하자
-
-
-</script>
+</form>
+<script src="/js/jquery.js"></script>
+<script src="/js/login.js"></script>
 </body>
 </html>

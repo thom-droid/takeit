@@ -4,29 +4,36 @@
 
 const submitBtn = document.getElementById("submitBtn");
 const nameCollection = document.getElementsByName("type");
+const typeT = document.getElementById("radioTaker");
+const typeG = document.getElementById("radioGvier");
 const userid  = document.getElementById("userid");
 const userpw  = document.getElementById("userpw");
 let loginCheck = Boolean(localStorage.getItem("userinfo"));
 let typeVal = '';
 
-nameCollection.forEach(item=>{
+// check user type
+function getType(){
 	
-	item.addEventListener("", ()=>{
-		typeVal = this.value;
+	nameCollection.forEach(item=>{
+			
+		if(item.checked){
+			typeVal = item.value;
+		}
+	
 	});
-});
-
-
-function populateStorage(){
-	let param = {"userType": typeVal, "userid": userid.value, "userpw": userpw.value};
-	localStorage.setItem("userinfo", JSON.stringify(param));
-	console.log(localStorage);			
+	return typeVal;
 }
 
-submitBtn.addEventListener("click", (e)=>{
-	e.preventDefault();
-});
+// assign user type when loaded
+getType();
 
+function populateStorage(){
+	
+	getType();
+	let param = {"userType": typeVal, "userid": userid.value, "userpw": userpw.value};
+	sessionStorage.setItem("loginInfo", JSON.stringify(param));
+	
+}
 
 if(!loginCheck){
 	submitBtn.onclick = populateStorage;
@@ -41,3 +48,31 @@ if(loginCheck){
 	userpw.value = userInfoObj.userpw;
 	console.log(userpw.value);
 }
+
+// input value validation
+submitBtn.addEventListener("click", function(e){
+	
+	// check empty values in input
+	let loginInput = document.querySelectorAll(".login_input");
+	
+	loginInput.forEach((item)=>{
+		
+		if(!item.value){
+			e.preventDefault();
+			alert("아이디 또는 비밀번호를 입력해주세요");
+		} 
+		
+	});
+	
+});
+
+// no matching result
+const loginFailed = document.getElementById("loginFailed");
+
+if(loginFailed){
+	alert("아이디 또는 비밀번호가 올바르지 않습니다");
+}
+
+
+
+

@@ -51,10 +51,11 @@ public class MemberController {
 	public String login(Member member, HttpSession session, RedirectAttributes ra) {
 		// 서비스 메서드 이용해서 로그인 처리 해주기 
 		
-		Map<String, Object> loginInfo = service.login(member); 
-		Member m = (Member) loginInfo.get("member");
+		Map<String, Object> loginInfo = service.login(member);
 		
 		if(loginInfo!=null) {
+			
+			Member m = (Member) loginInfo.get("member");
 			
 			session.setAttribute("loginMember", loginInfo);
 			
@@ -74,9 +75,10 @@ public class MemberController {
 			
 		}
 		
-		ra.addFlashAttribute("msg", "아이디 혹은 비밀번호 혹은 회원 유형선택이 틀렸습니다.");
+		ra.addFlashAttribute("msg", "wrong id or pw");
 		
 		return "redirect:/log";
+		
 	}
 	
 	// log DELETE
