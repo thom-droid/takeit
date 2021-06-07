@@ -46,9 +46,14 @@ public class MembersServiceImpl implements MembersService {
 	
 	@Override
 	public Map<String, Object> login(Member member) {
+		
 		Map<String, Object> map = new ConcurrentHashMap<String, Object>();
 		
 		Member m = membersDAO.selectLogin(member);
+		
+		if(m == null) {
+			return null;
+		}
 		
 		if(m.getType().equals("T")) {
 			map.put("taker", takersDAO.selectNo(m.getNo()));
