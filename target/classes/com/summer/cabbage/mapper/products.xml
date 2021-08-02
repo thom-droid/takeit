@@ -63,14 +63,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 LEFT JOIN regions r
                 ON r.no = dr.area_no
 				<choose>
+					<when test="searchType =='item'">
+						WHERE p.name LIKE '%'|| #{searchValue} || '%'
+					</when>
+					<when test="searchType =='location'">
+						WHERE r.name LIKE '%'|| #{searchValue} || '%'
+					</when>
 					<when test="categoryNo gte 1 and categoryNo lt 4">
 						WHERE c.prior_no = #{categoryNo}
 					</when>
 					<when test="categoryNo gte 4 and categoryNo lte 11">
 						WHERE c.no = #{categoryNo}
 					</when>
+					<when test="categoryNo eq 0 and location !=''">
+						WHERE r.name = #{location}
+					</when>
 				</choose>
-				<if test="location !=''">
+				<if test="categoryNo gt 0 and location !=''">
 					AND r.name = #{location}
 				</if> 
 				<choose>
@@ -78,7 +87,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						ORDER BY no
 					</when>
 					<when test="sort =='lat'">
-						ORDER BY regdate
+						ORDER BY regdate DESC
 					</when>
 					<when test="sort =='sub'">
 						ORDER BY subCount
@@ -113,14 +122,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         LEFT JOIN regions r
         ON r.no = dr.area_no
 		<choose>
+			<when test="searchType =='item'">
+				WHERE p.name LIKE '%'|| #{searchValue} || '%'
+			</when>
+			<when test="searchType =='location'">
+				WHERE r.name LIKE '%'|| #{searchValue} || '%'
+			</when>
 			<when test="categoryNo gte 1 and categoryNo lt 4">
 				WHERE c.prior_no = #{categoryNo}
 			</when>
 			<when test="categoryNo gte 4">
 				WHERE c.no = #{categoryNo}
 			</when>
+			<when test="categoryNo eq 0 and location !=''">
+				WHERE r.name = #{location}
+			</when>
 		</choose>
-		<if test="location !=''">
+		<if test="categoryNo gt 0 and location !=''">
 			AND r.name = #{location}
 		</if> 
 	</select>
@@ -150,9 +168,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company
 			  FROM products p JOIN givers g ON p.giver_no = g.no
 			  ORDER BY regdate DESC)
-		WHERE rownum &lt; 10
-	</select>
-	<!-- 210306 박형우 -->
+		WHERE rownum &lt; 13
+	</select>	<!-- 210306 박형우 -->
 	
 	<!-- 03-12 방 모든 상품 목록 -->
 	<select id="selectTotalListByGiverNo" parameterType="int" resultType="Product">

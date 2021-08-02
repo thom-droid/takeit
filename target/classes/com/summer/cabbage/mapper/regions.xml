@@ -36,7 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		ON c.no = p.category_no
 		WHERE 
 		(r.no = #{tempNo} OR r.prior_no = #{tempNo} )
-		AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+		<if test="categoryNo gt 0">
+			AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+		</if>
 		GROUP BY r.name
 	</select>
 	
@@ -52,11 +54,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ON c.no = p.category_no
 			WHERE
 			(r.no = #{tempNo} OR r.prior_no =#{tempNo} )
-			AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+			<if test="categoryNo gt 0">
+				AND (c.no = #{categoryNo} OR c.prior_no = #{categoryNo})
+			</if>
 			GROUP BY r.name) num
 		FROM regions r
 		WHERE r.no = #{tempNo}
 	
+	</select>
+	<select id="selectLocationWithNumBySearch" parameterType="PageVO" resultType="Region"> 
+		SELECT r.name, count(p.no) num
+		
+		FROM products p
+		
+		INNER JOIN delivery_regions dr
+		ON dr.product_no = p.no
+		
+		INNER JOIN regions r
+		ON dr.area_no = r.no
+		
+		INNER JOIN categories c 
+		ON c.no = p.category_no
+		
+        WHERE p.name LIKE '%' ||#{searchValue} ||'%'
+        OR c.name LIKE '%' ||#{searchValue} ||'%'
+        
+        GROUP BY r.name
 	</select>
 </mapper>
 

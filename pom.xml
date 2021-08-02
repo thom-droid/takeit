@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.bmj</groupId>
-  <artifactId>ims</artifactId>
+  <groupId>com.summer</groupId>
+  <artifactId>cabbage</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <build>
@@ -32,9 +32,9 @@
 		</repository>
 	</repositories>
 
-<properties>
-	<spring-version>5.3.4</spring-version>
-</properties>
+	<properties>
+		<spring-version>5.3.4</spring-version>
+	</properties>
 
 
   <dependencies>
@@ -43,66 +43,85 @@
 		<artifactId>spring-webmvc</artifactId>
 		<version>${spring-version}</version>
 	</dependency>
+	
+	<!-- rdbms mapping, mybatis-spring -->
 	<dependency>
 		<groupId>oracle</groupId>
 		<artifactId>ojdbc6</artifactId>
 		<version>11.2.0.3</version>
 	</dependency>
 	
-	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
-<dependency>
-	<groupId>org.mybatis</groupId>
-	<artifactId>mybatis-spring</artifactId>
-	<version>2.0.6</version>
-</dependency>
-	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+	<dependency>
+		<groupId>org.mybatis</groupId>
+		<artifactId>mybatis-spring</artifactId>
+		<version>2.0.6</version>
+	</dependency>
+	
 	<dependency>
 		<groupId>org.mybatis</groupId>
 		<artifactId>mybatis</artifactId>
 		<version>3.5.6</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-jdbc</artifactId>
 		<version>${spring-version}</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	
+	<!-- jstl -->
 	<dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>jstl</artifactId>
 		<version>1.2</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+	
+	<!-- fileupload -->
 	<dependency>
 		<groupId>commons-fileupload</groupId>
 		<artifactId>commons-fileupload</artifactId>
 		<version>1.4</version>
 	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-	<dependency>
-		<groupId>com.fasterxml.jackson.core</groupId>
-		<artifactId>jackson-databind</artifactId>
-		<version>2.12.1</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/com.mortennobel/java-image-scaling -->
+	
+	<!-- img scale -->
 	<dependency>
 		<groupId>com.mortennobel</groupId>
 		<artifactId>java-image-scaling</artifactId>
 		<version>0.8.6</version>
 	</dependency>
+	
+	<!-- jackson -->
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.12.1</version>
+	</dependency>
+	
 	<!-- email 전송 03-03 강필규 추가 -->
 	<dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-email</artifactId>
-	<version>1.2</version>
-</dependency>
-<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
-<dependency>
-    <groupId>org.aspectj</groupId>
-    <artifactId>aspectjweaver</artifactId>
-    <version>1.9.6</version>
-</dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-email</artifactId>
+		<version>1.2</version>
+	</dependency>
+	
+	<!-- logging -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.25</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.2.3</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>jcl-over-slf4j</artifactId>
+	    <version>1.7.25</version>
+	</dependency>
 
 
   </dependencies>

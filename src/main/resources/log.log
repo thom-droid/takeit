@@ -1,0 +1,284 @@
+2021:18:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2021:18:17 DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021:18:17 DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis-config.xml]'
+2021:18:17 DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2021:18:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext initialized in 1697 ms
+2021:18:17 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'cabbage'
+2021:18:17 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1056 ms
+2021:18:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2021:18:17 DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021:18:17 DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis-config.xml]'
+2021:18:17 DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2021:18:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext initialized in 1578 ms
+2021:18:17 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'cabbage'
+2021:18:17 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1021 ms
+2021:18:32 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2021:18:32 DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021:18:32 DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis-config.xml]'
+2021:18:32 DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2021:18:32 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext initialized in 2067 ms
+2021:18:32 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'cabbage'
+2021:18:32 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1286 ms
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e1a9ef] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1862615330, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:32 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:32 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6e1a9ef]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@735ada56] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [871481002, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@735ada56]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6700af67] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [77946871, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6700af67]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2188bd5f] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [523387690, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2188bd5f]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d2bac3c] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1398742665, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:32 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:32 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d2bac3c]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@27e2a8b3] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [919211304, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:32 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:32 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@27e2a8b3]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f45116d] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1739068683, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5f45116d]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@553d9e7d] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [863529663, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@553d9e7d]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4441dbc4] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1676054026, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:32 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@4441dbc4]
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a113a7d] was not registered for synchronization because synchronization is not active
+2021:18:32 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [718048786, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:32 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:32 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:32 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:32 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@5a113a7d]
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56dfbfd0] was not registered for synchronization because synchronization is not active
+2021:18:35 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1477987195, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:35 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:35 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:35 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@56dfbfd0]
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19254140] was not registered for synchronization because synchronization is not active
+2021:18:35 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [850349195, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:35 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:35 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:35 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@19254140]
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28f69a36] was not registered for synchronization because synchronization is not active
+2021:18:35 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1251395932, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:35 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:35 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:35 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@28f69a36]
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@790abe0f] was not registered for synchronization because synchronization is not active
+2021:18:35 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [831090353, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:35 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:35 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:35 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@790abe0f]
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d32659c] was not registered for synchronization because synchronization is not active
+2021:18:35 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1368556879, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:35 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:35 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:35 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:35 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2d32659c]
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11d37324] was not registered for synchronization because synchronization is not active
+2021:18:36 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [455809108, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:36 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:36 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:36 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@11d37324]
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bd413aa] was not registered for synchronization because synchronization is not active
+2021:18:36 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [987343223, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:36 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:36 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:36 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1bd413aa]
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a2eac5a] was not registered for synchronization because synchronization is not active
+2021:18:36 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [403861376, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:36 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:36 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:36 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a2eac5a]
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23e0666b] was not registered for synchronization because synchronization is not active
+2021:18:36 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1418064241, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:36 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:36 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:36 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@23e0666b]
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ba6cbc7] was not registered for synchronization because synchronization is not active
+2021:18:36 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [809749852, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:36 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:36 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:36 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:36 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@3ba6cbc7]
+2021:18:37 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2021:18:37 DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021:18:37 DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis-config.xml]'
+2021:18:37 DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2021:18:37 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext initialized in 2184 ms
+2021:18:37 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'cabbage'
+2021:18:37 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1367 ms
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48207716] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [879974936, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:37 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:37 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@48207716]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55fd861a] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [122126520, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@55fd861a]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29db4ae1] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1426734675, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@29db4ae1]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c7eafbe] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1460121801, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6c7eafbe]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2478648a] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [545537776, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:37 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:37 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2478648a]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9f2fe39] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1534227175, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:37 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:37 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@9f2fe39]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7138eff5] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [176014043, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7138eff5]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1460e69b] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1556962234, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1460e69b]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a3c4091] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [238238743, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:37 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@6a3c4091]
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1df45774] was not registered for synchronization because synchronization is not active
+2021:18:37 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [726851579, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:37 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:37 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:37 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:37 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1df45774]
+2021:18:39 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+2021:18:39 DEBUG org.apache.ibatis.logging.LogFactory - Logging initialized using 'class org.apache.ibatis.logging.slf4j.Slf4jImpl' adapter.
+2021:18:39 DEBUG o.m.spring.SqlSessionFactoryBean - Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis-config.xml]'
+2021:18:39 DEBUG o.m.spring.SqlSessionFactoryBean - Property 'mapperLocations' was not specified.
+2021:18:39 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext initialized in 2081 ms
+2021:18:39 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'cabbage'
+2021:18:39 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1337 ms
+2021:18:39 DEBUG c.s.c.interceptor.LogInterceptor - com.summer.cabbage.controller.MemberController#index(Model) invoked.
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@692f17eb] was not registered for synchronization because synchronization is not active
+2021:18:39 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1979386568, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:39 DEBUG categories.selectFirstCategories - ==>  Preparing: SELECT no, name, prior_no priorNo, regdate FROM categories WHERE prior_no is null
+2021:18:39 DEBUG categories.selectFirstCategories - ==> Parameters: 
+2021:18:39 DEBUG categories.selectFirstCategories - <==      Total: 4
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@692f17eb]
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2188bd5f] was not registered for synchronization because synchronization is not active
+2021:18:39 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [523387690, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:39 DEBUG payments.selectThisWeekProductNoC - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 5 AND 6 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:39 DEBUG payments.selectThisWeekProductNoC - ==> Parameters: 
+2021:18:39 DEBUG payments.selectThisWeekProductNoC - <==      Total: 0
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2188bd5f]
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d2bac3c] was not registered for synchronization because synchronization is not active
+2021:18:39 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [1398742665, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:39 DEBUG payments.selectThisWeekProductNoF - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 7 AND 9 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:39 DEBUG payments.selectThisWeekProductNoF - ==> Parameters: 
+2021:18:39 DEBUG payments.selectThisWeekProductNoF - <==      Total: 0
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@7d2bac3c]
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37d933f8] was not registered for synchronization because synchronization is not active
+2021:18:39 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [981409082, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:39 DEBUG payments.selectThisWeekProductNoH - ==>  Preparing: SELECT s.product_no FROM payments p JOIN subscribes s ON p.sub_no = s.no JOIN products pr ON pr.no = s.product_no WHERE sysdate < p.regdate+7 AND pr.category_no BETWEEN 10 AND 11 GROUP BY s.product_no ORDER BY count(s.product_no) DESC
+2021:18:39 DEBUG payments.selectThisWeekProductNoH - ==> Parameters: 
+2021:18:39 DEBUG payments.selectThisWeekProductNoH - <==      Total: 0
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@37d933f8]
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a151c05] was not registered for synchronization because synchronization is not active
+2021:18:39 DEBUG o.m.s.t.SpringManagedTransaction - JDBC Connection [823517848, URL=jdbc:oracle:thin:@localhost:1521:xe, Oracle JDBC driver] will not be managed by Spring
+2021:18:39 DEBUG products.selectRecentProducts - ==>  Preparing: SELECT NO,giverNo,categoryNo,NAME,PRICE,DISCOUNT,dateAvail,PHOTO,salesQty,reqMsg,DETAILS,INSTRUCTION,TYPE,subCount,STAR,revCount,REGDATE,company FROM (SELECT p.NO,GIVER_NO giverNo,CATEGORY_NO categoryNo,NAME,PRICE,DISCOUNT,DATE_AVAIL dateAvail,PHOTO,SALES_QTY salesQty,REQ_MSG reqMsg,DETAILS,INSTRUCTION,TYPE,SUB_COUNT subCount,STAR,REV_COUNT revCount,REGDATE, company FROM products p JOIN givers g ON p.giver_no = g.no ORDER BY regdate DESC) WHERE rownum < 13
+2021:18:39 DEBUG products.selectRecentProducts - ==> Parameters: 
+2021:18:39 DEBUG products.selectRecentProducts - <==      Total: 12
+2021:18:39 DEBUG org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@1a151c05]
+2021:18:39 DEBUG c.s.c.interceptor.LogInterceptor - com.summer.cabbage.controller.MemberController#index(Model) ended
+2021:18:39 DEBUG c.s.c.interceptor.LogInterceptor - com.summer.cabbage.controller.MemberController#loginForm() invoked.
+2021:18:39 DEBUG c.s.c.interceptor.LogInterceptor - com.summer.cabbage.controller.MemberController#loginForm() ended

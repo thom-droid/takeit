@@ -1,0 +1,455 @@
+21:08:20 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:20 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:20:43 KST 2021]; root of context hierarchy
+21:08:20 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:20 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:20 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1830 ms
+21:08:20 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:20 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:20:45 KST 2021]; parent: Root WebApplicationContext
+21:08:20 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:20 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:20:45 KST 2021]; parent: Root WebApplicationContext
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:20 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:20 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:20 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1931 ms
+21:08:20 DEBUG k.o.c.g.interceptor.LoginInterceptor - org.springframework.web.servlet.mvc.ParameterizableViewController@6e0c530e 를 호출 했습니다
+21:08:20 DEBUG k.o.c.g.interceptor.LoginInterceptor - org.springframework.web.servlet.mvc.ParameterizableViewController@6e0c530e가 종료되었습니다. index 를 view로 사용합니다.
+21:08:20 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo) 를 호출 했습니다
+21:08:20 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)가 종료되었습니다. list 를 view로 사용합니다.
+21:08:21 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:08:21 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:08:25 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:20:45 KST 2021]; parent: Root WebApplicationContext
+21:08:25 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:25 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:25:25 KST 2021]; root of context hierarchy
+21:08:25 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:25 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:25 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1889 ms
+21:08:25 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:25 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:25:27 KST 2021]; parent: Root WebApplicationContext
+21:08:25 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:25 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:25:27 KST 2021]; parent: Root WebApplicationContext
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:25 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:25 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:25 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1954 ms
+21:08:25 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile) 를 호출 했습니다
+21:08:25 DEBUG k.o.c.g.controller.FileController - homeless_dog.png 파일이 업로드. 사이즈: 12293
+21:08:26 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile) 를 호출 했습니다
+21:08:26 DEBUG k.o.c.g.controller.FileController - mario.png 파일이 업로드. 사이즈: 22699
+21:08:27 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:08:27 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:08:27 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile) 를 호출 했습니다
+21:08:27 DEBUG k.o.c.g.controller.FileController - homeless_dog.png 파일이 업로드. 사이즈: 12293
+21:08:27 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:25:27 KST 2021]; parent: Root WebApplicationContext
+21:08:27 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:27 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:27:55 KST 2021]; root of context hierarchy
+21:08:27 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:27 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:27 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1803 ms
+21:08:27 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:27 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:27:57 KST 2021]; parent: Root WebApplicationContext
+21:08:27 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:27 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:27:57 KST 2021]; parent: Root WebApplicationContext
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:27 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:27 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:27 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1639 ms
+21:08:28 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:08:28 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:08:28 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile) 를 호출 했습니다
+21:08:28 DEBUG k.o.c.g.controller.FileController - homeless_dog.png 파일이 업로드. 사이즈: 12293
+21:08:28 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile)가 종료되었습니다. uploadok 를 view로 사용합니다.
+21:08:38 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:27:57 KST 2021]; parent: Root WebApplicationContext
+21:08:38 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:38 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:38:30 KST 2021]; root of context hierarchy
+21:08:38 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:38 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:38 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1722 ms
+21:08:38 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:38 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:38:32 KST 2021]; parent: Root WebApplicationContext
+21:08:38 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:38 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:38:32 KST 2021]; parent: Root WebApplicationContext
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:38 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:38 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:38 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1684 ms
+21:08:41 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:38:32 KST 2021]; parent: Root WebApplicationContext
+21:08:41 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:41 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:41:15 KST 2021]; root of context hierarchy
+21:08:41 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:41 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:41 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1894 ms
+21:08:41 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:41 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:41:16 KST 2021]; parent: Root WebApplicationContext
+21:08:41 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:41 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:41:16 KST 2021]; parent: Root WebApplicationContext
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:41 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[])
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:41 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:41 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1668 ms
+21:08:50 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:41:16 KST 2021]; parent: Root WebApplicationContext
+21:08:51 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:51 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:51:00 KST 2021]; root of context hierarchy
+21:08:51 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:51 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:51 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1698 ms
+21:08:51 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:51 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:51:01 KST 2021]; parent: Root WebApplicationContext
+21:08:51 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:51 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:51:01 KST 2021]; parent: Root WebApplicationContext
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:51 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[])
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:51 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:51 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1618 ms
+21:08:56 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:51:01 KST 2021]; parent: Root WebApplicationContext
+21:08:56 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:56 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:56:31 KST 2021]; root of context hierarchy
+21:08:56 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:56 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:56 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1688 ms
+21:08:56 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:56 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:56:32 KST 2021]; parent: Root WebApplicationContext
+21:08:56 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:56 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:56:32 KST 2021]; parent: Root WebApplicationContext
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:56 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[])
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:56 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:56 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1851 ms
+21:08:57 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:56:32 KST 2021]; parent: Root WebApplicationContext
+21:08:57 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:08:57 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 08:57:48 KST 2021]; root of context hierarchy
+21:08:57 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:08:57 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:57 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1966 ms
+21:08:57 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:08:57 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:57:50 KST 2021]; parent: Root WebApplicationContext
+21:08:57 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:08:57 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:57:50 KST 2021]; parent: Root WebApplicationContext
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:08:57 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[])
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:08:57 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:08:57 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1893 ms
+21:08:57 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:08:57 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:08:58 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[]) 를 호출 했습니다
+21:08:58 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:08:58 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:08:58 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[],java.lang.String[]) 를 호출 했습니다
+21:08:58 WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Failed to convert request element: org.springframework.web.method.annotation.MethodArgumentConversionNotSupportedException: Failed to convert value of type 'java.util.LinkedList' to required type 'java.lang.String[]'; nested exception is java.lang.IllegalStateException: Cannot convert value of type 'org.springframework.web.multipart.commons.CommonsMultipartFile' to required type 'java.lang.String': no matching editors or conversion strategy found
+21:09:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 08:57:50 KST 2021]; parent: Root WebApplicationContext
+21:09:11 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:09:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 09:11:30 KST 2021]; root of context hierarchy
+21:09:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:09:11 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:11 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1494 ms
+21:09:11 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:09:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:11:31 KST 2021]; parent: Root WebApplicationContext
+21:09:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:09:11 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:11:31 KST 2021]; parent: Root WebApplicationContext
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:11 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:11 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:09:11 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1460 ms
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:11:31 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 09:12:04 KST 2021]; root of context hierarchy
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:09:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1648 ms
+21:09:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:05 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:09:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:05 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:09:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1476 ms
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:05 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 09:12:24 KST 2021]; root of context hierarchy
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:09:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1850 ms
+21:09:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:26 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:09:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:26 KST 2021]; parent: Root WebApplicationContext
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:09:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1580 ms
+21:09:12 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:09:12 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:09:12 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[]) 를 호출 했습니다
+21:09:17 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:09:17 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:09:17 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:12:26 KST 2021]; parent: Root WebApplicationContext
+21:09:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:09:17 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 09:17:47 KST 2021]; root of context hierarchy
+21:09:17 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:09:17 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:17 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1932 ms
+21:09:17 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:09:17 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:17:49 KST 2021]; parent: Root WebApplicationContext
+21:09:17 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:09:17 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:17:49 KST 2021]; parent: Root WebApplicationContext
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:09:17 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:09:17 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:09:17 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1522 ms
+21:09:17 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[]) 를 호출 했습니다
+21:09:17 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\golden_egg.png
+21:09:17 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:09:17 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\mario.png
+21:09:18 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform() 를 호출 했습니다
+21:09:18 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()가 종료되었습니다. uploadform 를 view로 사용합니다.
+21:09:18 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[]) 를 호출 했습니다
+21:09:18 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:09:18 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:09:18 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[]) 를 호출 했습니다
+21:09:18 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:09:18 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:09:18 INFO  k.o.c.g.controller.FileController - C:\tmp\tmpFiles\homeless_dog.png
+21:10:11 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 09:17:49 KST 2021]; parent: Root WebApplicationContext
+21:10:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:10:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 10:12:01 KST 2021]; root of context hierarchy
+21:10:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:10:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:10:12 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1489 ms
+21:10:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:10:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 10:12:02 KST 2021]; parent: Root WebApplicationContext
+21:10:12 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:10:12 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 10:12:02 KST 2021]; parent: Root WebApplicationContext
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:12 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/download],methods=[GET]}" onto public void kr.or.connect.guestbook.controller.FileController.download(javax.servlet.http.HttpServletResponse)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:10:12 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:10:12 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1396 ms
+21:10:15 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Closing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 10:12:02 KST 2021]; parent: Root WebApplicationContext
+21:10:15 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization started
+21:10:15 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing Root WebApplicationContext: startup date [Thu Jul 29 10:15:34 KST 2021]; root of context hierarchy
+21:10:15 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.ApplicationConfig]
+21:10:15 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:10:15 INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1703 ms
+21:10:15 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization started
+21:10:15 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Refreshing WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 10:15:36 KST 2021]; parent: Root WebApplicationContext
+21:10:15 INFO  o.s.w.c.s.AnnotationConfigWebApplicationContext - Successfully resolved class for [kr.or.connect.guestbook.config.WebMvcContextConfiguration]
+21:10:15 INFO  o.s.b.f.a.AutowiredAnnotationBeanPostProcessor - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: WebApplicationContext for namespace 'mvc-servlet': startup date [Thu Jul 29 10:15:36 KST 2021]; parent: Root WebApplicationContext
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/assets/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/css/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/img/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/js/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+21:10:15 INFO  o.s.w.s.h.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/upload],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.upload(org.springframework.web.multipart.MultipartFile[])
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/download],methods=[GET]}" onto public void kr.or.connect.guestbook.controller.FileController.download(javax.servlet.http.HttpServletResponse)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/uploadform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.FileController.uploadform()
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guess],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuessNumberController.guess(java.lang.Integer,javax.servlet.http.HttpSession,org.springframework.ui.ModelMap)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/login],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.login(java.lang.String,javax.servlet.http.HttpSession,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/loginform],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookAdminController.loginform()
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[POST]}" onto public kr.or.connect.guestbook.dto.Guestbook kr.or.connect.guestbook.controller.GuestbookApiController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks/{id}],methods=[DELETE]}" onto public java.util.Map<java.lang.String, java.lang.String> kr.or.connect.guestbook.controller.GuestbookApiController.delete(java.lang.Long,javax.servlet.http.HttpServletRequest)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/guestbooks],methods=[GET]}" onto public java.util.Map<java.lang.String, java.lang.Object> kr.or.connect.guestbook.controller.GuestbookApiController.list(int)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/write],methods=[POST]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.write(kr.or.connect.guestbook.dto.Guestbook,javax.servlet.http.HttpServletRequest)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/delete],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.delete(java.lang.Long,java.lang.String,javax.servlet.http.HttpServletRequest,org.springframework.web.servlet.mvc.support.RedirectAttributes)
+21:10:15 INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/list],methods=[GET]}" onto public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)
+21:10:15 INFO  o.s.web.servlet.DispatcherServlet - FrameworkServlet 'mvc': initialization completed in 1655 ms
+21:10:15 DEBUG k.o.c.g.interceptor.LoginInterceptor - org.springframework.web.servlet.mvc.ParameterizableViewController@12749ebe 를 호출 했습니다
+21:10:15 DEBUG k.o.c.g.interceptor.LoginInterceptor - org.springframework.web.servlet.mvc.ParameterizableViewController@12749ebe가 종료되었습니다. index 를 view로 사용합니다.
+21:10:15 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo) 를 호출 했습니다
+21:10:15 DEBUG k.o.c.g.interceptor.LoginInterceptor - public java.lang.String kr.or.connect.guestbook.controller.GuestbookController.list(int,org.springframework.ui.ModelMap,java.lang.String,javax.servlet.http.HttpServletResponse,kr.or.connect.guestbook.argumentresolver.HeaderInfo)가 종료되었습니다. list 를 view로 사용합니다.
+21:10:15 DEBUG k.o.c.g.interceptor.LoginInterceptor - public void kr.or.connect.guestbook.controller.FileController.download(javax.servlet.http.HttpServletResponse) 를 호출 했습니다

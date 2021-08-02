@@ -1,3 +1,8 @@
+body{
+	user-select: none;
+	color: #202121;
+}
+
 #wrap {
     position: fixed;
     left: 0;
@@ -97,7 +102,7 @@ body{
     width: 300px;
     height: 40px;
     margin-top:15px;
-    background-color: #0B4D40;
+    background-color: rgba(60,113, 102, .8);
     font-family: AppleSDGothic, sans-serif;
     font-weight: 500;
     cursor: pointer;
@@ -107,35 +112,37 @@ body{
 }
 
 .login_footer{
+	display:flex;
     margin-top: 10px;
-    overflow: hidden;
-    text-align: right;
 }
 
-.login_footer button{
-    border:none;
-    background-color: #fff;
-    font-family: AppleSDGothic, sans-serif;
 
+.logged_in_label{
+	cursor: pointer;
+}
+.keep_logged_in{
+	width: 150px;
 }
 
-.login_footer button a, .login_footer button a:visited {
-    text-decoration: none;
-    color: #444444;
-}
-
-.find_password{
-    border-right: 1px solid #424242;
-    float: right;
-    height: 15px;
-
+.login_aux_box{
+	display: flex;
+	justify-content: flex-end;
+	width: 150px;
+	
 }
 
 .join_box{
-    float: right;
-
+	margin-right: 10px;
+	
 }
-#content .join_box button a{
+.login_aux_box a {
+	display: block;
+	line-height: 22px;
+	font-size: 14px;
+	
+}
+
+#content .join_box a{
     color: #3C7166;
 }
 

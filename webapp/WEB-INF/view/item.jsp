@@ -28,9 +28,6 @@
                         <a href=""><span>${giver.company }</span></a>
                     </div>
                     <div class="subs_info_box">
-                        <!--구독자 수-->
-                        <div class="subs_num">100 &nbsp;</div>
-                        <!-- 평점 & 리뷰 수 -->
                         <div class="star_review_num">
                             <img class="star" src="/img/resource/star.png">
                             <span class="star_review"></span> <span class="rating_parenthesis">(<span class="rating_num"></span>)</span>
@@ -38,18 +35,18 @@
                     </div>
                 </div>
                 <div class="item_info_box">
-                <form action="/test" method="GET">
+                <form action="/subscribe/${product.no}" method="GET">
                     <dl>
                         <dt>배송 시작일</dt>
                         <dd>
                         	<div role="button">
-                        		<input id="datepicker" class="datepicker_input" name="deliveryStart" autocomplete ="off" placeholder="희망배송시작일">
+                        		<input id="datepicker" class="datepicker_input" name="deliveryStart" autocomplete ="off" placeholder="희망배송시작일" readonly>
                         	</div>
                         </dd>
                     </dl>
                     <dl>
                         <dt>배송일</dt>
-                        <dd><!--월화수목금 표기.-->
+                        <dd>
                             <div class="deliver_date_box">
                         
                             	<div class="delivery_date  <c:forEach var="deliveryDay" items="${deliveryDays}"> 
@@ -98,7 +95,6 @@
                             </div>
                         </dd>
                     </dl>
-                    <!--기본가격에 옵션, 배송추가 가격 표시되면 좋을 것 같음-->
                     
                     <dl>
                         <dt class="delivery_addr_option">배송지역 선택</dt>
@@ -106,13 +102,19 @@
                         	<c:forEach items="${deliveryOpt}" var="opt">
                          		
                             <input id="deliveryAddrOption${opt.areaNo}" name="addrOpt" value="${opt.primaryRegionName}${opt.regionName}+${opt.price}" class="addr_option_input" type="radio" <c:if test="${opt.areaNo eq param.regionNo}"> checked</c:if>>
-                            <label class="delivery_opt_label" for="deliveryAddrOption${opt.areaNo }" data-price="${opt.price+product.price}" data-sido="${opt.primaryRegionName}" data-sigungu="${opt.regionName}">${opt.primaryRegionName}${opt.regionName}/+<span class="opt_price">${opt.price}</span></label>
-                            <input type="hidden" class="opt_price_input" name="optPrice" value="${opt.price}" />
+                            <label class="delivery_opt_label" for="deliveryAddrOption${opt.areaNo }" data-opt-no="${opt.no }" data-opt-area-no="${opt.areaNo }" data-opt-price="${opt.price}" data-price="${opt.price+product.price}" data-sido="${opt.primaryRegionName}" data-sigungu="${opt.regionName}">${opt.primaryRegionName}${opt.regionName}/+<span class="opt_price">${opt.price}</span></label>
+                            
                             </c:forEach>
+                        </dd>
+                        <dd>
+                        	<input id="optPrice" type="hidden" class="opt_price_input" name="optPrice" />
+                        	<input id="primaryRegion" type="hidden" class="opt_region1_input" name="primaryRegion" />
+                        	<input id="secondaryRegion" type="hidden" class="opt_region2_input" name="secondaryRegion" />
+                        	<input id="optNo" type="hidden" class="opt_no" name="optNo" />
+                        	<input id="optAreaNo" type="hidden" class="opt_area_no" name="optAreaNo" />
                         </dd>
                     </dl>
                    
-                    <!-- 남은 수량이 9개 이하가 되면, 나타남 -->
                     <dl class="sold_out">
                         <dt>남은 수량</dt>
                         <dd class="last_qnt">9 개</dd>
@@ -180,6 +182,7 @@
 
         </div>
     </div>
+    <div id="modal"></div>
 <c:import url="/WEB-INF/view/template/footer.jsp"/>
 <input id="dateVal" type="hidden" name="dateVal" value="${product.dateAvail}" />
 </body>
