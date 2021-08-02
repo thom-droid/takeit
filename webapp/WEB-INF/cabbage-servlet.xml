@@ -19,7 +19,7 @@
 	
 	<!-- interceptor  -->
 	<mvc:interceptors>
-		<!-- d -->
+		<!-- log for overall -->
 		<mvc:interceptor>
 			<mvc:mapping path="/*"/>
 			<bean class="com.summer.cabbage.interceptor.LogInterceptor"/>

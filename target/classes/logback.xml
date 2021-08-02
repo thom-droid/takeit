@@ -9,7 +9,7 @@
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>\BMJ\workspace\backend\spring\takeIt_0.8\src\main\resources\log.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>\BMJ\workspace\backend\spring\takeIt_0.8\src\main\resources\log-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>\BMJ\workspace\backend\spring\takeIt_0.8\src\main\resources\log-%d{MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
 

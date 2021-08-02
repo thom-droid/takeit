@@ -55,17 +55,17 @@ public class MemberController {
 		
 		if(loginInfo!=null) {
 			
-			Member m = (Member) loginInfo.get("member");
+			Member mb = (Member) loginInfo.get("member");
 			
 			session.setAttribute("loginMember", loginInfo);
 			
 			// when giver logging in
-			if(m.getType().equals("G")) {
+			if(mb.getType().equals("G")) {
 				
-				return "redirect:/giver/"+m.getNo()+"/main";
+				return "redirect:/giver/"+mb.getNo()+"/main";
 				
 			// taker logging in
-			}else if(m.getType().equals("T")){
+			}else if(mb.getType().equals("T")){
 				
 				Taker t = (Taker) loginInfo.get("taker");
 				String success = "반갑습니다,"+  t.getNickname()+" 님";

@@ -7,9 +7,6 @@ build/
 # ignore target file
 */target
 
-# ignore maven pom
-pom.xml
-
 # ignore img
 webapp/img
 webapp/webfonts
