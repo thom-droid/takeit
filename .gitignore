@@ -5,9 +5,20 @@ build/
 *.class
 
 # ignore target file
-target/
+*/target
 
 # ignore maven pom
 pom.xml
 
+# ignore img
+webapp/img
+webapp/webfonts
 
+# ignore miscellaneous
+*.classpath
+*.project
+*.springBeans
+
+META-INF/
+
+.setting/
